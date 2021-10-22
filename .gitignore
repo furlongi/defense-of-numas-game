@@ -11,6 +11,8 @@ Logs/
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
+.idea/
 
 # Rider Ignore
 .idea/
