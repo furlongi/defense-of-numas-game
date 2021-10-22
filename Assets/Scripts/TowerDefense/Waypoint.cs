@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    public GameObject waypointObject;
-    private Vector3 position;
+    private Vector2 position;
 
     // Start is called before the first frame update
 
-    public Vector3 GetPosition()
+    public Vector2 GetPosition()
     {
         return this.position;
     }
 
-    public void UpdatePosition(Vector3 newPosition)
+    public void UpdatePosition(Vector2 newPosition)
     {
         this.position = newPosition;
     }
     void Start()
     {
-        position = waypointObject.transform.localPosition;
+        position = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.position = gameObject.transform.localPosition;
+
     }
 }
