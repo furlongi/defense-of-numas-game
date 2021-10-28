@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isOpen", true);
         sentences.Clear();
-        // nameText.text = name;
+        nameText.text = name;
         foreach (var sent in dialogue.sentences)
         {
             sentences.Enqueue(sent);

@@ -27,7 +27,6 @@ public class NpcInteract : MonoBehaviour
         var distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance <= talkDistance)
         {
-            Debug.Log("Has been clicked");
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue, npcName);
         }
     }
