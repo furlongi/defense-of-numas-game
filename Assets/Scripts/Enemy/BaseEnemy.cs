@@ -120,7 +120,7 @@ public class BaseEnemy : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        // Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Player")
         {
             //If the GameObject's name matches the one you suggest, output this message in the console
@@ -130,7 +130,7 @@ public class BaseEnemy : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
+        // Debug.Log(other.gameObject.tag);
         // if(other.gameObject.tag=="bullet")
         //     Destroy(gameObject);    
     }

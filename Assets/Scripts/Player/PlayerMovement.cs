@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
+        // For Debug spawning enemies. Delete later
         if (Input.GetKeyDown("r")) {
             System.Random r = new System.Random();
             GameObject b = Instantiate(enemy, transform.position, transform.rotation);
