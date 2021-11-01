@@ -18,13 +18,20 @@ public class NpcInteract : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown("f"))
+        {
+            StartInteraction();
+        }
     }
 
     private void OnMouseDown()
+    {
+        StartInteraction();
+    }
+
+    private void StartInteraction()
     {
         GameObject player = GameObject.Find("Player");
         var distance = Vector2.Distance(transform.position, player.transform.position);
