@@ -948,7 +948,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f89d04b9218a8c149ad2221f92751c3a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -967,6 +967,10 @@ PrefabInstance:
       value: Lucca
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
+      propertyPath: npcText
+      value: 
+      objectReference: {fileID: 4900000, guid: 7d2bde7ca92adfe4e82302db3750bf33, type: 3}
+    - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: dialogue.name
       value: 
       objectReference: {fileID: 0}
@@ -980,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: Test2Test2Test2Test2Test2
+      value: examplesoNexamplesoNexamplesoNexamplesoNexamplesoNexamplesoNexamplesoNexamplesoNexamplesoNexamplesoN
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]

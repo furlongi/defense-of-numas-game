@@ -6,13 +6,16 @@ using UnityEngine;
 public class NpcInteract : MonoBehaviour
 {
     public float talkDistance = 1f;
-    public Dialogue dialogue;
     public string npcName;
-    
+    public TextAsset npcText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (npcText == null)
+        {
+            Debug.Log("Dialogue text for " + npcName + " is missing!");
+        }
     }
 
     // Update is called once per frame
@@ -27,7 +30,7 @@ public class NpcInteract : MonoBehaviour
         var distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance <= talkDistance)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue, npcName);
+            FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText);
         }
     }
 }

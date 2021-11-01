@@ -18,14 +18,16 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue, string name)
+    public void StartDialogue(string npcName, TextAsset npcText)
     {
+        NpcTemplate dialg = DialogueLoader.LoadXML(npcText);
         animator.SetBool("isOpen", true);
         sentences.Clear();
-        nameText.text = name;
-        foreach (var sent in dialogue.sentences)
+        nameText.text = npcName;
+        
+        foreach (var sent in dialg.World.EventType.Text)
         {
-            sentences.Enqueue(sent);
+            sentences.Enqueue(sent.Trim());
         }
         DisplayNextSentence();
     }
