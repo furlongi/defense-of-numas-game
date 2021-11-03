@@ -7,21 +7,43 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 1.1f;
     private Vector3 input;
     public GameObject enemy;
+    public Animator animator;
+    public SpriteRenderer _sprite;
 
 
-    void Start() {
-
+    private void Start()
+    {
+        // _sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (input.magnitude > 1) {
-            input.Normalize();
+        if (input.magnitude > 1)
+        {
+            
         }
 
-        transform.position += input * speed * Time.deltaTime;
+        if (input.magnitude != 0)
+        {
+            animator.SetBool("isRunning", true);
+            if (input.x > 0)
+            {
+                _sprite.flipX = false;
+            } 
+            else if (input.x < 0)
+            {
+                _sprite.flipX = true;
+            }
+            input.Normalize();
+            transform.position += speed * Time.deltaTime * input;
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
     }
 
     void Update() {

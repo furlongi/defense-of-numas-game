@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7403516980881296350}
   - component: {fileID: -9165519065083032906}
   - component: {fileID: 8248096528301339063}
+  - component: {fileID: 979126833164005547}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -30,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5972422233515204853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1a9572cda79db344839d203bca8adaa, type: 3}
+  m_Sprite: {fileID: 6927207284838485531, guid: 10fcfa901c112884c840b56db5230d4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.35}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +104,7 @@ MonoBehaviour:
   defense: 0
   speed: 0.3
   attack: 1
-  vision: -1
+  vision: 1
   detect: 1
 --- !u!114 &4208423943164553489
 MonoBehaviour:
@@ -153,18 +154,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0007701218, y: -0.0003556572}
+  m_Offset: {x: 0.12939835, y: -0.08460808}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.35}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12751812, y: 0.15970719}
+  m_Size: {x: 4.570532, y: 4.976181}
   m_EdgeRadius: 0
 --- !u!250 &8248096528301339063
 PointEffector2D:
@@ -178,11 +179,30 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_ForceMagnitude: 10
+  m_ForceMagnitude: 0.3
   m_ForceVariation: 0
-  m_DistanceScale: 10
+  m_DistanceScale: 0.3
   m_ForceSource: 0
   m_ForceTarget: 0
   m_ForceMode: 1
   m_Drag: 10
   m_AngularDrag: 0
+--- !u!95 &979126833164005547
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972422233515204853}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8e21ab23842f5e448c31a911ea0550c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
