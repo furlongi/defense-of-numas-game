@@ -46,7 +46,8 @@ public class BaseEnemy : MonoBehaviour
     
     /* Range for enemy to stop following the player.
        Too low value and the enemy will end up inside the player.
-        Too high and the enemy will stop too far away.*/
+       Too high and the enemy will stop too far away. 
+       Should be used by the enemy movement script. */
     public float stopRange = 1.2f;
 
     /* Distance until it stops following player. < 1 for infinite */
@@ -61,6 +62,7 @@ public class BaseEnemy : MonoBehaviour
     */
 
     
+    // Call this when the enemy will take damage
     public void Damage(float amount) {
         health -= Math.Max(amount - defense, 0);
         if (health <= 0)
@@ -70,8 +72,6 @@ public class BaseEnemy : MonoBehaviour
     }
     
     
-    
-
     public void SetHealth(float amount) {
         health = amount;
     }
@@ -120,22 +120,5 @@ public class BaseEnemy : MonoBehaviour
         vision = vis;
         detect = detct;
     }
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        // Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Player")
-        {
-            //If the GameObject's name matches the one you suggest, output this message in the console
-            Debug.Log("Do something here");
-        }
-    }
-    
-    void OnTriggerEnter(Collider other)
-    {
-        // Debug.Log(other.gameObject.tag);
-        // if(other.gameObject.tag=="bullet")
-        //     Destroy(gameObject);    
-    }
-    
+
 }

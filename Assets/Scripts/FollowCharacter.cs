@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FollowCharacter : MonoBehaviour
 {
-
     public GameObject target;
     private Vector3 offset;
 

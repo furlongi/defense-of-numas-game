@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //public GameObject hitEffect;
+    // public GameObject hitEffect;
     public Vector2 direction;
     public float bulletForce = 20f;
     public float damage = 1;

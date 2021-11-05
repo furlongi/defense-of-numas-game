@@ -20,7 +20,6 @@ some values are changed in the inspector.
 
 public class EnemyChase : MonoBehaviour
 {
-
     public BaseEnemy enemy;
     public Transform playerLoc;
     
@@ -38,8 +37,8 @@ public class EnemyChase : MonoBehaviour
     private float _setAniSpeed = 0;
     private float _setEffectorMagn = 0;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         playerLoc = GameObject.FindWithTag("Player").transform;
         
@@ -56,8 +55,7 @@ public class EnemyChase : MonoBehaviour
         _setEffectorMagn = _effector.forceMagnitude;
     }
     
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         var playerPos = playerLoc.position;
         var curPos = transform.position;
@@ -79,24 +77,34 @@ public class EnemyChase : MonoBehaviour
             }
         }
     }
-
-    // FixedUpdate update interval synced with physics update interval
+    
     private void FixedUpdate()
     {
-        if (_isInsideEnemy)
+        if (_isInsideEnemy) // Move away from a fellow enemy to avoid stacking
         {
             _rb.MovePosition((Vector2)transform.position + (enemy.speed * Time.deltaTime * _avoidEnemyDirection));
         }
-        if (_isChasing && !_isNearPlayer)
+        if (_isChasing && !_isNearPlayer) // If near player, then do not overlay inside the player
         {
             _rb.MovePosition((Vector2)transform.position + (enemy.speed * Time.deltaTime * _movement));
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            /* If this enemy is inside another enemy, it will attempt to move
+             * out of the way.
+             *
+             * If the OTHER enemy is chasing while near the player (stopped in front),
+             * then move a different direction while still going towards the player.
+             * This will allow all enemies to circle around a stationary player.
+             *
+             * If THIS is no longer chasing or near the player, but still inside
+             * another enemy, then move some random direction. Give these
+             * boys some space!
+             */
             var enScript = other.gameObject.GetComponent<EnemyChase>();
             _isInsideEnemy = true;
             
@@ -122,17 +130,13 @@ public class EnemyChase : MonoBehaviour
             }
         }
     }
-
-    public bool IsNear()
-    {
-        return _isNearPlayer;
-    }
-
+    
     private void OnTriggerStay2D(Collider2D other)
     {
+        /* Checks if this enemy is inside a player or not to stop a certain distance */
         if (other.gameObject.name == "Player")
         {
-            if (Vector3.Distance(other.transform.position, transform.position) < 1.2)
+            if (Vector3.Distance(other.transform.position, transform.position) < enemy.stopRange)
             {
                 _isNearPlayer = true;
             }
@@ -166,6 +170,7 @@ public class EnemyChase : MonoBehaviour
 
     private void CheckShouldChase(float distance)
     {
+        // Infinite detection; Always chase
         if (enemy.detect < 0)
         {
             _isChasing = true;
@@ -174,6 +179,7 @@ public class EnemyChase : MonoBehaviour
             return;
         }
 
+        // If vision is not infinite and player is out of enemy's vision, then stop chasing
         if (_isChasing && enemy.vision > 0 && distance > enemy.vision)
         {
             _isChasing = false;
@@ -181,12 +187,18 @@ public class EnemyChase : MonoBehaviour
             return;
         }
 
+        // If within detection, start chase
         if (distance < enemy.detect)
         {
             _isChasing = true;
             _effector.forceMagnitude = _setEffectorMagn;
             ContinueAnimation();
         }
+    }
+    
+    public bool IsNear()
+    {
+        return _isNearPlayer;
     }
 
     private void PauseAnimation()
@@ -198,5 +210,4 @@ public class EnemyChase : MonoBehaviour
     {
         _animator.speed = _setAniSpeed;
     }
-    
 }

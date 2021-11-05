@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class DialogueLoader
 {
-    
     public static NpcTemplate LoadXML(TextAsset file)
     {
         var serializer = new XmlSerializer(typeof(NpcTemplate));

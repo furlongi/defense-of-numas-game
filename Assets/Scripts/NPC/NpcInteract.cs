@@ -6,10 +6,11 @@ using UnityEngine;
 public class NpcInteract : MonoBehaviour
 {
     public float talkDistance = 1f;
+    
+    // Set these in inspector
     public string npcName;
     public TextAsset npcText;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (npcText == null)
