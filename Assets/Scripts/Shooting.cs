@@ -1,28 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public Camera cam;
 
-    public float bulletForce = 20f;
+    public float bulletForce = 10f;
+
+    private void Start()
+    {
+        cam = GameObject.Find("Camera").GetComponent<Camera>();
+    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            Shoot(cam.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 
-    void Shoot()
+    public void Shoot(Vector3 mousePos)
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        GameObject newObj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = newObj.GetComponent<Bullet>();
+
+        Vector2 direction = mousePos - firePoint.position;
+        direction.Normalize();
+        
+        bullet.direction = direction;
     }
 }

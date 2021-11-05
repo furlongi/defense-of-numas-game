@@ -20,20 +20,25 @@ some values are changed in the inspector.
 
 public class EnemyChase : MonoBehaviour
 {
-
     public BaseEnemy enemy;
     public Transform playerLoc;
     
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private SpriteRenderer _sprite;
+    private Animator _animator;
+    private PointEffector2D _effector;
+    
     private bool _isChasing = false;
     private bool _isNearPlayer = false;
     private bool _isInsideEnemy = false;
-    private Vector2 _avoidEnemyDirection = new Vector2();
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 _avoidEnemyDirection = new Vector2();
+    private float _setAniSpeed = 0;
+    private float _setEffectorMagn = 0;
+
+
+    private void Start()
     {
         playerLoc = GameObject.FindWithTag("Player").transform;
         
@@ -43,10 +48,14 @@ public class EnemyChase : MonoBehaviour
         
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _effector = GetComponent<PointEffector2D>();
+        _setAniSpeed = _animator.speed;
+        _animator.speed = 0;
+        _setEffectorMagn = _effector.forceMagnitude;
     }
     
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         var playerPos = playerLoc.position;
         var curPos = transform.position;
@@ -60,64 +69,80 @@ public class EnemyChase : MonoBehaviour
             _movement.Normalize();
             if (_movement.x > 0)
             {
-                _sprite.flipX = false;
+                _sprite.flipX = true;
             } 
             else if (_movement.x < 0)
             {
-                _sprite.flipX = true;
+                _sprite.flipX = false;
             }
         }
     }
-
-    // FixedUpdate update interval synced with physics update interval
+    
     private void FixedUpdate()
     {
-        if (_isInsideEnemy)
+        if (_isInsideEnemy) // Move away from a fellow enemy to avoid stacking
         {
             _rb.MovePosition((Vector2)transform.position + (enemy.speed * Time.deltaTime * _avoidEnemyDirection));
         }
-        if (_isChasing && !_isNearPlayer)
+        if (_isChasing && !_isNearPlayer) // If near player, then do not overlay inside the player
         {
             _rb.MovePosition((Vector2)transform.position + (enemy.speed * Time.deltaTime * _movement));
-
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
-        {
-            _isNearPlayer = true;
-        }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            /* If this enemy is inside another enemy, it will attempt to move
+             * out of the way.
+             *
+             * If the OTHER enemy is chasing while near the player (stopped in front),
+             * then move a different direction while still going towards the player.
+             * This will allow all enemies to circle around a stationary player.
+             *
+             * If THIS is no longer chasing or near the player, but still inside
+             * another enemy, then move some random direction. Give these
+             * boys some space!
+             */
+            var enScript = other.gameObject.GetComponent<EnemyChase>();
             _isInsideEnemy = true;
+            
+            if (enScript._isChasing && enScript._isNearPlayer)
+            {
+                ContinueAnimation();
+                Vector2 thisPos = transform.position;
+                Vector2 otherPos = other.gameObject.transform.position;
+                var vect = thisPos - otherPos;
+
+                _avoidEnemyDirection = Math.Abs(_movement.x) > Math.Abs(_movement.y)
+                    ? new Vector2(0, vect.y)
+                    : new Vector2(vect.x, 0);
+
+                _avoidEnemyDirection.Normalize();
+            }
+            else if (!_isChasing && !_isNearPlayer)
+            {
+                var r = new System.Random();
+                _avoidEnemyDirection = new Vector2(r.Next(-10, 10), r.Next(-10,10));
+                _avoidEnemyDirection.Normalize();
+                ContinueAnimation();
+            }
         }
     }
-
+    
     private void OnTriggerStay2D(Collider2D other)
     {
+        /* Checks if this enemy is inside a player or not to stop a certain distance */
         if (other.gameObject.name == "Player")
         {
-            _isNearPlayer = true;
-        }
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            var enScript = other.gameObject.GetComponent<EnemyChase>();
-            if (!enScript._isChasing || enScript._isNearPlayer)
+            if (Vector3.Distance(other.transform.position, transform.position) < enemy.stopRange)
             {
-                _isInsideEnemy = true;
-                Vector2 vect = transform.position - other.gameObject.transform.position;
-                
-                if (Math.Abs(_movement.x) > Math.Abs(_movement.y))
-                {
-                    _avoidEnemyDirection = new Vector2(0, vect.y);
-                }
-                else
-                {
-                    _avoidEnemyDirection = new Vector2(vect.x, 0);
-                }
-                _avoidEnemyDirection.Normalize();
+                _isNearPlayer = true;
+            }
+            else
+            {
+                _isNearPlayer = false;
             }
         }
     }
@@ -132,26 +157,60 @@ public class EnemyChase : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             _isInsideEnemy = false;
+            var enScript = other.gameObject.GetComponent<EnemyChase>();
+            if (!enScript._isChasing && !enScript._isNearPlayer)
+            {
+                _effector.forceMagnitude = 0;
+                _avoidEnemyDirection = new Vector2(0, 0);
+                PauseAnimation();
+            }
+            PauseAnimation();
         }
     }
 
     private void CheckShouldChase(float distance)
     {
+        // Infinite detection; Always chase
         if (enemy.detect < 0)
         {
             _isChasing = true;
+            _effector.forceMagnitude = _setEffectorMagn;
+            ContinueAnimation();
             return;
         }
 
+        // If vision is not infinite and player is out of enemy's vision, then stop chasing
         if (_isChasing && enemy.vision > 0 && distance > enemy.vision)
         {
             _isChasing = false;
+            PauseAnimation();
             return;
         }
 
+        // If within detection, start chase
         if (distance < enemy.detect)
         {
             _isChasing = true;
+            _effector.forceMagnitude = _setEffectorMagn;
+            ContinueAnimation();
         }
+    }
+    
+    public bool IsNear()
+    {
+        return _isNearPlayer;
+    }
+
+    private void PauseAnimation()
+    {
+        if (!enemy.IsDead())
+        {
+            _animator.speed = 0;
+        }
+    }
+    
+    private void ContinueAnimation()
+    {
+        _animator.speed = _setAniSpeed;
     }
 }

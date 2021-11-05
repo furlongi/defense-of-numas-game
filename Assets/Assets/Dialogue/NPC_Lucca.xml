@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="hub">
+        <event category="default">
+            <text>
+                This is an example message for the npc dialogue.
+            </text>
+            <text>
+                Each line can only be about 325 characters (at the current settings. The next line will display Lorem Ipsum at maxed out space.
+            </text>
+            <text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            </text>
+        </event>
+    </world>
+</root>
