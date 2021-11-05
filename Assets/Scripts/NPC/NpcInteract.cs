@@ -36,7 +36,7 @@ public class NpcInteract : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player");
         var distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
+
         if (distance <= talkDistance)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText);
