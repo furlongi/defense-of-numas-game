@@ -60,17 +60,54 @@ public class BaseEnemy : MonoBehaviour
        If vision is infinite, but detect is not, then enemy will always chase
         once the player entered the detection zone.
     */
-
     
+    /* Change in inspector if necessary */
+    public float deathAnimationTimer = 1.1f;
+
+    private Animator _animate;
+    private bool _isDead = false;
+
+
+    private void Start()
+    {
+        _animate = GetComponent<Animator>();
+    }
+
+
     // Call this when the enemy will take damage
     public void Damage(float amount) {
         health -= Math.Max(amount - defense, 0);
         if (health <= 0)
         {
-            Destroy(gameObject);
+            // Prevent movement from affecting death animation
+            _isDead = true;
+            speed = 0;
+            
+            _animate.SetBool("isDead", true);
+            _animate.speed = 1;
+            
+            // Wait for death animation to finish before destroying this
+            IEnumerator toExecute = DestroyAfterAnimation(deathAnimationTimer);
+            StartCoroutine(toExecute);
         }
     }
+
+    private IEnumerator DestroyAfterAnimation(float deathTime)
+    {
+        yield return new WaitForSeconds(deathTime);
+        KillEnemy();
+    }
     
+    public void KillEnemy()
+    {
+        Destroy(gameObject);
+        DropLoot();
+    }
+
+    public void DropLoot()
+    {
+        Debug.Log("Loot Drop Not Implemented!");
+    }
     
     public void SetHealth(float amount) {
         health = amount;
@@ -121,4 +158,8 @@ public class BaseEnemy : MonoBehaviour
         detect = detct;
     }
 
+    public bool IsDead()
+    {
+        return _isDead;
+    }
 }

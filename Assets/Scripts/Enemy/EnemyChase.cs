@@ -203,7 +203,10 @@ public class EnemyChase : MonoBehaviour
 
     private void PauseAnimation()
     {
-        _animator.speed = 0;
+        if (!enemy.IsDead())
+        {
+            _animator.speed = 0;
+        }
     }
     
     private void ContinueAnimation()
