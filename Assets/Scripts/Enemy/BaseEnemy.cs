@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,6 +44,11 @@ public class BaseEnemy : MonoBehaviour
     public float speed = 1;
     public float attack = 1;
     
+    /* Range for enemy to stop following the player.
+       Too low value and the enemy will end up inside the player.
+        Too high and the enemy will stop too far away.*/
+    public float stopRange = 1.2f;
+
     /* Distance until it stops following player. < 1 for infinite */
     public float vision = -1;
     
@@ -55,19 +61,16 @@ public class BaseEnemy : MonoBehaviour
     */
 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void Damage(float amount) {
-        health -= (amount - defense);
+        health -= Math.Max(amount - defense, 0);
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+    
+    
+    
 
     public void SetHealth(float amount) {
         health = amount;

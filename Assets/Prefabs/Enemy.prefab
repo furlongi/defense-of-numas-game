@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6377582194741982022}
   - component: {fileID: -7827507472927101734}
   - component: {fileID: 4208423943164553489}
+  - component: {fileID: 6162478313951188451}
   - component: {fileID: 7403516980881296350}
   - component: {fileID: -9165519065083032906}
   - component: {fileID: 8248096528301339063}
@@ -104,6 +105,7 @@ MonoBehaviour:
   defense: 0
   speed: 0.3
   attack: 1
+  stopRange: 1.2
   vision: 1
   detect: 1
 --- !u!114 &4208423943164553489
@@ -120,6 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: -7827507472927101734}
   playerLoc: {fileID: 0}
+--- !u!114 &6162478313951188451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972422233515204853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cb77c5c89b4a28a71958ba73649860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
 --- !u!50 &7403516980881296350
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +154,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &-9165519065083032906
 BoxCollider2D:

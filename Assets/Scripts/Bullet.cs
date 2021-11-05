@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     //public GameObject hitEffect;
     public Vector2 direction;
     public float bulletForce = 20f;
+    public float damage = 1;
+    
     private Rigidbody2D _rb;
 
     private void Start()
@@ -20,9 +22,12 @@ public class Bullet : MonoBehaviour
         _rb.MovePosition((Vector2)transform.position + bulletForce * Time.deltaTime * direction);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //Instantiate(hitEffect, transform.position, Quaternion);
-        // Destroy(gameObject);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.GetComponent<BaseEnemy>().Damage(damage);
+            Destroy(gameObject);
+        }
     }
 }

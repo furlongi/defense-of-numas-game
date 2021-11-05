@@ -65,6 +65,12 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("isOpen", false);
-        Debug.Log("ended convo");
     }
+    
+    private void Update() {
+        if (Input.GetKeyDown("space")) {
+            DisplayNextSentence();
+        }
+    }
+    
 }

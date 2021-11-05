@@ -90,16 +90,11 @@ public class EnemyChase : MonoBehaviour
         if (_isChasing && !_isNearPlayer)
         {
             _rb.MovePosition((Vector2)transform.position + (enemy.speed * Time.deltaTime * _movement));
-
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
-        {
-            _isNearPlayer = true;
-        }
         if (other.gameObject.CompareTag("Enemy"))
         {
             var enScript = other.gameObject.GetComponent<EnemyChase>();
@@ -128,11 +123,23 @@ public class EnemyChase : MonoBehaviour
         }
     }
 
+    public bool IsNear()
+    {
+        return _isNearPlayer;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.name == "Player")
         {
-            _isNearPlayer = true;
+            if (Vector3.Distance(other.transform.position, transform.position) < 1.2)
+            {
+                _isNearPlayer = true;
+            }
+            else
+            {
+                _isNearPlayer = false;
+            }
         }
     }
 
@@ -191,4 +198,5 @@ public class EnemyChase : MonoBehaviour
     {
         _animator.speed = _setAniSpeed;
     }
+    
 }
