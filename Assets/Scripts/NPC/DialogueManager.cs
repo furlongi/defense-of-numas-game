@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> _sentences;
     private string _curSentence;
     private IEnumerator _sentenceTyper = null;
+    private PlayerMovement _pm;
+    private bool _isBusy = false;
     
 
     void Start()
@@ -22,17 +24,26 @@ public class DialogueManager : MonoBehaviour
         _sentences = new Queue<string>();
     }
 
-    public void StartDialogue(string npcName, TextAsset npcText)
+    public void StartDialogue(string npcName, TextAsset npcText, PlayerMovement pm)
     {
+        if (npcText == null || _isBusy)
+        {
+            return;
+        }
+        
         NpcTemplate dialg = DialogueLoader.LoadXML(npcText);
         animator.SetBool("isOpen", true);
         _sentences.Clear();
         nameText.text = npcName;
+        _pm = pm;
         
         foreach (var sent in dialg.World.EventType.Text)
         {
             _sentences.Enqueue(sent.Trim());
         }
+        
+        _pm.OccupyPlayer();
+        _isBusy = true;
         DisplayNextSentence();
     }
 
@@ -84,6 +95,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        _isBusy = false;
+        _pm.FreePlayer();
     }
     
     private void Update() {

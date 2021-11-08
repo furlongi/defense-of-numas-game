@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="hub">
+        <event category="default">
+            <text>
+                The monsters will be attacking soon. It is best for you to head to the caves up North and gather some materials to prepare for battle.
+            </text>
+            <text>
+                Be careful though! You may encounter some monsters while exploring those caves.
+            </text>
+            <text>
+                Make sure to pick up as many gems as possible. They can be used as fuel for both your ship and our Combat Towers to defend the village.
+            </text>
+        </event>
+    </world>
+</root>

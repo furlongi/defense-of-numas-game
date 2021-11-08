@@ -6,25 +6,38 @@ using UnityEngine;
 public class NpcInteract : MonoBehaviour
 {
     public float talkDistance = 1f;
+    public bool turnsWhenWalkNear = true;
     
     // Set these in inspector
     public string npcName;
     public TextAsset npcText;
     
+    private GameObject _player;
+    private SpriteRenderer _sprite;
+
     void Start()
     {
         if (npcText == null)
         {
             Debug.Log("Dialogue text for " + npcName + " is missing!");
         }
+        _player = GameObject.Find("Player");
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
+        if (turnsWhenWalkNear && 
+            Vector2.Distance(transform.position, _player.transform.position) <= talkDistance * 1.5)
+        {
+            TurnSprite(_player.transform.position.x, transform.position.x);
+        }
+        
         if (Input.GetKeyDown("f"))
         {
             StartInteraction();
         }
+        
     }
 
     private void OnMouseDown()
@@ -39,7 +52,22 @@ public class NpcInteract : MonoBehaviour
 
         if (distance <= talkDistance)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText);
+            TurnSprite(_player.transform.position.x, transform.position.x);
+            PlayerMovement pm = _player.GetComponent<PlayerMovement>();
+            FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText, pm);
+        }
+    }
+
+    private void TurnSprite(float target, float origin)
+    {
+        float diff = target - origin;
+        if (diff > 0)
+        {
+            _sprite.flipX = false;
+        } 
+        else if (diff < 0)
+        {
+            _sprite.flipX = true;
         }
     }
 }
