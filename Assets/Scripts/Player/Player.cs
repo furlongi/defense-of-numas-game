@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float health = 20;
+    public float healthCapacity = 20;
     
     void Start()
     {

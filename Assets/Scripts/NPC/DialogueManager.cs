@@ -104,5 +104,4 @@ public class DialogueManager : MonoBehaviour
             AccelerateSentence();
         }
     }
-    
 }
