@@ -10,18 +10,6 @@ public class InventoryTracker : MonoBehaviour
     public Text BlueCount;
     public Text RedCount;
     public Text PurpleCount;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetGems(int greens, int blues, int reds, int purples)
     {

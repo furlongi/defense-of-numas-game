@@ -22,10 +22,10 @@ public class PlayerData
         playerPos[1] = player.transform.position.y;
         playerPos[2] = player.transform.position.z;
 
-        greenGem = inv.GreenGem;
-        blueGem = inv.BlueGem;
-        redGem = inv.RedGem;
-        purpleGem = inv.PurpleGem;
+        greenGem = inv.greenGem;
+        blueGem = inv.blueGem;
+        redGem = inv.redGem;
+        purpleGem = inv.purpleGem;
     }
     
 }
