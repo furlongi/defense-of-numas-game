@@ -6,23 +6,50 @@ using UnityEngine.UI;
 public class HealthTracker : MonoBehaviour
 {
     // Assign with inspector
-    public Player player;
     public Text numberText;
     public Image healthBar;
     public Slider slider;
     // -
 
-    private float _baseHealth;
     
     private void Start()
     {
-        _baseHealth = player.healthCapacity;
-        slider.maxValue = _baseHealth;
-        slider.value = player.health;
+        slider.maxValue = 0;
+        slider.value = 0;
     }
     
-    private void Update()
+
+    public void SetValue(float val)
     {
-        slider.value = player.health;
+        slider.value = val;
+        numberText.text = val.ToString("0.0");
+        SetColor();
+    }
+
+    public void SetMaxValue(float val)
+    {
+        slider.maxValue = val;
+    }
+
+    private void SetColor()
+    {
+        float percent = slider.value / slider.maxValue;
+        
+        if (percent > 0.55)
+        {
+            healthBar.color = Color.green;
+        }
+        else if (percent > 0.3)
+        {
+            healthBar.color = Color.yellow;
+        }
+        else if (percent > 0.06)
+        {
+            healthBar.color = Color.red;
+        }
+        else
+        {
+            healthBar.color = Color.red;
+        }
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -8038671757596865006}
   - component: {fileID: -8625102278047509496}
   - component: {fileID: -7672816000965829674}
+  - component: {fileID: -409597967763873248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -101,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  healthCapacity: 20
+  healthBar: {fileID: 0}
+  inventory: {fileID: -409597967763873248}
 --- !u!114 &-7456638387321815049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  enemy: {fileID: 5972422233515204853, guid: a49a9be0c27b26847bc3d37c5df9f797, type: 3}
   animator: {fileID: -8625102278047509496}
-  _sprite: {fileID: 5123463327339244495}
+  sprite: {fileID: 0}
 --- !u!61 &7299881789900974849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -199,3 +202,20 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4715125399259381648, guid: 02d22488126ff5441bd563bc267b0651, type: 3}
   cam: {fileID: 0}
   bulletForce: 20
+--- !u!114 &-409597967763873248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578617000736330790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65be22e6c0dc514192ffeac2b870f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenGem: 0
+  BlueGem: 0
+  RedGem: 0
+  PurpleGem: 0
+  Tracker: {fileID: 0}

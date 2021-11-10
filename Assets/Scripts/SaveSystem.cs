@@ -6,13 +6,13 @@ public static class SaveSystem
 {
     private const string SavePath = "./player.sav";
     
-    public static void SavePlayer(Player player)
+    public static void SavePlayer(Player player, InventoryManager inventory)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         Debug.Log("SAVING TO " + SavePath);
         FileStream stream = new FileStream(SavePath, FileMode.Create);
 
-        PlayerData data = new PlayerData(player);
+        PlayerData data = new PlayerData(player, inventory);
         
         formatter.Serialize(stream, data);
         stream.Close();
