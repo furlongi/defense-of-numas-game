@@ -7,6 +7,7 @@ public class NpcInteract : MonoBehaviour
 {
     public float talkDistance = 1f;
     public bool turnsWhenWalkNear = true;
+    public bool isShop = false;
     
     // Set these in inspector
     public string npcName;
@@ -17,7 +18,7 @@ public class NpcInteract : MonoBehaviour
 
     void Start()
     {
-        if (npcText == null)
+        if (npcText == null && !isShop)
         {
             Debug.Log("Dialogue text for " + npcName + " is missing!");
         }
@@ -54,7 +55,16 @@ public class NpcInteract : MonoBehaviour
         {
             TurnSprite(_player.transform.position.x, transform.position.x);
             PlayerMovement pm = _player.GetComponent<PlayerMovement>();
-            FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText, pm);
+            if (isShop)
+            {
+                Shooting sh = _player.GetComponent<Shooting>();
+                Player pl = _player.GetComponent<Player>();
+                FindObjectOfType<WeaponShopManager>().StartShop(npcName, pm, sh, pl);
+            }
+            else
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(npcName, npcText, pm);
+            }
         }
     }
 

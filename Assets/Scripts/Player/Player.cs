@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float health = 20;
     public float healthCapacity = 20;
+    public int upgradeTier = 0;
     
     // Assign with inspector
     public HealthTracker healthBar;
@@ -57,5 +58,13 @@ public class Player : MonoBehaviour
         {
             healthBar.SetValue(health);
         }
+    }
+
+    public void UpgradeHealth(float h)
+    {
+        healthCapacity += h;
+        health += h;
+        healthBar.SetMaxValue(healthCapacity);
+        healthBar.SetValue(health);
     }
 }

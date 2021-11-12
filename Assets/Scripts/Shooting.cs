@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     public Camera cam;
 
     public float bulletForce = 10f;
+    public int upgradeTier = 0;
 
     private void Start()
     {

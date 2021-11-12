@@ -137,6 +137,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         greenGem = Math.Max(greenGem-count, 0);
+        SetGemsToTracker();
         return true;
     }
     
@@ -148,6 +149,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         blueGem = Math.Max(blueGem-count, 0);
+        SetGemsToTracker();
         return true;
     }
     
@@ -159,6 +161,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         redGem = Math.Max(redGem-count, 0);
+        SetGemsToTracker();
         return true;
     }
     
@@ -170,6 +173,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         purpleGem = Math.Max(purpleGem-count, 0);
+        SetGemsToTracker();
         return true;
     }
 
@@ -225,7 +229,8 @@ public class InventoryManager : MonoBehaviour
             }
             count++;
         }
-        
+
+        count = 0;
         foreach (int g in gemList)
         {
             if (count > 3)

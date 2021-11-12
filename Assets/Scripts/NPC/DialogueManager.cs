@@ -100,7 +100,7 @@ public class DialogueManager : MonoBehaviour
     }
     
     private void Update() {
-        if (Input.GetKeyDown("space")) {
+        if (_isBusy && Input.GetKeyDown("space")) {
             AccelerateSentence();
         }
     }
