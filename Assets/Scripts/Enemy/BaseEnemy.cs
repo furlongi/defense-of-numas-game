@@ -71,7 +71,7 @@ public class BaseEnemy : MonoBehaviour
     public GameObject lootDrop;
 
 
-    private void Start()
+    protected void Start()
     {
         _animate = GetComponent<Animator>();
     }
