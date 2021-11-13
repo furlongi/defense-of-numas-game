@@ -33,7 +33,6 @@ public class FollowWaypoints : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print(towerEnemy.IsDead());
         if (!towerEnemy.IsDead())
         {
             Vector2 pos = transform.position;

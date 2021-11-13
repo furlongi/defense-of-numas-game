@@ -7,13 +7,13 @@ public class TowerEnemy : BaseEnemy
 {
     [NonSerialized] public float distanceTraveled;
     [NonSerialized] public Rigidbody2D rigidBody;
+    public Round round;
     private List<BaseTower> targetedTowers;
-
-    [NonSerialized] public Round round;
     
-    // Start is called before the first frame update
     void Start()
     {
+        round.EnemiesAlive.Add(this);
+        base.Start();
         targetedTowers = new List<BaseTower>();
         rigidBody = GetComponent<Rigidbody2D>();        
         distanceTraveled = 0;
@@ -23,10 +23,14 @@ public class TowerEnemy : BaseEnemy
     {
         if (IsDead())
         {
-            print("I died");
             for (int i = 0; i < targetedTowers.Count; i++)
             {
                 targetedTowers[i].targets.Remove(this);
+            }
+
+            if (round.EnemiesAlive.Contains(this))
+            {
+                round.EnemiesAlive.Remove(this);
             }
         }
     }

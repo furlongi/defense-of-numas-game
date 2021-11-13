@@ -68,7 +68,7 @@ public class BaseEnemy : MonoBehaviour
     private bool _isDead = false;
 
 
-    private void Start()
+    protected void Start()
     {
         _animate = GetComponent<Animator>();
     }

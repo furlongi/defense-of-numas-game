@@ -60,7 +60,9 @@ public class BaseTower : MonoBehaviour
 
     private void Fire(Vector3 targetPos)
     {
-        GameObject newObj = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        Vector3 projectileFirePoint = firePoint.position;
+        projectileFirePoint.z = -4;
+        GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, firePoint.rotation);
         Bullet projectile = newObj.GetComponent<Bullet>();
         projectile.bulletForce = projectileSpeed;
         projectile.damage = projectileDamage;
