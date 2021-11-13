@@ -67,6 +67,9 @@ public class BaseEnemy : MonoBehaviour
     private Animator _animate;
     private bool _isDead = false;
 
+    /* Gem to drop for loot*/
+    public GameObject lootDrop;
+
 
     private void Start()
     {
@@ -106,7 +109,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void DropLoot()
     {
-        Debug.Log("Loot Drop Not Implemented!");
+        Instantiate(lootDrop, new Vector3(transform.position.x, transform.position.y - 0.25F, transform.position.z), Quaternion.identity);
+
     }
     
     public void SetHealth(float amount) {

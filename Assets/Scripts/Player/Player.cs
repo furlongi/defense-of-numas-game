@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float health = 20;
+    public static int gems = 0;
     
     void Start()
     {
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        
+
     }
 
     public void Damage(float damage)
