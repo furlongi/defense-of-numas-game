@@ -27,6 +27,7 @@ public class WaypointList : MonoBehaviour
         }
     }
 
+    
     void Update()
     {
         

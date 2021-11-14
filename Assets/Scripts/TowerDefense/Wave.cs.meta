@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9b07660953281574093529651ed8e2cc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GreenTowerEnemy: {fileID: 1504533230453291180, guid: 839d0673b10bff74b9c3ff47ed0f8353, type: 3}
+  - BlueTowerEnemy: {fileID: 1504533230453291180, guid: 839d0673b10bff74b9c3ff47ed0f8353, type: 3}
+  - RedTowerEnemy: {fileID: 1504533230453291180, guid: 839d0673b10bff74b9c3ff47ed0f8353, type: 3}
+  - EnemySpawner: {fileID: 1504533230453291180, guid: 839d0673b10bff74b9c3ff47ed0f8353, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
