@@ -11,12 +11,14 @@ public class BaseAttack : MonoBehaviour
     private BaseEnemy _enemy;
     private EnemyChase _chase;
     private Player _player;
+    private Animator _ani;
 
     private void Start()
     {
         _enemy = GetComponent<BaseEnemy>();
         _chase = GetComponent<EnemyChase>();
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _ani = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -31,6 +33,7 @@ public class BaseAttack : MonoBehaviour
             _passedTime = 0;
             if (_chase.IsNear())
             {
+                _ani.SetTrigger("isAttacking");
                 _player.Damage(_enemy.attack);
             }
         }

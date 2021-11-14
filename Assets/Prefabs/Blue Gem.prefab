@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8864973787570284906}
   - component: {fileID: 8864973787570284907}
   - component: {fileID: 8864973787570284908}
+  - component: {fileID: -6591366990996179022}
   m_Layer: 0
   m_Name: Blue Gem
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGem: 1
   gemMultiplier: 1
+--- !u!95 &-6591366990996179022
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864973787570284909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f1a936dbfea2aa45ac8d932cc87413f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -4696,7 +4696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1478998696}
-  inv: {fileID: 1478998691}
+  inventory: {fileID: 1478998691}
+  shooter: {fileID: 1478998692}
 --- !u!1 &1478998690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6578617000736330790, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
@@ -4711,6 +4712,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a65be22e6c0dc514192ffeac2b870f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1478998692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7672816000965829674, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
+  m_PrefabInstance: {fileID: 1509215775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478998690}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78139e5cc73d9d4693483f4d805b688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1478998696 stripped

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1876344485349416468}
   - component: {fileID: 1876344485349416469}
   - component: {fileID: 1876344485349416466}
+  - component: {fileID: 8939916917410178698}
   m_Layer: 0
   m_Name: Purple Gem
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGem: 3
   gemMultiplier: 1
+--- !u!95 &8939916917410178698
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876344485349416467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 086cb9906ea2e19468e374a3d0905db1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

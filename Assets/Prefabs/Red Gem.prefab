@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4881477221457443004}
   - component: {fileID: 4881477221457443005}
   - component: {fileID: 4881477221457443002}
+  - component: {fileID: -793926378622186690}
   m_Layer: 0
   m_Name: Red Gem
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGem: 2
   gemMultiplier: 1
+--- !u!95 &-793926378622186690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881477221457443003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0e292511a9499c4d94e4609a929c7af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

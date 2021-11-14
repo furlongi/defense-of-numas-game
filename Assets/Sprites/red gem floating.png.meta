@@ -1,7 +1,67 @@
 fileFormatVersion: 2
 guid: eb0a95f7522a1a149b4251ac2260fe38
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 421317757054029569
+    second: red gem floating_0
+  - first:
+      213: 7847098417217660312
+    second: red gem floating_1
+  - first:
+      213: 3611497961903625350
+    second: red gem floating_2
+  - first:
+      213: -7023696466272995374
+    second: red gem floating_3
+  - first:
+      213: -9116005732946831166
+    second: red gem floating_4
+  - first:
+      213: -6619451236812842859
+    second: red gem floating_5
+  - first:
+      213: -8918415368592917602
+    second: red gem floating_6
+  - first:
+      213: 4450362130976961363
+    second: red gem floating_7
+  - first:
+      213: -4007993732195641028
+    second: red gem floating_8
+  - first:
+      213: 5050993705814035121
+    second: red gem floating_9
+  - first:
+      213: 4274797958113416776
+    second: red gem floating_10
+  - first:
+      213: 3872555619729858597
+    second: red gem floating_11
+  - first:
+      213: -4610285207401561723
+    second: red gem floating_12
+  - first:
+      213: -481751776316846166
+    second: red gem floating_13
+  - first:
+      213: 5762705234157376751
+    second: red gem floating_14
+  - first:
+      213: -1434748343345927150
+    second: red gem floating_15
+  - first:
+      213: 6215678249062138285
+    second: red gem floating_16
+  - first:
+      213: -3107267597255944611
+    second: red gem floating_17
+  - first:
+      213: -8533396867638864578
+    second: red gem floating_18
+  - first:
+      213: 58998424155957199
+    second: red gem floating_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +101,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +135,453 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: red gem floating_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f05ce8442d8d500800000000000000
+      internalID: 421317757054029569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 912
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895e9cb4f6e76ec60800000000000000
+      internalID: 7847098417217660312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 912
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6841056034e9e1230800000000000000
+      internalID: 3611497961903625350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 912
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7b1ade641d68e90800000000000000
+      internalID: -7023696466272995374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 912
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c89745a5117d7180800000000000000
+      internalID: -9116005732946831166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59810c5eb2cf224a0800000000000000
+      internalID: -6619451236812842859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 608
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b72ab597c6b3480800000000000000
+      internalID: -8918415368592917602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 608
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3537bb277ccd2cd30800000000000000
+      internalID: 4450362130976961363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 608
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c399c729feeb068c0800000000000000
+      internalID: -4007993732195641028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 608
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba87cd930cb81640800000000000000
+      internalID: 5050993705814035121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8465ae31812235b30800000000000000
+      internalID: 4274797958113416776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 304
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520e0f681d41eb530800000000000000
+      internalID: 3872555619729858597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 304
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581879bb70af400c0800000000000000
+      internalID: -4610285207401561723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 304
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf88b6df497059f0800000000000000
+      internalID: -481751776316846166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 304
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe41c3bd0ed39ff40800000000000000
+      internalID: 5762705234157376751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c29ccbbffb61ce0800000000000000
+      internalID: -1434748343345927150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da188797f66824650800000000000000
+      internalID: 6215678249062138285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d565a735594c0e4d0800000000000000
+      internalID: -3107267597255944611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3554f0c2c8439980800000000000000
+      internalID: -8533396867638864578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red gem floating_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7af1211ca91d000800000000000000
+      internalID: 58998424155957199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
