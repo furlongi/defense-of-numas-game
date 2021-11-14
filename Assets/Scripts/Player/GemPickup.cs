@@ -12,23 +12,24 @@ public class GemPickup : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            Player player = other.GetComponent<Player>();
             if (currentGem == GemType.GREEN)
             {
-                Player.gems += 1 * gemMultiplier;
+                player.inventory.AddGreen(gemMultiplier);
             }
             else if (currentGem == GemType.BLUE)
             {
-                Player.gems += 3 * gemMultiplier;
+                player.inventory.AddBlue(gemMultiplier);
             }
             else if (currentGem == GemType.PURPLE)
             {
-                Player.gems += 5 * gemMultiplier;
+                player.inventory.AddPurple(gemMultiplier);
             }
             else if (currentGem == GemType.RED)
             {
-                Player.gems += 10 * gemMultiplier;
+                player.inventory.AddRed(gemMultiplier);
             }
-            Debug.Log(Player.gems);
+            
             Destroy(gameObject);
         }
     }

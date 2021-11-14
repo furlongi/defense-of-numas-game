@@ -7,7 +7,8 @@ public class GameLoader : MonoBehaviour
 
     // Assign using the inspector
     public Player player;
-    public InventoryManager inv;
+    public InventoryManager inventory;
+    public Shooting shooter;
     
     // Update is called once per frame
     void Update()
@@ -25,11 +26,16 @@ public class GameLoader : MonoBehaviour
         if (data != null)
         {
             player.health = data.health;
+            player.healthCapacity = data.healthCapacity;
+            player.upgradeTier = data.healthTier;
+            
             player.transform.position = new Vector3(
                 data.playerPos[0],
                 data.playerPos[1],
                 data.playerPos[2]);
-            inv.LoadFromSave(data);
+            inventory.LoadFromSave(data);
+
+            shooter.upgradeTier = data.weaponTier;
         }
     }
 }

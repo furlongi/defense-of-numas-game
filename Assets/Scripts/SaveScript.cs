@@ -8,15 +8,12 @@ public class SaveScript : MonoBehaviour
 
     private bool _isOnTop = false;
     private Player _player;
-    private InventoryManager _inv;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject Pobj = GameObject.Find("Player");
         _player = Pobj.GetComponent<Player>();
-        
-        _inv = Pobj.GetComponent<InventoryManager>();
     }
 
     // Update is called once per frame
@@ -27,7 +24,7 @@ public class SaveScript : MonoBehaviour
             if (Input.GetKeyDown("f"))
             {
                 Debug.Log("Saving Game.");
-                SaveSystem.SavePlayer(_player, _inv);
+                SaveSystem.SavePlayer(_player);
             }
         }
     }
