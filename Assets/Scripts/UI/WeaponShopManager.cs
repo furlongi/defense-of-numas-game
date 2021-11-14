@@ -81,7 +81,7 @@ public class WeaponShopManager : MonoBehaviour
     
     public void PurchaseWeapon()
     {
-        if (_sh.upgradeTier >= 5)
+        if (_sh.upgradeTier >= 3)
         {
             DisplayDialogue(ShopTexts.AtMax, ShopTexts.Continuation);
         }
@@ -110,7 +110,7 @@ public class WeaponShopManager : MonoBehaviour
             healthCost.SetGems(arr[0], arr[1], arr[2], arr[3]);
         }
         
-        if (_sh.upgradeTier >= 5)
+        if (_sh.upgradeTier >= 3)
         {
             wMaxText.gameObject.SetActive(true);
             weaponCost.gameObject.SetActive(false);

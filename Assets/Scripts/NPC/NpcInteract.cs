@@ -57,7 +57,7 @@ public class NpcInteract : MonoBehaviour
             PlayerMovement pm = _player.GetComponent<PlayerMovement>();
             if (isShop)
             {
-                Shooting sh = _player.GetComponent<Shooting>();
+                Shooting sh = _player.GetComponentInChildren<Shooting>();
                 Player pl = _player.GetComponent<Player>();
                 FindObjectOfType<WeaponShopManager>().StartShop(npcName, pm, sh, pl);
             }

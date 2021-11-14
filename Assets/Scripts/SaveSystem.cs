@@ -13,7 +13,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(SavePath, FileMode.Create);
 
         InventoryManager inv = player.GetComponent<InventoryManager>();
-        Shooting shoot = player.GetComponent<Shooting>();
+        Shooting shoot = player.GetComponentInChildren<Shooting>();
         PlayerData data = new PlayerData(player, inv, shoot);
         
         formatter.Serialize(stream, data);
