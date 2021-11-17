@@ -70,6 +70,8 @@ public class BaseEnemy : MonoBehaviour
     /* Gem to drop for loot*/
     public GameObject lootDrop;
 
+    public IEnemyDeathUpdate DeathCallback;
+
 
     protected void Start()
     {
@@ -104,6 +106,10 @@ public class BaseEnemy : MonoBehaviour
     public void KillEnemy()
     {
         Destroy(gameObject);
+        if (DeathCallback != null)
+        {
+            DeathCallback.UpdateDeath(this);
+        }
         DropLoot();
     }
 
