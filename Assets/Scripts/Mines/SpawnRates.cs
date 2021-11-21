@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public static class SpawnRates
@@ -14,7 +15,6 @@ public static class SpawnRates
     // Additional 0.0025 if Medium and 0.005 if Hard
 
     public const float MaxIncrease = 0.13f;
-
     public const float SpawnIncreaseByFloor = 0.05f;
     public const float SpawnIncreaseByDifficulty = 0.5f;
     
@@ -44,12 +44,13 @@ public static class SpawnRates
     }
     
 
-    public static List<EnemyType> CalculateProbability(int difficulty, int floor, int spawns)
+    public static List<EnemyTypes.EnemyType> CreateEnemyList(int difficulty, int floor, int spawns, int minSpawn)
     {
         float[] dist = GetList(difficulty);
-        int toSpawn = GetFloorSpawnNumber(difficulty, floor, spawns);
-        return CreateEnemyList(dist, toSpawn, difficulty, floor);
+        int toSpawn = GetFloorSpawnNumber(difficulty, floor, spawns, minSpawn);
+        return FillEnemyList(dist, toSpawn, difficulty, floor);
     }
+    
 
     private static float[] GetList(int diff)
     {
@@ -66,9 +67,9 @@ public static class SpawnRates
         }
     }
 
-    private static List<EnemyType> CreateEnemyList(float[] dist, int toSpawn, int diff, int floor)
+    private static List<EnemyTypes.EnemyType> FillEnemyList(float[] dist, int toSpawn, int diff, int floor)
     {
-        List<EnemyType> result = new List<EnemyType>();
+        List<EnemyTypes.EnemyType> result = new List<EnemyTypes.EnemyType>();
         for (int i = 0; i < toSpawn; i++)
         {
             float roll = GetEnemyRoll(diff, floor);
@@ -78,9 +79,9 @@ public static class SpawnRates
         return result;
     }
 
-    private static int GetFloorSpawnNumber(int difficulty, int floor, int spawns)
+    private static int GetFloorSpawnNumber(int difficulty, int floor, int spawns, float minSpawn)
     {
-        return Math.Min(spawns, (int)Math.Floor(Random.Range(1f, spawns) + SpawnIncreaseByDifficulty * floor + SpawnIncreaseByFloor * difficulty));
+        return Math.Min(spawns, (int)Math.Floor(Random.Range(minSpawn + SpawnIncreaseByDifficulty * difficulty, spawns+1f ) + SpawnIncreaseByFloor * floor));
     }
 
     private static float GetEnemyRoll(int difficulty, int floor)
@@ -88,27 +89,18 @@ public static class SpawnRates
         return Random.Range(0f, 1f) + Math.Min(MaxIncrease, RateIncreaseByDifficulty * difficulty + RateIncreaseByFloor * floor);
     }
 
-    private static EnemyType SolveProbability(float[] dist, float roll)
+    private static EnemyTypes.EnemyType SolveProbability(float[] dist, float roll)
     {
         for (int i = 0; i < 4; i++)
         {
             if (roll <= dist[i])
             {
-                return EnemyList[i];
+                return EnemyTypes.EnemyList[i];
             }
+
+            roll -= dist[i];
         }
-
-        return EnemyType.Red;
+        return EnemyTypes.EnemyType.Red;
     }
     
-    public enum EnemyType
-    {
-        Green,
-        Blue,
-        Purple,
-        Red
-    }
-    
-    private static EnemyType[] EnemyList = {EnemyType.Green, EnemyType.Blue, EnemyType.Purple, EnemyType.Red};
-
 }

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: d8e21ab23842f5e448c31a911ea0550c, type: 2}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: speed
-      value: 0.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: attack
@@ -21,20 +21,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: detect
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: health
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: vision
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
+      propertyPath: defense
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: lootDrop
       value: 
       objectReference: {fileID: 3716224161449184666, guid: 15490b2b473cd294092485953c420cd0, type: 3}
+    - target: {fileID: 3519279088769565559, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
+      propertyPath: stopRange
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8172811368936066904, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: m_Name
       value: EnemyG
@@ -42,6 +50,14 @@ PrefabInstance:
     - target: {fileID: 8749089464408527869, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749089464408527869, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749089464408527869, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8749089464408527869, guid: ca71797f7860c3247b1bf1a0b6bedf52, type: 3}
       propertyPath: m_LocalPosition.x

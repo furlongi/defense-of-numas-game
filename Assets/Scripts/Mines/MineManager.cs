@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class MineManager : MonoBehaviour, IEnemyDeathUpdate
 {
-    public MineFloor[] floors;
+    public List<MineFloor> floors;
     public int traveresedFloors;
     public MineFloor currentFloor;
+    public float HealPlayerPerFloor = 3f;
 
     // Assign in inspector
     public Player player;
@@ -15,20 +18,17 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
     public GameObject BlueEnemy;
     public GameObject PurpleEnemy;
     public GameObject RedEnemy;
+    public Transform PromptMenuExitMine;
+    public Transform ReturnPoint;
+    public MineFloorUI floorUI;
     
-    private int _difficulty;
+    private int _difficulty; // 0: Easy, 1: Medium, 2: Hard
     
-    // Start is called before the first frame update
+
     void Start()
     {
         traveresedFloors = 0;
         currentFloor = null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ChooseNextFloor()
@@ -37,10 +37,12 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         {
             currentFloor.ClearFloor();
         }
-        int next = Random.Range(0, floors.Length);
+        int next = Random.Range(0, floors.Count);
         floors[next].Load(this);
         currentFloor = floors[next];
         traveresedFloors++;
+        floorUI.UpdateFloor(traveresedFloors);
+        if (traveresedFloors > 1) {player.Heal(HealPlayerPerFloor);}
     }
 
     public int Difficulty()
@@ -59,33 +61,37 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         currentFloor.DecrementEnemies();
     }
 
-    public GameObject SpawnEnemy(SpawnRates.EnemyType enemyType, Transform trform)
-    {
-        GameObject go;
-        switch (enemyType)
-        {
-            case SpawnRates.EnemyType.Green:
-                go = Instantiate(GreenEnemy, transform.position, trform.rotation);
-                break;
-            case SpawnRates.EnemyType.Blue:
-                go = Instantiate(BlueEnemy, trform.position, trform.rotation);
-                break;
-            case SpawnRates.EnemyType.Purple:
-                go = Instantiate(PurpleEnemy, trform.position, trform.rotation);
-                break;
-            case SpawnRates.EnemyType.Red:
-                go = Instantiate(RedEnemy, trform.position, trform.rotation);
-                break;
-            default:
-                go = Instantiate(GreenEnemy, trform.position, trform.rotation);
-                break;
-        }
-
-        return go;
-    }
-
     public static void DestroyAnEnemy(GameObject obj)
     {
         Destroy(obj);
+    }
+
+    public void ShouldExitPrompt()
+    {
+        PlayerMovement pmove = player.GetComponent<PlayerMovement>();
+        pmove.OccupyPlayer();
+        PromptMenuExitMine.gameObject.SetActive(true);
+    }
+
+    public void ConfirmExit(bool answer)
+    {
+        PlayerMovement pmove = player.GetComponent<PlayerMovement>();
+        PromptMenuExitMine.gameObject.SetActive(false);
+        Vector3 vec;
+        if (answer)
+        {
+            vec = ReturnPoint.position;
+            traveresedFloors = 0;
+            currentFloor.ClearFloor();
+            currentFloor = null;
+            floorUI.ResetFloor();
+        }
+        else
+        {
+            vec = currentFloor.transform.position;
+        }
+        vec.z = pmove.transform.position.z;
+        pmove.transform.position = vec;
+        pmove.FreePlayer();
     }
 }
