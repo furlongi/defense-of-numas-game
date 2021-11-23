@@ -5161,7 +5161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: redGem
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: BlueGem
@@ -5173,7 +5173,7 @@ PrefabInstance:
       objectReference: {fileID: 718974568}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: blueGem
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: tracker
@@ -5185,7 +5185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: greenGem
-      value: 23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: PurpleGem
@@ -5193,7 +5193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: purpleGem
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 143677212510544090, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: healthBar
