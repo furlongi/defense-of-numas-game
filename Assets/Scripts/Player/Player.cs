@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     // Assign with inspector
     public HealthTracker healthBar;
     public InventoryManager inventory;
-    
+
     void Start()
     {
         if (healthBar != null)
@@ -24,10 +24,6 @@ public class Player : MonoBehaviour
         {
             inventory.SetGemsToTracker();
         }
-    }
-    
-    void Update()
-    {
     }
 
     public void Damage(float damage)
@@ -64,6 +60,12 @@ public class Player : MonoBehaviour
     {
         healthCapacity += h;
         health += h;
+        healthBar.SetMaxValue(healthCapacity);
+        healthBar.SetValue(health);
+    }
+
+    public void UpdateHealth()
+    {
         healthBar.SetMaxValue(healthCapacity);
         healthBar.SetValue(health);
     }

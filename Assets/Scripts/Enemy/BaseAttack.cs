@@ -28,15 +28,14 @@ public class BaseAttack : MonoBehaviour
          * until the enemy will inflict damage.
          */
         _passedTime += Time.deltaTime;
-        if (_passedTime > attackSpeed)
+        if (_chase.IsNear() && !_enemy.IsDead())
         {
-            _passedTime = 0;
-            if (_chase.IsNear())
+            if (_passedTime > attackSpeed)
             {
+                _passedTime = 0;
                 _ani.SetTrigger("isAttacking");
                 _player.Damage(_enemy.attack);
             }
         }
-        
     }
 }

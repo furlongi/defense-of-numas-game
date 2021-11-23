@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 8172811368936066904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9932d6d02e25d7a4f932c8d6aa1f1f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 50
   defense: 0.5
-  speed: 0.25
-  attack: 7
-  stopRange: 1.2
+  speed: 5
+  attack: 5
+  stopRange: 7
   vision: -1
-  detect: 10
+  detect: 18
   deathAnimationTimer: 1.1
   lootDrop: {fileID: 4881477221457443003, guid: 35e3cf9b7f5e58e458606a1b877ade14, type: 3}
 --- !u!114 &1868630477241747132

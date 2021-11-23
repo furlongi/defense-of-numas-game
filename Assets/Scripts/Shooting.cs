@@ -13,6 +13,7 @@ public class Shooting : MonoBehaviour
 
 
     public float[] bulletDamage = new float[]{1f, 3f, 5f, 8f};
+    public float bulletSpeed = 150f;
     public int upgradeTier = 0;
 
     private SpriteRenderer _sprite;
@@ -20,8 +21,8 @@ public class Shooting : MonoBehaviour
     // Assign with inspector
     public Sprite GreenLaser;
     public Sprite BlueLaser;
-    public Sprite RedLaser;
     public Sprite PurpleLaser;
+    public Sprite RedLaser;
 
 
     private void Start()
@@ -57,15 +58,10 @@ public class Shooting : MonoBehaviour
         {
             _sprite.flipY = false;
         }
-
-        // var zPoss = zPos * Mathf.Rad2Deg;
-        // Debug.Log("L " + bulletPoint.position.x + " " + bulletPoint.position.y);
-        // Debug.Log("R " + Math.Cos(zPoss) * bulletPoint.position.x + " " + Math.Sin(zPoss) * bulletPoint.position.y);
     }
 
     public void Shoot()
     {
-        Debug.Log(transform.right);
         GameObject newObj = Instantiate(bulletPrefab, bulletPoint.position, transform.rotation);
         Bullet bullet = newObj.GetComponent<Bullet>();
         SpriteRenderer bulletSprite = bullet.GetComponent<SpriteRenderer>();
@@ -79,16 +75,17 @@ public class Shooting : MonoBehaviour
                 bulletSprite.sprite = BlueLaser;
                 break;
             case 2:
-                bulletSprite.sprite = RedLaser;
+                bulletSprite.sprite = PurpleLaser;
                 break;
             case 3:
-                bulletSprite.sprite = PurpleLaser;
+                bulletSprite.sprite = RedLaser;
                 break;
             default:
                 bulletSprite.sprite = GreenLaser;
                 break;
         }
         bullet.damage = bulletDamage[upgradeTier];
+        bullet.bulletForce = bulletSpeed;
 
         Vector2 direction =  bulletPoint.position - transform.position;
         direction.Normalize();
@@ -97,7 +94,3 @@ public class Shooting : MonoBehaviour
     }
 }
 
-public static class WeaponInfo
-{
-
-}

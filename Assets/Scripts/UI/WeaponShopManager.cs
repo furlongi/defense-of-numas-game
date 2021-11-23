@@ -29,7 +29,6 @@ public class WeaponShopManager : MonoBehaviour
     private void Awake()
     {
         _panelMenu = transform.Find("Panel");
-
         _panelMenu.gameObject.SetActive(false);
     }
 

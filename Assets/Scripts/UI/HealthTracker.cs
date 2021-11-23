@@ -11,13 +11,6 @@ public class HealthTracker : MonoBehaviour
     public Slider slider;
     // -
 
-    
-    private void Start()
-    {
-        slider.maxValue = 0;
-        slider.value = 0;
-    }
-    
 
     public void SetValue(float val)
     {
