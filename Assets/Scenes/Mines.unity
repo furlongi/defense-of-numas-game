@@ -2031,13 +2031,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e926bd44428c6479e04e444853935c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getInventory: 0
   isLoadADeath: 0
   LoadSaveOverride: 0
   ForceSaveLoad: 0
   player: {fileID: 709060419}
   shooting: {fileID: 2121941515}
   inventory: {fileID: 709060420}
+  positionLoad: {fileID: 0}
 --- !u!4 &891721884
 Transform:
   m_ObjectHideFlags: 0
@@ -3219,7 +3219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Hub
-  appendInventory: 1
+  sceneOrigin: Mines
 --- !u!212 &1429488859
 SpriteRenderer:
   m_ObjectHideFlags: 0

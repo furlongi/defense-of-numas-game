@@ -14,6 +14,7 @@ public class SceneLoader : MonoBehaviour
     public Player player;
     public Shooting shooting;
     public InventoryManager inventory;
+    public SceneLoadPosition positionLoad;
 
     public void Start()
     {
@@ -35,10 +36,14 @@ public class SceneLoader : MonoBehaviour
             LoadInventory();
             LoadWeapon();
             LoadPlayerHealth();
+            if (positionLoad)
+            {
+                positionLoad.MoveToPosition(PlayerPrefs.GetString("LastScene"));
+            }
         }
     }
 
-    public void LoadScene(String scene)
+    public void LoadScene(string scene, string sceneOrigin)
     {
         PlayerPrefs.SetInt("LoadFromScene", 1);
         if (scene.Length != 0)
@@ -50,6 +55,7 @@ public class SceneLoader : MonoBehaviour
             PlayerPrefs.SetFloat("Health", player.health);
             PlayerPrefs.SetFloat("HealthCap", player.healthCapacity);
             PlayerPrefs.SetInt("HealthTier", player.upgradeTier);
+            PlayerPrefs.SetString("LastScene", sceneOrigin);
             PlayerPrefs.Save();
             
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
