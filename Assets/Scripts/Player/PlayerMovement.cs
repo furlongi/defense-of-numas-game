@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,32 +9,35 @@ public class PlayerMovement : MonoBehaviour
     
     // Assign the appropriate game objects in inspector
     public Animator animator;
-    public SpriteRenderer sprite;
 
+    private SpriteRenderer _sprite;
+    private Rigidbody2D _rb;
     private bool _isInteracting = false;
-    
-    
+    private Vector2 _noMovementVec;
+
+
+    private void Start()
+    {
+        _sprite = GetComponent<SpriteRenderer>();
+        _rb = GetComponent<Rigidbody2D>();
+        _noMovementVec = new Vector2(0, 0);
+    }
+
     private void FixedUpdate()
     {
-        Vector3 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (!_isInteracting && input.magnitude != 0)
+        if (_isInteracting || (input.x == 0f && input.y == 0f))
         {
-            animator.SetBool("isRunning", true);
-            if (input.x > 0)
-            {
-                sprite.flipX = false;
-            } 
-            else if (input.x < 0)
-            {
-                sprite.flipX = true;
-            }
-            input.Normalize();
-            transform.position += speed * Time.deltaTime * input;
+            animator.SetBool("isRunning", false);
+            _rb.velocity = _noMovementVec;
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            _spriteFlip(input.x);
+            input.Normalize();
+            animator.SetBool("isRunning", true);
+            _rb.velocity = input * speed;
         }
     }
 
@@ -49,4 +53,16 @@ public class PlayerMovement : MonoBehaviour
         _isInteracting = false;
     }
 
+
+    private void _spriteFlip(float x)
+    {
+        if (x > 0)
+        {
+            _sprite.flipX = false;
+        } 
+        else if (x < 0)
+        {
+            _sprite.flipX = true;
+        }
+    }
 }
