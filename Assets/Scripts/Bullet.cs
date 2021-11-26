@@ -22,11 +22,15 @@ public class Bullet : MonoBehaviour
         _rb.MovePosition((Vector2)transform.position + bulletForce * Time.deltaTime * direction);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<BaseEnemy>().Damage(damage);
+            other.GetComponentInParent<BaseEnemy>().Damage(damage);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Wall") && other.gameObject.layer != 4)
+        {
             Destroy(gameObject);
         }
     }

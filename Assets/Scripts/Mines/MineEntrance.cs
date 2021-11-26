@@ -8,7 +8,7 @@ public class MineEntrance : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerPart"))
         {
-            MineManager manager = GameObject.FindObjectOfType<MineManager>().GetComponent<MineManager>();
+            MineManager manager = FindObjectOfType<MineManager>().GetComponent<MineManager>();
             manager.ShouldExitPrompt();
         }
     }

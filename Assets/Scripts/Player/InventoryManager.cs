@@ -9,20 +9,20 @@ public class InventoryManager : MonoBehaviour
     
     public int greenGem;
     public int blueGem;
-    public int redGem;
     public int purpleGem;
+    public int redGem;
 
     // Assign with inspector
     public InventoryTracker tracker;
 
     
     // Assigns values from all gems and then updates the GUI
-    public void LoadGems(int greens, int blues, int reds, int purples)
+    public void LoadGems(int greens, int blues, int purples, int reds)
     {
         greenGem = greens;
         blueGem = blues;
-        redGem = reds;
         purpleGem = purples;
+        redGem = reds;
 
         SetGemsToTracker();
     }
@@ -38,7 +38,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (tracker != null)
         {
-            tracker.SetGems(greenGem, blueGem, redGem, purpleGem);
+            tracker.SetGems(greenGem, blueGem, purpleGem, redGem);
         }
     }
 
@@ -119,10 +119,10 @@ public class InventoryManager : MonoBehaviour
                     AddBlue(g);
                     break;
                 case 2:
-                    AddRed(g);
+                    AddPurple(g);
                     break;
                 case 3:
-                    AddPurple(g);
+                    AddRed(g);
                     break;
             }
             count++;
@@ -219,11 +219,11 @@ public class InventoryManager : MonoBehaviour
                     { return false;}
                     break;
                 case 2:
-                    if (g > redGem)
+                    if (g > purpleGem)
                     { return false;}
                     break;
                 case 3:
-                    if (g > purpleGem)
+                    if (g > redGem)
                     { return false;}
                     break;
             }
@@ -246,10 +246,10 @@ public class InventoryManager : MonoBehaviour
                     RemoveBlue(g);
                     break;
                 case 2:
-                    RemoveRed(g);
+                    RemovePurple(g);
                     break;
                 case 3:
-                    RemovePurple(g);
+                    RemoveRed(g);
                     break;
             }
             count++;

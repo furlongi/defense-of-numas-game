@@ -10,9 +10,9 @@ public class GemPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.GetComponentInParent<Player>();
             if (currentGem == GemType.GREEN)
             {
                 player.inventory.AddGreen(gemMultiplier);

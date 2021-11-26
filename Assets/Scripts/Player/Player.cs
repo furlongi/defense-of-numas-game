@@ -7,10 +7,13 @@ public class Player : MonoBehaviour
     public float health = 20;
     public float healthCapacity = 20;
     public int upgradeTier = 0;
+    public bool isDead = false;
     
     // Assign with inspector
     public HealthTracker healthBar;
     public InventoryManager inventory;
+
+    private Animator _animator;
 
     void Start()
     {
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour
         {
             inventory.SetGemsToTracker();
         }
+
+        _animator = GetComponent<Animator>();
     }
 
     public void Damage(float damage)
@@ -32,7 +37,19 @@ public class Player : MonoBehaviour
         SetNewHealth( newHealth >= 0? newHealth : 0 );
         if (health <= 0)
         {
-            Debug.Log("Game over! (Death not implemented yet)");
+            _animator.SetBool("isDeath", true);
+            GameObject handle = GameObject.Find("DeathHandler");
+
+            if (handle != null)
+            {
+                handle.GetComponent<DeathHandler>().StartDeathTransition();
+            }
+
+            isDead = true;
+        }
+        else
+        {
+            _animator.SetTrigger("isDamaged");
         }
     }
 
