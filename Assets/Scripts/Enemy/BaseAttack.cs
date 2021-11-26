@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
-    public float attackSpeed = 1f;
+    public float attackSpeed = 5f;
+    public float attackForce = 2500f;
     
     private float _passedTime = 0f;
     
@@ -35,6 +36,7 @@ public class BaseAttack : MonoBehaviour
                 _passedTime = 0;
                 _ani.SetTrigger("isAttacking");
                 _player.Damage(_enemy.attack);
+                _player.GetComponent<Rigidbody2D>().AddForce(_chase.GetMovement() * attackForce);
             }
         }
     }

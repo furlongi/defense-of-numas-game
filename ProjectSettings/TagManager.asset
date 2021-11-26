@@ -8,6 +8,8 @@ TagManager:
   - Waypoint
   - Tower
   - PlayerPart
+  - EnemyPart
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Wall
   - 
   - 
   - 
