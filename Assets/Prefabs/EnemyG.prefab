@@ -286,6 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8468354709316075267}
   - component: {fileID: 2695594708147652811}
+  - component: {fileID: 100896318512868752}
   m_Layer: 7
   m_Name: Proximity
   m_TagString: Enemy
@@ -323,6 +324,19 @@ CircleCollider2D:
   m_Offset: {x: 0.18679261, y: 1.0755045}
   serializedVersion: 2
   m_Radius: 1.6274631
+--- !u!114 &100896318512868752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217605883331983789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01de4b8b4e624df468aea3045b71a487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreCollideWith: Wall
 --- !u!1 &8402585750888371705
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +382,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.30838758, y: -2.4231238}
+  m_Offset: {x: 0.30838758, y: -1.8225625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -379,7 +393,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8727952, y: 0.19053459}
+  m_Size: {x: 1.8727952, y: 1.3916575}
   m_EdgeRadius: 0
 --- !u!114 &5479715460037557376
 MonoBehaviour:

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1304706464003916854}
   - component: {fileID: 5625511991875464470}
   - component: {fileID: 3339974240481656618}
+  - component: {fileID: 7846080787731464829}
   m_Layer: 6
   m_Name: Proximity
-  m_TagString: Player
+  m_TagString: PlayerPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6104424, y: -0.13298345}
+  m_Offset: {x: 0.6104424, y: -0.65415466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1670437, y: 2.9892907}
+  m_Size: {x: 1.1670437, y: 2.590748}
   m_EdgeRadius: 0
 --- !u!114 &3339974240481656618
 MonoBehaviour:
@@ -71,6 +72,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreCollideWith: Enemy
+--- !u!114 &7846080787731464829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6091716957794470527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01de4b8b4e624df468aea3045b71a487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreCollideWith: Wall
 --- !u!1 &6094087312251282263
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +436,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0105166435, y: -2.3311021}
+  m_Offset: {x: -0.0105166435, y: -1.790347}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -433,7 +447,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.051673, y: 0.13040686}
+  m_Size: {x: 2.051673, y: 1.2119172}
   m_EdgeRadius: 0
 --- !u!114 &7927107377135799609
 MonoBehaviour:
