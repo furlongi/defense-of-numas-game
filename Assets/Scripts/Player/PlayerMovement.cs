@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isInteracting = false;
     private Vector2 _noMovementVec;
+    private Player _player;
 
 
     private void Start()
@@ -21,13 +22,14 @@ public class PlayerMovement : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
         _noMovementVec = new Vector2(0, 0);
-    }
+        _player = GetComponent<Player>();
+}
 
     private void FixedUpdate()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (_isInteracting || (input.x == 0f && input.y == 0f))
+        if (_player.isDead || _isInteracting || (input.x == 0f && input.y == 0f))
         {
             animator.SetBool("isRunning", false);
             _rb.velocity = _noMovementVec;
