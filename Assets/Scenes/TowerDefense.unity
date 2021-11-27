@@ -994,6 +994,11 @@ Transform:
   m_Father: {fileID: 770086163}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &990800136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5228042818289266676, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+  m_PrefabInstance: {fileID: 5228042817254496040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1018437184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2169,18 @@ PrefabInstance:
       propertyPath: m_Text
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5228042818289266676, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228042818420879531, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 915139207}
+    - target: {fileID: 5228042818420879531, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: cancelItemDragging
+      value: 
+      objectReference: {fileID: 990800136}
     - target: {fileID: 5228042818425322962, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_Name
       value: Medium Tower Item

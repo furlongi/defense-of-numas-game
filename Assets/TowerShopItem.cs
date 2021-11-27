@@ -33,13 +33,14 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
         GameObject prefab = Instantiate(towerPrefab, transform.position, Quaternion.identity).gameObject;
         GameObject radius = prefab.transform.GetChild(0).gameObject;
         radius.transform.parent = gameObject.transform;
-        radius.GetComponent<TowerRadius>().IsBeingDragged = true;
         Destroy(prefab);
 
         Vector2 pos = _rectTransform.position;
         _rectTransform.SetParent(canvas.transform, false);
         _rectTransform.position = pos;
         _towerShop.gameObject.SetActive(false);
+        
+        _towerShop.cancelItemDragging.SetActive(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -50,9 +51,9 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
     public void OnDrop(PointerEventData eventData)
     {
         _towerShop.gameObject.SetActive(true);
-
         if (_cancelTowerItemOnDrop)
         {
+            _towerShop.cancelItemDragging.SetActive(false);
             Destroy(gameObject);
         }
         else
@@ -62,8 +63,10 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
                 BaseTower newTower = Instantiate(towerPrefab);
                 newTower.gameObject.transform.position = _rectTransform.position;                
             }
+            _towerShop.cancelItemDragging.SetActive(false);
             Destroy(gameObject);
         }
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)

@@ -19,6 +19,8 @@ public class BaseTower : MonoBehaviour
     {
         _firePoint = transform;
         _passedTime = (1 / attackSpeed) + 1;
+        CircleCollider2D collider = GetComponentInChildren<TowerRadius>().gameObject.AddComponent<CircleCollider2D>();
+        collider.isTrigger = true;
     }
     void FixedUpdate()
     {
