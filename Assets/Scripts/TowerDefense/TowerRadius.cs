@@ -1,19 +1,31 @@
+using System;
 using UnityEngine;
 
 public class TowerRadius : MonoBehaviour
 {
     private Transform _objectTransform;
+    
+    private bool _hasCollider = true;
+    [NonSerialized] public bool IsBeingDragged = false;
+    
     void Start()
     {
         _objectTransform = gameObject.transform;
-        var radiusScale = gameObject.GetComponentInParent<BaseTower>().radiusScale;
-
-        _objectTransform.localScale = new Vector3(10 * radiusScale, 18 * radiusScale, 1);
         _objectTransform.position = _objectTransform.parent.position;
     }
 
     void Update()
     {
-        _objectTransform.position = _objectTransform.parent.position;
+        if (IsBeingDragged && _hasCollider)
+        {
+            Destroy(gameObject.GetComponent<CircleCollider2D>());
+            _hasCollider = false;
+        }
+
+        else if (!IsBeingDragged && !_hasCollider)
+        {
+            CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
+            collider.isTrigger = true;
+        }
     }
 }

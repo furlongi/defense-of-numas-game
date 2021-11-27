@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mines.unity
     guid: 78c78fa187c05584eb7a2b01366c8169
+  - enabled: 1
+    path: Assets/Scenes/TowerDefense.unity
+    guid: 6d0fe97ee19546845a1eac9c15c4210b
   m_configObjects: {}

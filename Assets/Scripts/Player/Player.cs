@@ -83,7 +83,10 @@ public class Player : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthBar.SetMaxValue(healthCapacity);
-        healthBar.SetValue(health);
+        if (healthBar != null)
+        {
+            healthBar.SetMaxValue(healthCapacity);
+            healthBar.SetValue(health);   
+        }
     }
 }

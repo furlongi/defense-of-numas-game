@@ -10,6 +10,7 @@ TagManager:
   - PlayerPart
   - EnemyPart
   - Wall
+  - TowerItemCancel
   layers:
   - Default
   - TransparentFX
