@@ -1,21 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerRadius : MonoBehaviour
 {
+    private Transform _objectTransform;
     void Start()
     {
-        float radiusScale = gameObject.GetComponentInParent<BaseTower>().radiusScale;
+        _objectTransform = gameObject.transform;
+        var radiusScale = gameObject.GetComponentInParent<BaseTower>().radiusScale;
 
-        gameObject.transform.localScale = new Vector3(10 * radiusScale, 18 * radiusScale, 1);
-        gameObject.transform.position = gameObject.transform.parent.position;
-
+        _objectTransform.localScale = new Vector3(10 * radiusScale, 18 * radiusScale, 1);
+        _objectTransform.position = _objectTransform.parent.position;
     }
 
     void Update()
     {
-        gameObject.transform.position = gameObject.transform.parent.position;
+        _objectTransform.position = _objectTransform.parent.position;
     }
 }

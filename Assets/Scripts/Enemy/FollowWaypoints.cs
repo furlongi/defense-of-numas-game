@@ -1,31 +1,27 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowWaypoints : MonoBehaviour
 {
 
-    private List<Waypoint> waypointList;
-    private int _currentWaypointIndex;
-    private TowerEnemy towerEnemy;
-    private Animator animationSpeed;
-    private SpriteRenderer sprite;
+    private List<Waypoint> _waypointList;
+    private int _currentWaypointIndex = 0;
+    
+    private TowerEnemy _towerEnemy;
+    private SpriteRenderer _sprite;
 
     void Start()
     {
-        waypointList = GameObject.Find("Waypoint List").GetComponent<WaypointList>().GetWaypointList();
-        towerEnemy = GetComponent<TowerEnemy>();
-        animationSpeed = GetComponent<Animator>();
-        _currentWaypointIndex = 0;
-        sprite = GetComponent<SpriteRenderer>();
+        _waypointList = GameObject.Find("Waypoint List").GetComponent<WaypointList>().GetWaypointList();
+        _towerEnemy = GetComponent<TowerEnemy>();
+        _sprite = GetComponent<SpriteRenderer>();
+        GetComponent<Animator>().speed = _towerEnemy.speed;
         
-        GetComponent<Animator>().speed = towerEnemy.speed;
-        if (towerEnemy == null)
+        if (_towerEnemy == null)
         {
             Debug.Log("No Enemy selected.");
         }
-        else if (waypointList == null)
+        else if (_waypointList == null)
         {
             Debug.Log("No Waypoint List found in scene.");
         }
@@ -33,28 +29,29 @@ public class FollowWaypoints : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!towerEnemy.IsDead())
+        if (!_towerEnemy.IsDead())
         {
             Vector2 pos = transform.position;
-            Vector2 distanceFromWaypoint = waypointList[_currentWaypointIndex].GetPosition() - pos;
+            Vector2 distanceFromWaypoint = _waypointList[_currentWaypointIndex].GetPosition() - pos;
             distanceFromWaypoint.Normalize();
-            Vector2 movement = pos + (towerEnemy.speed * Time.deltaTime * distanceFromWaypoint);
+            Vector2 movement = pos + (_towerEnemy.speed * Time.deltaTime * distanceFromWaypoint);
             if (distanceFromWaypoint.x > 0)
             {
-                sprite.flipX = true;
+                _sprite.flipX = true;
             }
 
             if (distanceFromWaypoint.x < 0)
             {
-                sprite.flipX = false;
+                _sprite.flipX = false;
             }
-            towerEnemy.rigidBody.MovePosition(movement);
-            towerEnemy.distanceTraveled += Vector2.Distance(pos, movement);
+
+            _towerEnemy.Move(movement);
+            _towerEnemy.DistanceTraveled += Vector2.Distance(pos, movement);
         }
         else
         {
-            towerEnemy.speed = 0f;
-            towerEnemy.rigidBody.velocity = Vector2.zero;
+            _towerEnemy.speed = 0f;
+            _towerEnemy.SetVelocity(Vector2.zero);
         }
     }
 
@@ -62,14 +59,14 @@ public class FollowWaypoints : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Waypoint"))
         {
-            if (_currentWaypointIndex < waypointList.Count - 1)
+            if (_currentWaypointIndex < _waypointList.Count - 1)
             {
                 _currentWaypointIndex++;
             }
-            else if (_currentWaypointIndex == waypointList.Count - 1)
+            else if (_currentWaypointIndex == _waypointList.Count - 1)
             {
-                // Need to set IsDead to True so that enemies at the end of the track are removed from the Round's EnemiesAlive List
-                towerEnemy.Damage(10000f);
+                Destroy(gameObject);
+                _towerEnemy.Round.Wave.decrementCurrentPopulation();
             }   
         }
     }

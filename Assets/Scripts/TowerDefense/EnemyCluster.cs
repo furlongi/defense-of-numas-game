@@ -1,17 +1,15 @@
-﻿using System.Runtime.ConstrainedExecution;
-using UnityEngine;
-
+﻿
 namespace TowerDefense
 {
     public class EnemyCluster
     {
         public static int GREEN = 1;
         public static int BLUE = 2;
-        public static int RED = 3;
-        
-        public int EnemyID { get; set; }
-        public int Count { get; set; }
-        
+        public static int PURPLE = 3;
+        public static int RED = 4;
+
+        public int EnemyID;
+        public int Count;
         public EnemyCluster()
         {
             EnemyID = 1;

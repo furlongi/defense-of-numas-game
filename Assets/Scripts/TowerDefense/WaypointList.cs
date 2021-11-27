@@ -1,17 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class WaypointList : MonoBehaviour
 {
-    [SerializeField]
-    private List<Waypoint> waypointList;
-    
-    public void AddToList(Waypoint waypoint)
-    {
-        waypointList.Add(waypoint);
-    }
+    private List<Waypoint> waypointList = new List<Waypoint>();
 
     public List<Waypoint> GetWaypointList()
     {
@@ -25,11 +18,5 @@ public class WaypointList : MonoBehaviour
         {
             waypointList.Add(waypoints[i]);
         }
-    }
-
-    
-    void Update()
-    {
-        
     }
 }

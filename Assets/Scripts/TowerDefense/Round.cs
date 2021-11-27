@@ -5,39 +5,14 @@ using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-    public List<EnemyCluster> Enemies;
-    public List<TowerEnemy> EnemiesAlive { get; set; } = new List<TowerEnemy>();
+    public List<EnemyCluster> Enemies = new List<EnemyCluster>();
+    [NonSerialized] public List<TowerEnemy> EnemiesAlive = new List<TowerEnemy>();
+
+    [NonSerialized] public bool IsGoing = false;
+    [NonSerialized] public Wave Wave;
     
-    public bool isGoing = false;
-
-    public Round(List<EnemyCluster> enemies)
+    public void Start()
     {
-        Enemies = enemies;
-    }
-
-    public Round()
-    {
-        Enemies = new List<EnemyCluster>();
-    }
-    
-    private void FixedUpdate()
-    {
-        if (EnemiesAlive.Count > 0)
-        {
-            List<int> enemiesToRemove = new List<int>();
-            for (int i = 0; i < EnemiesAlive.Count; i++)
-            {
-                if (EnemiesAlive[i].GetComponent<TowerEnemy>().IsDead())
-                {
-                    enemiesToRemove.Add(i);
-                }
-            }
-
-            for (int i = 0; i < enemiesToRemove.Count; i++)
-            {
-                EnemiesAlive.RemoveAt(enemiesToRemove[i]);
-            }
-        }
-
+        Wave = gameObject.GetComponent<Wave>();
     }
 }

@@ -115,8 +115,12 @@ public class BaseEnemy : MonoBehaviour
 
     public void DropLoot()
     {
-        Instantiate(lootDrop, new Vector3(transform.position.x, transform.position.y - 0.25F, transform.position.z), Quaternion.identity);
-
+        Vector3 pos = transform.position;
+        if (GetType() == typeof(BaseEnemy))
+        {
+            Instantiate(lootDrop, new Vector3(transform.position.x, pos.y - 0.25F, pos.z), Quaternion.identity);
+        }
+        
     }
     
     public void SetHealth(float amount) {

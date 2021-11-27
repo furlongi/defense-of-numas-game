@@ -1,46 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using TowerDefense;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Wave : MonoBehaviour
 {
-    private List<Round> rounds;
-    private Vector2 spawnLocation;
-    public int waveNumber;
-    private int currentRound = 0;
-    private Text _currentRoundCounter;
-    
-    public GameObject RoundCounter;
-    public GameObject GreenTowerEnemy;
-    public GameObject BlueTowerEnemy;
-    public GameObject RedTowerEnemy;
-    public GameObject EnemySpawner;
-    
+    private List<Round> rounds = new List<Round>();
+    private Vector2 _spawnLocation;
+    [NonSerialized] public int WaveNumber;
+    private int _currentRound = 0;
+    [NonSerialized] public Text RoundCounter;
+    private EventManager _eventManager;
+
     void Start()
     {
-        _currentRoundCounter = RoundCounter.GetComponent<Text>();
-        spawnLocation = EnemySpawner.transform.position;
-        rounds = new List<Round>();
+        _eventManager = gameObject.GetComponent<EventManager>();
+        RoundCounter = _eventManager.roundCounter.GetComponent<Text>();
+        WaveNumber = _eventManager.waveNumber;
+        _spawnLocation = _eventManager.enemySpawner.transform.position;
         SetWaveRounds();
-        _currentRoundCounter.text = "Round 1 / " + rounds.Count;
-
+        RoundCounter.text = "Round 1 / " + rounds.Count;
     }
 
     void FixedUpdate()
     {
-        if (currentRound < rounds.Count && !rounds[currentRound].isGoing)
+        if (_currentRound < rounds.Count && !rounds[_currentRound].IsGoing)
         {
-            rounds[currentRound].isGoing = true;
-            StartCoroutine(ExecuteRound(currentRound));
+            rounds[_currentRound].IsGoing = true;
+            StartCoroutine(ExecuteRound(_currentRound));
         }
     }
 
     IEnumerator ExecuteRound(int roundIndex)
     {
+        //(rounds[roundIndex].Enemies.Count);
         for (int i = 0; i < rounds[roundIndex].Enemies.Count; i++)
         {
             EnemyCluster cluster = rounds[roundIndex].Enemies[i];
@@ -49,20 +45,23 @@ public class Wave : MonoBehaviour
             {
                 if (cluster.EnemyID == EnemyCluster.GREEN)
                 {
-                    newTowerEnemy = Instantiate(GreenTowerEnemy, spawnLocation, Quaternion.identity);
+                    newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
                 }
                 else if (cluster.EnemyID == EnemyCluster.BLUE)
                 {
-                    newTowerEnemy = Instantiate(BlueTowerEnemy, spawnLocation, Quaternion.identity);
+                    newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
+                }
+                else if (cluster.EnemyID == EnemyCluster.PURPLE)
+                {
+                    newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
                 }
                 else
                 {
-                    newTowerEnemy = Instantiate(RedTowerEnemy, spawnLocation, Quaternion.identity);
+                    newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
                 }
 
-                newTowerEnemy.GetComponent<TowerEnemy>().round = rounds[currentRound];
-                
-                
+                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+                //print(newTowerEnemy.GetComponent<TowerEnemy>().Round);
                 
                 // Time between enemies spawning in a cluster
                 yield return new WaitForSeconds(0.5f);
@@ -70,32 +69,41 @@ public class Wave : MonoBehaviour
             // Time between spawning a new cluster after spawning the last enemy in the previous cluster
             yield return new WaitForSeconds(2f);
         }
-        while (rounds[currentRound].EnemiesAlive.Count > 0)
+        while (rounds[_currentRound].EnemiesAlive.Count > 0)
         {
             yield return null;
         }
-        Debug.Log("Starting Next Round in 5 Seconds");
+        //Debug.Log("Starting Next Round in 5 Seconds");
         yield return new WaitForSeconds(3f);;
-        rounds[roundIndex].isGoing = false;
-        currentRound++;
-        if (currentRound < rounds.Count)
+        rounds[roundIndex].IsGoing = false;
+        _currentRound++;
+        if (_currentRound < rounds.Count)
         {
-            _currentRoundCounter.text = "Round " + (currentRound + 1) + " / " + rounds.Count;
+            RoundCounter.text = "Round " + (_currentRound + 1) + " / " + rounds.Count;
         }
         else
         {
-            _currentRoundCounter.text = "Wave Complete!";
+            RoundCounter.text = "Wave Complete!";
         }
 
     }
     private void SetWaveRounds()
     {
-        for (int i = 0; i < waveNumber * 10; i++) // Wave 1 will have 10 rounds, 2 will have 20, 3 30 rounds
+        for (int i = 0; i < 2; i++)
         {
-            Round round = new Round();
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.GREEN, 3*waveNumber));
+            Round round = gameObject.AddComponent<Round>();
+            round.Enemies.Add(new EnemyCluster(EnemyCluster.RED, 2));
+            round.Enemies.Add(new EnemyCluster(EnemyCluster.BLUE, 2));
+            round.Enemies.Add(new EnemyCluster(EnemyCluster.PURPLE, 2));
+            round.Enemies.Add(new EnemyCluster(EnemyCluster.GREEN, 100));
+            round.Wave = this;
             rounds.Add(round);
         }
     }
-    
+
+    public void decrementCurrentPopulation()
+    {
+        _eventManager.currentPopulation--;
+        _eventManager.CurrentPopulationModified = true;
+    }
 }

@@ -1,36 +1,35 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerEnemy : BaseEnemy
 {
-    [NonSerialized] public float distanceTraveled;
-    [NonSerialized] public Rigidbody2D rigidBody;
-    public Round round;
-    private List<BaseTower> targetedTowers;
+    [NonSerialized] public float DistanceTraveled;
+    [NonSerialized] public Round Round;
+    
+    private List<BaseTower> TargetedTowers = new List<BaseTower>();
+    private Rigidbody2D RigidBody;
     
     void Start()
     {
-        round.EnemiesAlive.Add(this);
+        Round.EnemiesAlive.Add(this);
         base.Start();
-        targetedTowers = new List<BaseTower>();
-        rigidBody = GetComponent<Rigidbody2D>();        
-        distanceTraveled = 0;
+        RigidBody = GetComponent<Rigidbody2D>();
+        DistanceTraveled = 0;
     }
     
     void Update()
     {
         if (IsDead())
         {
-            for (int i = 0; i < targetedTowers.Count; i++)
+            for (int i = 0; i < TargetedTowers.Count; i++)
             {
-                targetedTowers[i].targets.Remove(this);
+                TargetedTowers[i].Targets.Remove(this);
             }
 
-            if (round.EnemiesAlive.Contains(this))
+            if (Round.EnemiesAlive.Contains(this))
             {
-                round.EnemiesAlive.Remove(this);
+                Round.EnemiesAlive.Remove(this);
             }
         }
     }
@@ -40,13 +39,13 @@ public class TowerEnemy : BaseEnemy
         if (other.gameObject.CompareTag("Tower"))
         {
             BaseTower tower = other.gameObject.GetComponentInParent<BaseTower>();
-            if (!tower.targets.Contains(this))
+            if (!tower.Targets.Contains(this))
             {
-                tower.targets.Add(this);
+                tower.Targets.Add(this);
             }
-            if (!targetedTowers.Contains(tower))
+            if (!TargetedTowers.Contains(tower))
             {
-                targetedTowers.Add(tower);
+                TargetedTowers.Add(tower);
             }
         }
     }
@@ -56,14 +55,25 @@ public class TowerEnemy : BaseEnemy
         if (other.gameObject.CompareTag("Tower"))
         {
             BaseTower tower = other.gameObject.GetComponentInParent<BaseTower>();
-            if (tower.targets.Contains(this))
+            if (tower.Targets.Contains(this))
             {
-                tower.targets.Remove(this);
+                tower.Targets.Remove(this);
             }
-            if (targetedTowers.Contains(tower))
+
+            if (TargetedTowers.Contains(tower))
             {
-                targetedTowers.Remove(tower);
+                TargetedTowers.Remove(tower);
             }
         }
+    }
+
+    public void SetVelocity(Vector2 velocity)
+    {
+        RigidBody.velocity = velocity;
+    }
+
+    public void Move(Vector2 movement)
+    {
+        RigidBody.MovePosition(movement);
     }
 }
