@@ -8,9 +8,7 @@ public class BaseTower : MonoBehaviour
     
     public float attackSpeed;
     public float projectileSpeed;
-    public float projectileDamage;
-    public float radiusScale;
-    public float cost;
+
     private float _passedTime = 0f;
     private Transform _firePoint ;
     // private bool displayRadius = false;
@@ -20,7 +18,7 @@ public class BaseTower : MonoBehaviour
     void Start()
     {
         _firePoint = transform;
-        _passedTime = attackSpeed + 1;
+        _passedTime = (1 / attackSpeed) + 1;
     }
     void FixedUpdate()
     {
@@ -28,7 +26,7 @@ public class BaseTower : MonoBehaviour
         {
             TowerEnemy target = GetCurrentTarget();
             _passedTime += Time.deltaTime;
-            if (_passedTime > attackSpeed)
+            if (_passedTime > (1 / attackSpeed))
             {
                 _passedTime = 0;
                 Fire(target.transform.position);
@@ -62,7 +60,7 @@ public class BaseTower : MonoBehaviour
         GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, _firePoint.rotation);
         Bullet projectile = newObj.GetComponent<Bullet>();
         projectile.bulletForce = projectileSpeed;
-        projectile.damage = projectileDamage;
+        //projectile.damage = projectileDamage;
 
         Vector2 direction = targetPos - projectileFirePoint;
         direction.Normalize();
