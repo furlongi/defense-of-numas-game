@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: -8625102278047509496}
   - component: {fileID: -409597967763873248}
   - component: {fileID: -5173257998378566289}
-  - component: {fileID: 4095409042066116748}
+  - component: {fileID: 2251381022816637912}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -296,6 +296,7 @@ MonoBehaviour:
   health: 20
   healthCapacity: 20
   upgradeTier: 0
+  isDead: 0
   healthBar: {fileID: 0}
   inventory: {fileID: -409597967763873248}
 --- !u!114 &-7456638387321815049
@@ -369,7 +370,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!66 &4095409042066116748
+--- !u!66 &2251381022816637912
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,7 +405,7 @@ GameObject:
   - component: {fileID: 7927107377135799609}
   m_Layer: 6
   m_Name: Feet
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

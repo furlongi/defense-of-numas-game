@@ -81,19 +81,22 @@ public class BaseEnemy : MonoBehaviour
 
     // Call this when the enemy will take damage
     public void Damage(float amount) {
-        health -= Math.Max(amount - defense, 0);
-        if (health <= 0)
+        if (!_isDead)
         {
-            // Prevent movement from affecting death animation
-            _isDead = true;
-            speed = 0;
+            health -= Math.Max(amount - defense, 0);
+            if (health <= 0)
+            {
+                // Prevent movement from affecting death animation
+                _isDead = true;
+                speed = 0;
             
-            _animate.SetBool("isDead", true);
-            _animate.speed = 1;
+                _animate.SetBool("isDead", true);
+                _animate.speed = 1;
             
-            // Wait for death animation to finish before destroying this
-            IEnumerator toExecute = DestroyAfterAnimation(deathAnimationTimer);
-            StartCoroutine(toExecute);
+                // Wait for death animation to finish before destroying this
+                IEnumerator toExecute = DestroyAfterAnimation(deathAnimationTimer);
+                StartCoroutine(toExecute);
+            }
         }
     }
 

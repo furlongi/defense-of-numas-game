@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public float[] playerPos;
+    // public float[] playerPos;
     public float health;
     public float healthCapacity;
     public int healthTier;
@@ -26,10 +26,10 @@ public class PlayerData
 
         weaponTier = shooter.upgradeTier;
         
-        playerPos = new float[3];
-        playerPos[0] = player.transform.position.x;
-        playerPos[1] = player.transform.position.y;
-        playerPos[2] = player.transform.position.z;
+        // playerPos = new float[3];
+        // playerPos[0] = player.transform.position.x;
+        // playerPos[1] = player.transform.position.y;
+        // playerPos[2] = player.transform.position.z;
 
         greenGem = inv.greenGem;
         blueGem = inv.blueGem;

@@ -9,7 +9,7 @@ public static class SaveSystem
     public static void SavePlayer(Player player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        Debug.Log("SAVING TO " + SavePath);
+        // Debug.Log("SAVING TO " + SavePath);
         FileStream stream = new FileStream(SavePath, FileMode.Create);
 
         InventoryManager inv = player.GetComponent<InventoryManager>();
@@ -22,10 +22,10 @@ public static class SaveSystem
 
     public static PlayerData LoadPLayer()
     {
-        Debug.Log("Loading save file...");
+        // Debug.Log("Loading save file...");
         if (File.Exists(SavePath))
         {
-            Debug.Log("File found!");
+            // Debug.Log("File found!");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(SavePath, FileMode.Open);
             PlayerData player = (PlayerData)formatter.Deserialize(stream);
@@ -33,10 +33,13 @@ public static class SaveSystem
             return player;
         }
         
-        Debug.Log("No save file found.");
+        // Debug.Log("No save file found.");
         return null;
     }
 
-
+    public static bool CheckIfSaveExists()
+    {
+        return File.Exists(SavePath);
+    }
 
 }
