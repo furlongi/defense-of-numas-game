@@ -41,7 +41,5 @@ public class TowerShop : MonoBehaviour
             return true;
         }
         return false;
-
     }
-    
 }

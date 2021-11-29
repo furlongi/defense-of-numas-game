@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BaseTower : MonoBehaviour
 {
     public GameObject projectilePrefab;
@@ -11,16 +12,20 @@ public class BaseTower : MonoBehaviour
 
     private float _passedTime = 0f;
     private Transform _firePoint ;
-    // private bool displayRadius = false;
-    
+
+    [NonSerialized] public CancelPopup CancelPopup;
     [NonSerialized] public List<TowerEnemy> Targets = new List<TowerEnemy>();
 
     void Start()
     {
+        Renderer radiusRenderer = transform.GetChild(0).GetComponent<Renderer>();
+        CancelPopup = GameObject.Find("Popup Closer").GetComponent<CancelPopup>();
+        CancelPopup.TowerRadiuses.Add(radiusRenderer);
+        
         _firePoint = transform;
         _passedTime = (1 / attackSpeed) + 1;
-        CircleCollider2D collider = GetComponentInChildren<TowerRadius>().gameObject.AddComponent<CircleCollider2D>();
-        collider.isTrigger = true;
+        CircleCollider2D col = GetComponentInChildren<TowerRadius>().gameObject.AddComponent<CircleCollider2D>();
+        col.isTrigger = true;
     }
     void FixedUpdate()
     {

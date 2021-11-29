@@ -10,13 +10,15 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
     private TowerShop _towerShop;
     private RectTransform _rectTransform;
     public Canvas canvas;
-    
+    private SpriteRenderer _radiusSprite;
+    private Color _spriteOriginalColor;
     public BaseTower towerPrefab;
 
     [NonSerialized] public InventoryTracker ItemCost;
     
-    private bool _cancelTowerItemOnDrop = false;
-    
+    private bool _isOverTrack = false;
+    private bool _isOverCancelButton = false;
+
     void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -32,6 +34,8 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
 
         GameObject prefab = Instantiate(towerPrefab, transform.position, Quaternion.identity).gameObject;
         GameObject radius = prefab.transform.GetChild(0).gameObject;
+        _radiusSprite = radius.GetComponent<SpriteRenderer>();
+        _spriteOriginalColor = _radiusSprite.color;
         radius.transform.parent = gameObject.transform;
         Destroy(prefab);
 
@@ -51,7 +55,7 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
     public void OnDrop(PointerEventData eventData)
     {
         _towerShop.gameObject.SetActive(true);
-        if (_cancelTowerItemOnDrop)
+        if (_isOverTrack || _isOverCancelButton)
         {
             _towerShop.cancelItemDragging.SetActive(false);
             Destroy(gameObject);
@@ -73,16 +77,60 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IDropHandler, IBeginDr
     {
         if (other.CompareTag("TowerItemCancel"))
         {
-            _cancelTowerItemOnDrop = true;
+            if (_radiusSprite != null)
+            {
+                _radiusSprite.color = new Color(1f, 0f, 0f, .2f);
+            }
+            _isOverCancelButton = true;
+        }
+        else if (other.CompareTag("Track"))
+        {
+            if (_radiusSprite != null)
+            {
+                _radiusSprite.color = new Color(1f, 0f, 0f, .2f);
+            }
+            _isOverTrack = true;
         }
     }
-    
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("TowerItemCancel"))
+        {
+            if (_radiusSprite != null)
+            {
+                _radiusSprite.color = new Color(1f, 0f, 0f, .2f);
+            }
+            _isOverCancelButton = true;
+        }
+        else if (other.CompareTag("Track"))
+        {
+            if (_radiusSprite != null)
+            {
+                _radiusSprite.color = new Color(1f, 0f, 0f, .2f);
+            }
+            _isOverTrack = true;
+        }
+    }
+
     public void OnTriggerExit2D(Collider2D other)
     {
 
         if (other.CompareTag("TowerItemCancel"))
         {
-            _cancelTowerItemOnDrop = false;
+            _isOverCancelButton = false;
+            if (_spriteOriginalColor != null && !_isOverTrack && !_isOverCancelButton)
+            {
+                _radiusSprite.color = _spriteOriginalColor;
+            }
+        }
+        else if (other.CompareTag("Track"))
+        {
+            _isOverTrack = false;
+            if (_spriteOriginalColor != null && !_isOverTrack && !_isOverCancelButton)
+            {
+                _radiusSprite.color = _spriteOriginalColor;
+            }
         }
     }
 }

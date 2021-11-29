@@ -69,6 +69,7 @@ public class Wave : MonoBehaviour
             // Time between spawning a new cluster after spawning the last enemy in the previous cluster
             yield return new WaitForSeconds(2f);
         }
+        
         while (rounds[_currentRound].EnemiesAlive.Count > 0)
         {
             yield return null;
@@ -92,10 +93,7 @@ public class Wave : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             Round round = gameObject.AddComponent<Round>();
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.RED, 2));
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.BLUE, 2));
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.PURPLE, 2));
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.GREEN, 100));
+            round.Enemies.Add(new EnemyCluster(EnemyCluster.GREEN, 2));
             round.Wave = this;
             rounds.Add(round);
         }

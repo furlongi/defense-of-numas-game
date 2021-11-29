@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TowerShopToggle : MonoBehaviour
 {
-    private bool _isActive = false;
     public GameObject towerShop;
     
     void Start()
@@ -17,7 +16,6 @@ public class TowerShopToggle : MonoBehaviour
 
     public void ToggleTowerShopUI()
     {
-        _isActive = !_isActive;
-        towerShop.SetActive(_isActive);
+        towerShop.SetActive(true);
     }
 }
