@@ -90,6 +90,8 @@ GameObject:
   - component: {fileID: -4475865393511768454}
   - component: {fileID: 6753685517883938811}
   - component: {fileID: 1523793972409781134}
+  - component: {fileID: 8402630815398944835}
+  - component: {fileID: 1587654380214996276}
   m_Layer: 7
   m_Name: EnemyG
   m_TagString: Enemy
@@ -196,13 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9932d6d02e25d7a4f932c8d6aa1f1f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
+  health: 9
   defense: 0
-  speed: 6
+  speed: 9
   attack: 1
   stopRange: 7
-  vision: 10
-  detect: 15
+  vision: 35
+  detect: 30
   deathAnimationTimer: 1.1
   lootDrop: {fileID: 3716224161449184666, guid: 15490b2b473cd294092485953c420cd0, type: 3}
 --- !u!114 &-8454191657577361678
@@ -212,13 +214,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3558283203414952205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e54cf7c7314edf146b789d5afc62f65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: -7510644076649359588}
-  playerLoc: {fileID: 0}
 --- !u!114 &-4475865393511768454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -276,6 +277,46 @@ CompositeCollider2D:
     m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &8402630815398944835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558283203414952205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &1587654380214996276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558283203414952205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504952d54a4243ebbb157e4b2725353c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5217605883331983789
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.30838758, y: -1.8225625}
+  m_Offset: {x: 0.31664467, y: -1.2941102}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -393,7 +434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8727952, y: 1.3916575}
+  m_Size: {x: 0.30395222, y: 0.3347528}
   m_EdgeRadius: 0
 --- !u!114 &5479715460037557376
 MonoBehaviour:

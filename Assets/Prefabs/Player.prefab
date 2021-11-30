@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2539cf24f7e2448b1e58a69e5837fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   animator: {fileID: -8625102278047509496}
 --- !u!95 &-8625102278047509496
 Animator:
@@ -590,6 +590,18 @@ PrefabInstance:
       propertyPath: bulletPoint
       value: 
       objectReference: {fileID: 2231579353406919719}
+    - target: {fileID: 8969272513237222032, guid: fa4ce534315888e44a35eae45f7d1f3d, type: 3}
+      propertyPath: bulletDamage.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969272513237222032, guid: fa4ce534315888e44a35eae45f7d1f3d, type: 3}
+      propertyPath: bulletDamage.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969272513237222032, guid: fa4ce534315888e44a35eae45f7d1f3d, type: 3}
+      propertyPath: bulletDamage.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa4ce534315888e44a35eae45f7d1f3d, type: 3}
 --- !u!4 &806489194836330396 stripped
