@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TowerDefense;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +13,16 @@ public class Wave : MonoBehaviour
     private int _currentRound = 0;
     [NonSerialized] public Text RoundCounter;
     private EventManager _eventManager;
-
+    private WaveData _waveData;
+    
     void Start()
     {
         _eventManager = gameObject.GetComponent<EventManager>();
+        _waveData = _eventManager.transform.GetChild(0).GetComponent<WaveData>();
         RoundCounter = _eventManager.roundCounter.GetComponent<Text>();
         WaveNumber = _eventManager.waveNumber;
-        _spawnLocation = _eventManager.enemySpawner.transform.position;
         SetWaveRounds();
+        _spawnLocation = _eventManager.enemySpawner.transform.position;
         RoundCounter.text = "Round 1 / " + rounds.Count;
     }
 
@@ -37,37 +38,28 @@ public class Wave : MonoBehaviour
     IEnumerator ExecuteRound(int roundIndex)
     {
         //(rounds[roundIndex].Enemies.Count);
-        for (int i = 0; i < rounds[roundIndex].Enemies.Count; i++)
+        List<EnemyTypes.EnemyType> roundEnemies = rounds[roundIndex].Enemies;
+        for (int i = 0; i < roundEnemies.Count; i++)
         {
-            EnemyCluster cluster = rounds[roundIndex].Enemies[i];
             GameObject newTowerEnemy;
-            for (int j = 0; j < cluster.Count; j++)
+            if (roundEnemies[i] == EnemyTypes.EnemyType.Green)
             {
-                if (cluster.EnemyID == EnemyCluster.GREEN)
-                {
-                    newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
-                }
-                else if (cluster.EnemyID == EnemyCluster.BLUE)
-                {
-                    newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
-                }
-                else if (cluster.EnemyID == EnemyCluster.PURPLE)
-                {
-                    newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
-                }
-                else
-                {
-                    newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
-                }
-
-                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-                //print(newTowerEnemy.GetComponent<TowerEnemy>().Round);
-                
-                // Time between enemies spawning in a cluster
-                yield return new WaitForSeconds(0.5f);
+                newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
             }
-            // Time between spawning a new cluster after spawning the last enemy in the previous cluster
-            yield return new WaitForSeconds(2f);
+            else if (roundEnemies[i] == EnemyTypes.EnemyType.Blue)
+            {
+                newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
+            }
+            else if (roundEnemies[i] == EnemyTypes.EnemyType.Purple)
+            {
+                newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
+            }
+            else
+            {
+                newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
+            }
+            newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+            yield return new WaitForSeconds(0.5f);
         }
         
         while (rounds[_currentRound].EnemiesAlive.Count > 0)
@@ -90,13 +82,34 @@ public class Wave : MonoBehaviour
     }
     private void SetWaveRounds()
     {
-        for (int i = 0; i < 2; i++)
+        List<WaveData.RoundData> enemies = new List<WaveData.RoundData>();
+        if (WaveNumber == 1)
+        {
+            Debug.Log(_waveData.wave1 );
+            enemies = _waveData.wave1;
+        }
+        // else if (WaveNumber == 2)
+        // {
+        //     enemies = _waveData.wave2;
+        // }
+        // else if (WaveNumber == 3)
+        // {
+        //     enemies = _waveData.wave3;
+        // }
+
+        for (int i = 0; i < enemies.Count; i++)
         {
             Round round = gameObject.AddComponent<Round>();
-            round.Enemies.Add(new EnemyCluster(EnemyCluster.GREEN, 2));
-            round.Wave = this;
-            rounds.Add(round);
+            for (int j = 0; j < enemies[i].roundData.Count; j++)
+            {
+                for (int k = 0; k < enemies[i].roundData[j].number; k++)
+                {
+                    round.Enemies.Add(enemies[i].roundData[j].enemyType);
+                }
+            }
         }
+
+        rounds = GetComponents<Round>().ToList();
     }
 
     public void decrementCurrentPopulation()
