@@ -13,14 +13,15 @@ public class BaseTower : MonoBehaviour
     private float _passedTime = 0f;
     private Transform _firePoint ;
 
-    [NonSerialized] public CancelPopup CancelPopup;
     [NonSerialized] public List<TowerEnemy> Targets = new List<TowerEnemy>();
+
+    private EventManager _eventManager;
 
     void Start()
     {
         Renderer radiusRenderer = transform.GetChild(0).GetComponent<Renderer>();
-        CancelPopup = GameObject.Find("Popup Closer").GetComponent<CancelPopup>();
-        CancelPopup.TowerRadiuses.Add(radiusRenderer);
+        _eventManager = GameObject.Find("Tower Event Manager").GetComponent<EventManager>();
+        _eventManager.TowerRadiuses.Add(radiusRenderer);
         
         _firePoint = transform;
         _passedTime = (1 / attackSpeed) + 1;
@@ -63,14 +64,15 @@ public class BaseTower : MonoBehaviour
     private void Fire(Vector3 targetPos)
     {
         Vector3 projectileFirePoint = _firePoint.position;
-        projectileFirePoint.z = -4;
-        GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, _firePoint.rotation);
+        Vector3 direction = targetPos - projectileFirePoint;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotationAngle = Quaternion.AngleAxis (angle, Vector3.forward);
+        GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, rotationAngle);
+        direction.Normalize();
         Bullet projectile = newObj.GetComponent<Bullet>();
+        
         projectile.bulletForce = projectileSpeed;
         //projectile.damage = projectileDamage;
-
-        Vector2 direction = targetPos - projectileFirePoint;
-        direction.Normalize();
         projectile.direction = direction;
     }
 }
