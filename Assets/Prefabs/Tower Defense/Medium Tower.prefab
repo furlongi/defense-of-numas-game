@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4240998960776602933, guid: 25c4dfb74b776d44b9d5ef5f74ad090d, type: 3}
+  towerType: 1
   attackSpeed: 3
   projectileSpeed: 20
 --- !u!50 &6042533608088371118

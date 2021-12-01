@@ -68,6 +68,7 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IDr
                 Vector3 startingPos = _rectTransform.position;
                 startingPos.z = towerPrefab.transform.position.z;
                 BaseTower newTower = Instantiate(towerPrefab, startingPos, Quaternion.identity);
+                _towerShop.towerList.AddTower(newTower);
                 //newTower.transform.GetChild(0).localPosition = new Vector3(0, 0, 1);
             }
             _towerShop.cancelItemDragging.SetActive(false);

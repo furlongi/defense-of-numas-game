@@ -159,6 +159,7 @@ MonoBehaviour:
   shooting: {fileID: 668134738}
   inventory: {fileID: 668134737}
   positionLoad: {fileID: 770086161}
+  towerManager: {fileID: 1088001259}
 --- !u!4 &27273121
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +173,7 @@ Transform:
   m_Children:
   - {fileID: 770086163}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &71179625
 GameObject:
@@ -1590,7 +1591,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &945491290
 GameObject:
@@ -2334,6 +2335,10 @@ MonoBehaviour:
   purpleTowerEnemy: {fileID: 914882703669553903, guid: 110e74a6104ab824ab0a2d462cd7bdf9, type: 3}
   redTowerEnemy: {fileID: 8305599993475527800, guid: 839d0673b10bff74b9c3ff47ed0f8353, type: 3}
   enemySpawner: {fileID: 1226648851}
+  NormalTower: {fileID: 3129755405927695979, guid: 33331d1153dc49e44b24912d1fd48179, type: 3}
+  HeavyTower: {fileID: 3129836807489971961, guid: a218ed260ed83d640bdf75c2e697a360, type: 3}
+  SniperTower: {fileID: 7139988772856590185, guid: 3a72e676d43169f44bb995961b518657, type: 3}
+  towerList: {fileID: 2008474558}
 --- !u!4 &1088001260
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,7 +2353,7 @@ Transform:
   - {fileID: 559232937}
   - {fileID: 1458095649}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1088001261
 SpriteRenderer:
@@ -2504,7 +2509,7 @@ Transform:
   - {fileID: 1018437185}
   - {fileID: 1413235441}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1150842838
 PrefabInstance:
@@ -2931,7 +2936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2.255, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1360455326 stripped
 Transform:
@@ -3233,7 +3238,7 @@ Transform:
   m_Children:
   - {fileID: 2053271959}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1528912837
 PrefabInstance:
@@ -3302,9 +3307,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1535956747}
   - component: {fileID: 1535956746}
-  - component: {fileID: 1535956745}
   - component: {fileID: 1535956744}
   - component: {fileID: 1535956743}
+  - component: {fileID: 1535956748}
   m_Layer: 0
   m_Name: Scene Exiter
   m_TagString: Untagged
@@ -3359,20 +3364,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1535956745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535956742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6a8a5ebafb4466bc912b2b6cc24b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Hub
-  sceneOrigin: TowerDefense
 --- !u!212 &1535956746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3436,8 +3427,23 @@ Transform:
   m_LocalScale: {x: 1, y: 2.0813, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535956748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535956742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638687ba36374fc8b08ca44c79ea9524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Hub
+  sceneOrigin: TowerDefense
+  towerList: {fileID: 2008474558}
 --- !u!1 &1577675058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,7 +3755,7 @@ Transform:
   - {fileID: 1196835650}
   - {fileID: 951512864}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1864116445
 MonoBehaviour:
@@ -3779,6 +3785,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6578617000736330790, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
   m_PrefabInstance: {fileID: 668134735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2008474557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2008474559}
+  - component: {fileID: 2008474558}
+  m_Layer: 0
+  m_Name: TowerList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2008474558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008474557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b911a140424a1492340d907736e174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerList: []
+--- !u!4 &2008474559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008474557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.074636, y: -0.15418603, z: -34.00525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053271958
 GameObject:
   m_ObjectHideFlags: 0
@@ -11578,7 +11628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055461234621602714, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7055461234621602714, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11668,6 +11718,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 47.19995
       objectReference: {fileID: 0}
+    - target: {fileID: 7055461236252418798, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: towerList
+      value: 
+      objectReference: {fileID: 2008474558}
     - target: {fileID: 7055461236252418798, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: playerInventory
       value: 

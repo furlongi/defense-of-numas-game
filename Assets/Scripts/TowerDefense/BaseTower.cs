@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseTower : MonoBehaviour
 {
     public GameObject projectilePrefab;
+    public TowerType towerType;
     
     public float attackSpeed;
     public float projectileSpeed;

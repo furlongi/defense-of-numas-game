@@ -5,6 +5,7 @@ using UnityEngine;
 public static class SaveSystem
 {
     private const string SavePath = "./player.sav";
+    private const string PersistentData = "./session.sav";
     
     public static void SavePlayer(Player player)
     {
@@ -14,7 +15,8 @@ public static class SaveSystem
 
         InventoryManager inv = player.GetComponent<InventoryManager>();
         Shooting shoot = player.GetComponentInChildren<Shooting>();
-        PlayerData data = new PlayerData(player, inv, shoot);
+        TowerDataList tList = LoadTowerDataList();
+        PlayerData data = new PlayerData(player, inv, shoot, tList);
         
         formatter.Serialize(stream, data);
         stream.Close();
@@ -29,6 +31,9 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(SavePath, FileMode.Open);
             PlayerData player = (PlayerData)formatter.Deserialize(stream);
+            PlayerPrefs.SetInt("Wave", player.waveNumber);
+            PlayerPrefs.Save();
+            SavePersistentTower(player.towerList);
             stream.Close();
             return player;
         }
@@ -41,5 +46,55 @@ public static class SaveSystem
     {
         return File.Exists(SavePath);
     }
+    
+    
+    public static bool CheckIfPersistentExists()
+    {
+        return File.Exists(PersistentData);
+    }
 
+    
+    public static void SavePersistentTower(TowerList towerList)
+    {
+        TowerDataList tlist = new TowerDataList(towerList.towerList.Count);
+        
+        foreach (var t in towerList.towerList)
+        {
+            tlist.AddTower(t);
+        }
+        
+        File.WriteAllText(PersistentData, tlist.SaveToString());
+    }
+    
+    public static void SavePersistentTower(TowerData[] towerList)
+    {
+        TowerDataList tlist = new TowerDataList(towerList.Length);
+        
+        foreach (var t in towerList)
+        {
+            tlist.AddTower(t);
+        }
+        
+        File.WriteAllText(PersistentData, tlist.SaveToString());
+    }
+
+    
+    public static TowerDataList LoadTowerDataList()
+    {
+        if (CheckIfPersistentExists())
+        {
+            return JsonUtility.FromJson<TowerDataList>(File.ReadAllText(PersistentData));
+        }
+        
+        return null;
+    }
+
+    public static void ClearPersistentData()
+    {
+        if (CheckIfPersistentExists())
+        {
+            File.Delete(PersistentData);
+        }
+    }
+    
 }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,11 @@ public class StartMenu : MonoBehaviour
 {
     public TMP_Text saveErrorText;
     public TextPopupFade fader;
+
+    private void Start()
+    {
+        SaveSystem.ClearPersistentData();
+    }
 
     public void LoadNew()
     {

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 
@@ -29,6 +30,12 @@ public class EventManager : MonoBehaviour
     public GameObject redTowerEnemy;
     public GameObject enemySpawner;
 
+    public BaseTower NormalTower;
+    public BaseTower HeavyTower;
+    public BaseTower SniperTower;
+
+    public TowerList towerList;
+
     private Wave _wave;
 
     void Awake()
@@ -40,9 +47,15 @@ public class EventManager : MonoBehaviour
         TowerShop = TowerDefenseUI.transform.Find("Tower Shop").gameObject;
 
         _wave = gameObject.AddComponent<Wave>();
+        waveNumber = PlayerPrefs.GetInt("Wave", 1);
         _wave.WaveNumber = waveNumber;
-        
+
         LivesCounter.text = "Lives: " + currentPopulation + " / " + totalPopulation;
+    }
+
+    private void Start()
+    {
+        TowerSpawnerFromLoad(SaveSystem.LoadTowerDataList());
     }
 
     void FixedUpdate()
@@ -79,6 +92,7 @@ public class EventManager : MonoBehaviour
         {
             Destroy(roundsToRemove[i]);
         }
+        
     }
 
     public void HandleUserClick()
@@ -120,6 +134,32 @@ public class EventManager : MonoBehaviour
     public void OnMouseDown()
     {
         HandleUserClick();
+    }
+
+    private void TowerSpawnerFromLoad(TowerDataList tList)
+    {
+        if (tList != null)
+        {
+            if (towerList != null)
+            {
+                foreach (var towerData in tList.towerList)
+                {
+                    Vector3 loc = new Vector3(towerData.location[0], towerData.location[1], towerData.location[2]);
+                    switch (towerData.type)
+                    {
+                        case (int)TowerType.Heavy:
+                            towerList.AddTower(Instantiate(HeavyTower, loc, Quaternion.identity));
+                            break;
+                        case (int)TowerType.Normal:
+                            towerList.AddTower(Instantiate(NormalTower, loc, Quaternion.identity));
+                            break;
+                        case (int)TowerType.Sniper:
+                            towerList.AddTower(Instantiate(SniperTower, loc, Quaternion.identity));
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
 

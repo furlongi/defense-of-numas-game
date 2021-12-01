@@ -9,6 +9,8 @@ public class TowerShop : MonoBehaviour
     private List<TowerShopItem> _shopItems;
     public InventoryManager playerInventory;
     public GameObject cancelItemDragging;
+    public TowerList towerList;
+    
     void Start()
     {
         _shopItems = GetComponentsInChildren<TowerShopItem>().ToList();
