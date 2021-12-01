@@ -11550,11 +11550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2755922681060822810, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75
+      value: 74.99999
       objectReference: {fileID: 0}
     - target: {fileID: 2755922681060822810, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8.36
+      value: 8.360001
       objectReference: {fileID: 0}
     - target: {fileID: 7055461234565497025, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11660,6 +11660,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -642
       objectReference: {fileID: 0}
+    - target: {fileID: 7055461236252418793, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 703.7899
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055461236252418793, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 47.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055461236252418798, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 668134737}
     - target: {fileID: 7055461236374941592, guid: 0ee567a73b488ab429b0eb21c9f977cf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -293
