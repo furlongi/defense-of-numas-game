@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 1876344485349416467, guid: 4402408c92ce93547b351765c907c181, type: 3}
     - target: {fileID: -7510644076649359588, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: stopRange
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3558283203414952205, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: m_Name

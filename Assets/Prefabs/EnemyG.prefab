@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 9158606450999873168}
   - component: {fileID: 8425294978112073357}
   - component: {fileID: -7510644076649359588}
-  - component: {fileID: -8454191657577361678}
   - component: {fileID: -4475865393511768454}
   - component: {fileID: 6753685517883938811}
   - component: {fileID: 1523793972409781134}
@@ -202,24 +201,11 @@ MonoBehaviour:
   defense: 0
   speed: 9
   attack: 1
-  stopRange: 7
+  stopRange: 3
   vision: 35
   detect: 30
   deathAnimationTimer: 1.1
   lootDrop: {fileID: 3716224161449184666, guid: 15490b2b473cd294092485953c420cd0, type: 3}
---- !u!114 &-8454191657577361678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3558283203414952205}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e54cf7c7314edf146b789d5afc62f65e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: -7510644076649359588}
 --- !u!114 &-4475865393511768454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 1
-  attackForce: 2500
+  attackRange: 3.7
 --- !u!50 &6753685517883938811
 Rigidbody2D:
   serializedVersion: 4
@@ -423,7 +409,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.31664467, y: -1.2941102}
+  m_Offset: {x: 0.2612497, y: -0.90308654}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -434,7 +420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30395222, y: 0.3347528}
+  m_Size: {x: 0.41474217, y: 0.08710486}
   m_EdgeRadius: 0
 --- !u!114 &5479715460037557376
 MonoBehaviour:
