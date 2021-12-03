@@ -88,7 +88,23 @@ public class BaseTower : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotationAngle = Quaternion.AngleAxis (angle, Vector3.forward);
         GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, rotationAngle);
-
+        SpriteRenderer spriteR = newObj.GetComponent<SpriteRenderer>();
+        if (_upgradeTier == 0)
+        {
+            spriteR.sprite = greenLaser;
+        }
+        else if (_upgradeTier == 1)
+        {
+            spriteR.sprite = blueLaser;
+        }
+        else if (_upgradeTier == 2)
+        {
+            spriteR.sprite = purpleLaser;
+        }
+        else if (_upgradeTier == 3)
+        {
+            spriteR.sprite = redLaser;
+        }
         if (towerType == TowerType.Normal)
         {
             newObj.transform.localScale *= 2f;
@@ -112,7 +128,6 @@ public class BaseTower : MonoBehaviour
     
     public void UpgradeTower()
     {
-        Debug.Log("This happened");
         if (_upgradeTier < TowerCostData.MAXTier)
         {
             _upgradeTier++;
@@ -134,17 +149,14 @@ public class BaseTower : MonoBehaviour
         if (_upgradeTier == 1)
         {
             GetComponent<SpriteRenderer>().sprite = tierOneTower;
-            projectilePrefab.GetComponent<SpriteRenderer>().sprite = blueLaser;
         }
         else if (_upgradeTier == 2)
         {
             GetComponent<SpriteRenderer>().sprite = tierTwoTower;
-            projectilePrefab.GetComponent<SpriteRenderer>().sprite = purpleLaser;
         }
         else if (_upgradeTier == 3)
         {
             GetComponent<SpriteRenderer>().sprite = tierThreeTower;
-            projectilePrefab.GetComponent<SpriteRenderer>().sprite = redLaser;
         }
 
         if (towerType == TowerType.Heavy)
