@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private static class MediumModifier
     {
-        public static float[] Green =  {6f, 0.2f, 0.5f, 0.2f, 0, 0};
+        public static float[] Green =  {6f, 0.2f, 0.5f, 0.5f, 0, 0};
 
         public static float[] Blue =   {8f, 0.1f, 0.2f, 0.4f, 0, 0};
         
@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     
     private static class HardModifier
     {
-        public static float[] Green =  {14f, 0.25f, 0.9f, 0.5f, 0, 0};
+        public static float[] Green =  {14f, 0.25f, 1.0f, 0.7f, 0, 0};
         
         public static float[] Blue =   {16f, 0.15f, 0.5f, 1f, 0, 0};
         

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class FollowWaypoints : MonoBehaviour, IPointerDownHandler
+public class FollowWaypoints : MonoBehaviour
 {
 
     private List<Waypoint> _waypointList;
@@ -11,14 +11,12 @@ public class FollowWaypoints : MonoBehaviour, IPointerDownHandler
     private TowerEnemy _towerEnemy;
     private SpriteRenderer _sprite;
 
-    private CancelPopup _cancelPopup;
     void Start()
     {
         _waypointList = GameObject.Find("Waypoint List").GetComponent<WaypointList>().GetWaypointList();
         _towerEnemy = GetComponent<TowerEnemy>();
         _sprite = GetComponent<SpriteRenderer>();
         GetComponent<Animator>().speed = _towerEnemy.speed;
-        _cancelPopup = GameObject.Find("Popup Closer").GetComponent<CancelPopup>();
         
         if (_towerEnemy == null)
         {
@@ -70,14 +68,9 @@ public class FollowWaypoints : MonoBehaviour, IPointerDownHandler
             {
                 Destroy(gameObject);
                 _towerEnemy.Round.EnemiesAlive.Remove(_towerEnemy);
-                _towerEnemy.Round.Wave.decrementCurrentPopulation();
+                _towerEnemy.Round.Wave.DecrementCurrentPopulation();
             }   
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        _cancelPopup.CancelPopups();
     }
 }
 

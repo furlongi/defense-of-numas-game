@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
     
 
 
-    public float[] bulletDamage = new float[]{1f, 3f, 5f, 8f};
+    public float[] bulletDamage = new float[]{1f, 1.5f, 2f, 3f};
     public float bulletSpeed = 150f;
     public int upgradeTier = 0;
 

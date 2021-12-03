@@ -15,6 +15,7 @@ public class SceneLoader : MonoBehaviour
     public Shooting shooting;
     public InventoryManager inventory;
     public SceneLoadPosition positionLoad;
+    public EventManager towerManager;
 
     public void Start()
     {
@@ -34,6 +35,8 @@ public class SceneLoader : MonoBehaviour
         else if (loadFrom == -1)
         {
             // Do nothing
+            PlayerPrefs.SetInt("Wave", 1);
+            PlayerPrefs.Save();
         }
         else
         {
@@ -60,6 +63,12 @@ public class SceneLoader : MonoBehaviour
             PlayerPrefs.SetFloat("HealthCap", player.healthCapacity);
             PlayerPrefs.SetInt("HealthTier", player.upgradeTier);
             PlayerPrefs.SetString("LastScene", sceneOrigin);
+
+            if (towerManager)
+            {
+                PlayerPrefs.SetInt("Wave", towerManager.waveNumber);
+            }
+            
             PlayerPrefs.Save();
             
             SceneManager.LoadScene(scene, LoadSceneMode.Single);

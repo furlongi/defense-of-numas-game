@@ -21,18 +21,18 @@ public static class SpawnRates
 
     public static class Easy
     {
-        public const float GreenRate = 0.75f;
-        public const float BlueRate = 0.20f;
-        public const float PurpleRate = 0.09f;
+        public const float GreenRate = 0.80f;
+        public const float BlueRate = 0.15f;
+        public const float PurpleRate = 0.04f;
         public const float RedRate = 0.01f;
     }
     
     public static class Medium
     {
-        public const float GreenRate = 0.50f;
+        public const float GreenRate = 0.52f;
         public const float BlueRate = 0.25f;
         public const float PurpleRate = 0.18f;
-        public const float RedRate = 0.07f;
+        public const float RedRate = 0.05f;
     }
     
     public static class Hard

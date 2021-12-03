@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 1.1f;
+    public float speed = 12f;
+    public float modifier = 30f;
     
     // Assign the appropriate game objects in inspector
     public Animator animator;
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             _spriteFlip(input.x);
             input.Normalize();
             animator.SetBool("isRunning", true);
-            _rb.velocity = input * speed;
+            _rb.velocity = input * speed * modifier * Time.deltaTime;
         }
     }
 

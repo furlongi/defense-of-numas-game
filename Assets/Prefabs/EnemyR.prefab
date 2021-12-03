@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7510644076649359588, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: speed
-      value: 5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: -7510644076649359588, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: attack
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -7510644076649359588, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: detect
-      value: 18
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -7510644076649359588, guid: 5788d597a394024428eec115bc3965b7, type: 3}
       propertyPath: health

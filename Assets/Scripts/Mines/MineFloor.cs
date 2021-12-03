@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class MineFloor : MonoBehaviour
 {
+    public Transform playerSpawn;
     public EnemySpawner[] spawnPoints;
     public int minSpawnSize;
     private int _enemiesSpawned;
@@ -30,7 +31,7 @@ public class MineFloor : MonoBehaviour
     {
         ClearFloor();
         Player player = manager.player;
-        player.transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
+        player.transform.position = new Vector3(playerSpawn.position.x, playerSpawn.position.y, player.transform.position.z);
 
         List<EnemyTypes.EnemyType> enemyList =
             SpawnRates.CreateEnemyList(manager.Difficulty(), manager.traveresedFloors, spawnPoints.Length, minSpawnSize);

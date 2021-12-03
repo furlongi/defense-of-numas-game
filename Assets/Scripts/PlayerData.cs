@@ -16,25 +16,30 @@ public class PlayerData
     public int purpleGem;
 
     public int weaponTier;
+    public int waveNumber;
+
+    public TowerData[] towerList;
     
 
-    public PlayerData(Player player, InventoryManager inv, Shooting shooter)
+    public PlayerData(Player player, InventoryManager inv, Shooting shooter, TowerDataList tList)
     {
         health = player.health;
         healthCapacity = player.healthCapacity;
         healthTier = player.upgradeTier;
 
         weaponTier = shooter.upgradeTier;
-        
-        // playerPos = new float[3];
-        // playerPos[0] = player.transform.position.x;
-        // playerPos[1] = player.transform.position.y;
-        // playerPos[2] = player.transform.position.z;
 
         greenGem = inv.greenGem;
         blueGem = inv.blueGem;
         redGem = inv.redGem;
         purpleGem = inv.purpleGem;
-    }
+
+        waveNumber = PlayerPrefs.GetInt("Wave", 1);
+
+        if (tList != null)
+        {
+            towerList = tList.towerList;
+        }
+    } 
     
 }

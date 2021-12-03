@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public float damage = 1;
     
     private Rigidbody2D _rb;
+    private bool _didHit = false;
 
     private void Start()
     {
@@ -24,10 +25,19 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (!_didHit && other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponentInParent<BaseEnemy>().Damage(damage);
-            Destroy(gameObject);
+            _didHit = true;
+            BaseEnemy enemy = other.GetComponentInParent<BaseEnemy>();
+            if (!enemy.IsDead())
+            {
+                enemy.Damage(damage);
+                Destroy(gameObject);
+            }
+            else
+            {
+                _didHit = false;
+            }
         }
         else if (other.gameObject.CompareTag("Wall") && other.gameObject.layer != 4)
         {

@@ -15,6 +15,9 @@ TagManager:
   - Track
   - TowerHitbox
   - Item
+  - UI Component
+  - Radius
+  - TowerUpgradeShop
   layers:
   - Default
   - TransparentFX

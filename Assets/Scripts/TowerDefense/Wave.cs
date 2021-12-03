@@ -11,7 +11,6 @@ public class Wave : MonoBehaviour
     private Vector2 _spawnLocation;
     [NonSerialized] public int WaveNumber;
     private int _currentRound = 0;
-    [NonSerialized] public Text RoundCounter;
     private EventManager _eventManager;
     private WaveData _waveData;
     
@@ -19,11 +18,10 @@ public class Wave : MonoBehaviour
     {
         _eventManager = gameObject.GetComponent<EventManager>();
         _waveData = _eventManager.transform.GetChild(0).GetComponent<WaveData>();
-        RoundCounter = _eventManager.roundCounter.GetComponent<Text>();
         WaveNumber = _eventManager.waveNumber;
         SetWaveRounds();
         _spawnLocation = _eventManager.enemySpawner.transform.position;
-        RoundCounter.text = "Round 1 / " + rounds.Count;
+        _eventManager.RoundCounter.text = "Round 1 / " + rounds.Count;
     }
 
     void FixedUpdate()
@@ -41,25 +39,30 @@ public class Wave : MonoBehaviour
         List<EnemyTypes.EnemyType> roundEnemies = rounds[roundIndex].Enemies;
         for (int i = 0; i < roundEnemies.Count; i++)
         {
-            GameObject newTowerEnemy;
             if (roundEnemies[i] == EnemyTypes.EnemyType.Green)
             {
-                newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
+                GameObject newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
+                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+                yield return new WaitForSeconds(0.2f);
             }
             else if (roundEnemies[i] == EnemyTypes.EnemyType.Blue)
             {
-                newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
+                GameObject newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
+                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+                yield return new WaitForSeconds(0.5f);
             }
             else if (roundEnemies[i] == EnemyTypes.EnemyType.Purple)
             {
-                newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
+                GameObject newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
+                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+                yield return new WaitForSeconds(0.7f);
             }
             else
             {
-                newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
+                GameObject newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
+                newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
+                yield return new WaitForSeconds(1f);
             }
-            newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-            yield return new WaitForSeconds(0.5f);
         }
         
         while (rounds[_currentRound].EnemiesAlive.Count > 0)
@@ -72,11 +75,13 @@ public class Wave : MonoBehaviour
         _currentRound++;
         if (_currentRound < rounds.Count)
         {
-            RoundCounter.text = "Round " + (_currentRound + 1) + " / " + rounds.Count;
+            _eventManager.RoundCounter.text = "Round " + (_currentRound + 1) + " / " + rounds.Count;
         }
         else
         {
-            RoundCounter.text = "Wave Complete!";
+            _eventManager.RoundCounter.text = "Wave Complete!";
+            _eventManager.IsOver = true;
+            _eventManager.waveNumber++;
         }
 
     }
@@ -85,17 +90,16 @@ public class Wave : MonoBehaviour
         List<WaveData.RoundData> enemies = new List<WaveData.RoundData>();
         if (WaveNumber == 1)
         {
-            Debug.Log(_waveData.wave1 );
             enemies = _waveData.wave1;
         }
-        // else if (WaveNumber == 2)
-        // {
-        //     enemies = _waveData.wave2;
-        // }
-        // else if (WaveNumber == 3)
-        // {
-        //     enemies = _waveData.wave3;
-        // }
+        else if (WaveNumber == 2)
+        {
+            enemies = _waveData.wave2;
+        }
+        else if (WaveNumber == 3)
+        {
+            enemies = _waveData.wave3;
+        }
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -112,7 +116,7 @@ public class Wave : MonoBehaviour
         rounds = GetComponents<Round>().ToList();
     }
 
-    public void decrementCurrentPopulation()
+    public void DecrementCurrentPopulation()
     {
         _eventManager.currentPopulation--;
         _eventManager.CurrentPopulationModified = true;

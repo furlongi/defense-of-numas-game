@@ -88,7 +88,7 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         }
         else
         {
-            vec = currentFloor.transform.position;
+            vec = currentFloor.playerSpawn.position;
         }
         vec.z = pmove.transform.position.z;
         pmove.transform.position = vec;

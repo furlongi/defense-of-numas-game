@@ -21,8 +21,8 @@ some values are changed in the inspector.
 public class EnemyChase : MonoBehaviour
 {
     public BaseEnemy enemy;
-    public Transform playerLoc;
     
+    private Transform _playerLoc;
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private SpriteRenderer _sprite;
@@ -35,7 +35,7 @@ public class EnemyChase : MonoBehaviour
 
     private void Start()
     {
-        playerLoc = GameObject.FindWithTag("Player").transform;
+        _playerLoc = GameObject.FindWithTag("Player").transform;
         
         if (enemy == null) {
             Debug.Log("No Enemy is selected in editor.");
@@ -50,7 +50,7 @@ public class EnemyChase : MonoBehaviour
     
     private void Update()
     {
-        var playerPos = playerLoc.position;
+        var playerPos = _playerLoc.position;
         var curPos = transform.position;
         var distance = Vector2.Distance(playerPos, curPos);
 
