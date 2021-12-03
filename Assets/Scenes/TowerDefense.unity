@@ -924,6 +924,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave1:
   - roundData:
+    - enemyType: 0
+      number: 6
+  - roundData:
+    - enemyType: 1
+      number: 2
+    - enemyType: 0
+      number: 6
+  - roundData:
+    - enemyType: 1
+      number: 5
+    - enemyType: 0
+      number: 6
+  wave2:
+  - roundData:
+    - enemyType: 1
+      number: 3
+  - roundData:
     - enemyType: 3
       number: 2
     - enemyType: 2
@@ -936,13 +953,6 @@ MonoBehaviour:
       number: 20
     - enemyType: 1
       number: 20
-  wave2:
-  - roundData:
-    - enemyType: 1
-      number: 3
-  - roundData:
-    - enemyType: 1
-      number: 0
   wave3: []
 --- !u!1001 &567502508
 PrefabInstance:
@@ -1096,6 +1106,10 @@ PrefabInstance:
     - target: {fileID: 5263697593488796878, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: bulletSpeed
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263697593488796878, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
+      propertyPath: upgradeTier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6124068661212637788, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: m_RootOrder

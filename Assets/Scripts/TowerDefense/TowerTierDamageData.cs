@@ -6,26 +6,26 @@ public static class TowerTierDamageData
         
     public static float[] LightTower =
     {
-        1f,    // Initial purchase
-        2f,    // Tier 1
-        3.5f,    // Tier 2
-        5.5f,    // Tier 3
+        12f,    // Initial purchase
+        24f,    // Tier 1
+        36f,    // Tier 2
+        48f,    // Tier 3
     };
     
-    public static int[] MediumTower =
+    public static float[] MediumTower =
     {
-        2,    // Initial purchase
-        4,    // Tier 1
-        7,    // Tier 2
-        10,    // Tier 3
+        10f,    // Initial purchase
+        20f,    // Tier 1
+        30f,    // Tier 2
+        40f,    // Tier 3
     };
 
-    public static int[] HeavyTower =
+    public static float[] HeavyTower =
     {
-        4,    // Initial purchase
-        7,    // Tier 1
-        12,    // Tier 2
-        16,    // Tier 3
+        7f,    // Initial purchase
+        14f,    // Tier 1
+        21f,    // Tier 2
+        28f,    // Tier 3
     };
 
 }

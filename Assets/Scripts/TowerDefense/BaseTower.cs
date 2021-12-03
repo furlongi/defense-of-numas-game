@@ -46,6 +46,7 @@ public class BaseTower : MonoBehaviour
         _passedTime = (1 / attackSpeed) + 1;
         CircleCollider2D col = GetComponentInChildren<TowerRadius>().gameObject.AddComponent<CircleCollider2D>();
         col.isTrigger = true;
+        RefreshTierData();
     }
     void FixedUpdate()
     {
@@ -162,6 +163,7 @@ public class BaseTower : MonoBehaviour
         if (towerType == TowerType.Heavy)
         {
             _damage = TowerTierDamageData.HeavyTower[_upgradeTier];
+            Debug.Log(_damage);
         }
         else if (towerType == TowerType.Normal)
         {

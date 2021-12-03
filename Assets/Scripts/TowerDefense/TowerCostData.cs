@@ -16,9 +16,9 @@
         public static int[][] MediumTower =
         {
             new int[] {0, 0, 0, 0},    // Initial purchase
-            new int[] {0, 0, 0, 0},   // Tier 1
-            new int[] {0, 0, 0, 0},  // Tier 2
-            new int[] {0, 0, 0, 0},  // Tier 3
+            new int[] {0, 0, 0, 0},    // Tier 1
+            new int[] {0, 0, 0, 0},    // Tier 2
+            new int[] {0, 0, 0, 0},    // Tier 3
         };
         
         public static int[][] HeavyTower =
