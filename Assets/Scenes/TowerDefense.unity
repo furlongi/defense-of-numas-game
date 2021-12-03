@@ -936,6 +936,42 @@ MonoBehaviour:
       number: 5
     - enemyType: 0
       number: 6
+  - roundData:
+    - enemyType: 1
+      number: 6
+    - enemyType: 0
+      number: 10
+  - roundData:
+    - enemyType: 1
+      number: 8
+    - enemyType: 0
+      number: 10
+    - enemyType: 1
+      number: 10
+  - roundData:
+    - enemyType: 1
+      number: 8
+    - enemyType: 0
+      number: 10
+    - enemyType: 1
+      number: 15
+    - enemyType: 0
+      number: 5
+  - roundData:
+    - enemyType: 1
+      number: 12
+    - enemyType: 0
+      number: 25
+  - roundData:
+    - enemyType: 2
+      number: 2
+    - enemyType: 1
+      number: 20
+  - roundData:
+    - enemyType: 2
+      number: 5
+    - enemyType: 1
+      number: 25
   wave2:
   - roundData:
     - enemyType: 1
