@@ -43,25 +43,25 @@ public class Wave : MonoBehaviour
             {
                 GameObject newTowerEnemy = Instantiate(_eventManager.greenTowerEnemy, _spawnLocation, Quaternion.identity);
                 newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
             else if (roundEnemies[i] == EnemyTypes.EnemyType.Blue)
             {
                 GameObject newTowerEnemy = Instantiate(_eventManager.blueTowerEnemy, _spawnLocation, Quaternion.identity);
                 newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
             else if (roundEnemies[i] == EnemyTypes.EnemyType.Purple)
             {
                 GameObject newTowerEnemy = Instantiate(_eventManager.purpleTowerEnemy, _spawnLocation, Quaternion.identity);
                 newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.7f);
             }
             else
             {
                 GameObject newTowerEnemy = Instantiate(_eventManager.redTowerEnemy, _spawnLocation, Quaternion.identity);
                 newTowerEnemy.GetComponent<TowerEnemy>().Round = rounds[_currentRound];
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
             }
         }
         

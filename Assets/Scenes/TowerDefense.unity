@@ -872,7 +872,13 @@ MonoBehaviour:
     - enemyType: 2
       number: 3
     - enemyType: 0
-      number: 10
+      number: 20
+    - enemyType: 3
+      number: 30
+    - enemyType: 2
+      number: 20
+    - enemyType: 1
+      number: 20
   wave2:
   - roundData:
     - enemyType: 1
