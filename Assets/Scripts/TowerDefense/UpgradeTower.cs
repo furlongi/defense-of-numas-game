@@ -13,55 +13,65 @@ public class UpgradeTower : MonoBehaviour
     private BaseTower _tower;
 
     private Button _upgradeButton;
-    private InventoryTracker _tracker; 
-
+    private InventoryTracker _tracker;
     
+    private int _upgradeCostGreen;
+    private int _upgradeCostBlue;
+    private int _upgradeCostPurple;
+    private int _upgradeCostRed;
+    private bool _canPurchase;
+
+    private Text _isMaxed;
     void Start()
     {
         _upgradeButton = GetComponentInChildren<Button>();
         _upgradeButton.onClick.AddListener(PurchaseUpgrade);
-        
+        _isMaxed = transform.GetChild(0).GetComponent<Text>();
+        _isMaxed.gameObject.SetActive(false);
         _tracker = GetComponentInChildren<InventoryTracker>();
         gameObject.SetActive(false);
     }
 
     private void PurchaseUpgrade()
     {
-        int playerGreenCount = playerInventory.greenGem;
-        int playerBlueCount = playerInventory.blueGem;
-        int playerPurpleCount = playerInventory.purpleGem;
-        int playerRedCount = playerInventory.redGem;
-        
-        int costGreenCount = Int32.Parse(_tracker.GreenCount.text);
-        int costBlueCount = Int32.Parse(_tracker.BlueCount.text);
-        int costPurpleCount = Int32.Parse(_tracker.PurpleCount.text);
-        int costRedCount = Int32.Parse(_tracker.RedCount.text);
-        
-        bool canPurchase = (playerGreenCount >= costGreenCount) && (playerBlueCount >= costBlueCount) &&
-                           (playerPurpleCount >= costPurpleCount) && (playerRedCount >= costRedCount);
-
-        if (canPurchase)
-        {
-            playerInventory.GemTransaction(new int[] {costGreenCount, costBlueCount, costPurpleCount, costRedCount});
-            _tower.UpgradeTower();
-        }
+        playerInventory.GemTransaction(new int[] {_upgradeCostGreen, _upgradeCostBlue, _upgradeCostPurple, _upgradeCostRed});
+        _tower.UpgradeTower();
+        RefreshComponent();
     }
 
     public void SetTower(BaseTower tower)
     {
+        Debug.Log("Updating");
         _tower = tower;
-        if (_tower.GetTier() >= TowerCostData.MAXTier)
+        RefreshComponent();
+    }
+    public void RefreshComponent() {
+        
+    if (_tower.GetTier() >= TowerCostData.MAXTier)
         {
-            _upgradeButton.enabled = false;
-            _upgradeButton.GetComponentInChildren<Text>().text = "Maxed!";
-            _tracker.GreenCount.text = "0";
-            _tracker.BlueCount.text = "0";
-            _tracker.PurpleCount.text = "0";
-            _tracker.RedCount.text = "0";
+            _upgradeButton.gameObject.SetActive(false);
+            _tracker.gameObject.SetActive(false);
+            _isMaxed.gameObject.SetActive(true);
         }
         else
         {
+            _upgradeButton.gameObject.SetActive(true);
+            _tracker.gameObject.SetActive(true);
+            _isMaxed.gameObject.SetActive(false);
+            Text text = _upgradeButton.GetComponentInChildren<Text>();
             SetUpgradeCost();
+            if (!_canPurchase)
+            {
+                _upgradeButton.interactable = false;
+                text.text = "Insufficient Funds";
+                text.fontStyle = FontStyle.Bold;
+            }
+            else
+            {
+                _upgradeButton.interactable = true;
+                text.text = "Upgrade Tower";
+                text.fontStyle = FontStyle.Normal;
+            }
         }
     }
 
@@ -70,24 +80,32 @@ public class UpgradeTower : MonoBehaviour
 
         if (_tower.towerType == TowerType.Heavy)
         {
-            _tracker.GreenCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][0].ToString();
-            _tracker.BlueCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][1].ToString();
-            _tracker.PurpleCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][2].ToString();
-            _tracker.RedCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][3].ToString();
+            _upgradeCostGreen = TowerCostData.HeavyTower[_tower.GetTier() + 1][0];
+            _upgradeCostBlue = TowerCostData.HeavyTower[_tower.GetTier() + 1][1];
+            _upgradeCostPurple = TowerCostData.HeavyTower[_tower.GetTier() + 1][2];
+            _upgradeCostRed = TowerCostData.HeavyTower[_tower.GetTier() + 1][3];
         }
         else if (_tower.towerType == TowerType.Normal)
         {
-            _tracker.GreenCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][0].ToString();
-            _tracker.BlueCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][1].ToString();
-            _tracker.PurpleCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][2].ToString();
-            _tracker.RedCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][3].ToString();
+            _upgradeCostGreen = TowerCostData.MediumTower[_tower.GetTier() + 1][0];
+            _upgradeCostBlue = TowerCostData.MediumTower[_tower.GetTier() + 1][1];
+            _upgradeCostPurple = TowerCostData.MediumTower[_tower.GetTier() + 1][2];
+            _upgradeCostRed = TowerCostData.MediumTower[_tower.GetTier() + 1][3];
         }
         else if (_tower.towerType == TowerType.Sniper)
         {
-            _tracker.GreenCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][0].ToString();
-            _tracker.BlueCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][1].ToString();
-            _tracker.PurpleCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][2].ToString();
-            _tracker.RedCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][3].ToString();
+            _upgradeCostGreen = TowerCostData.LightTower[_tower.GetTier() + 1][0];
+            _upgradeCostBlue = TowerCostData.LightTower[_tower.GetTier() + 1][1];
+            _upgradeCostPurple = TowerCostData.LightTower[_tower.GetTier() + 1][2];
+            _upgradeCostRed = TowerCostData.LightTower[_tower.GetTier() + 1][3];
         }
+
+        _tracker.GreenCount.text = _upgradeCostGreen.ToString();
+        _tracker.BlueCount.text = _upgradeCostBlue.ToString();
+        _tracker.PurpleCount.text = _upgradeCostPurple.ToString();
+        _tracker.RedCount.text = _upgradeCostRed.ToString();
+
+        _canPurchase = _upgradeCostGreen <= playerInventory.greenGem && _upgradeCostBlue <= playerInventory.blueGem &&
+                       _upgradeCostPurple <= playerInventory.purpleGem && _upgradeCostRed <= playerInventory.redGem;
     }
 }

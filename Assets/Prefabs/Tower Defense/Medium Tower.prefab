@@ -193,11 +193,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0052390eda32440a2cba82fe5f1e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4240998960776602933, guid: 25c4dfb74b776d44b9d5ef5f74ad090d, type: 3}
+  projectilePrefab: {fileID: 7373566965819550336, guid: 34715de73dfd4d94b8137cc33cfbf6d9, type: 3}
   towerType: 1
+  tierZeroTower: {fileID: 21300000, guid: ccbc82394c47ec14db1b602d8ec712b9, type: 3}
+  tierOneTower: {fileID: 21300000, guid: 7373e291820f04f40ad8ab2010b2990f, type: 3}
+  tierTwoTower: {fileID: 21300000, guid: f6ad32ab98cd04d45a0ad1cee2d0e467, type: 3}
+  tierThreeTower: {fileID: 21300000, guid: ef93ff9f5f334a140a6dd0b5f413485a, type: 3}
+  greenLaser: {fileID: 21300000, guid: 93f124789fa39244c97d132641e53b6b, type: 3}
+  blueLaser: {fileID: 21300000, guid: 502468ceee835e84bacc1b5761940a58, type: 3}
+  purpleLaser: {fileID: 21300000, guid: fcffcf38a9012f64f9a3a08dd0de36b9, type: 3}
+  redLaser: {fileID: 21300000, guid: 105d82feb2855a94e8961e95a170dfa8, type: 3}
   attackSpeed: 3
   projectileSpeed: 40
-  projectileDamage: 1
 --- !u!50 &6042533608088371118
 Rigidbody2D:
   serializedVersion: 4

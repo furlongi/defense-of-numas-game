@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TowerDefense;
 using UnityEngine;
 
 
@@ -7,14 +8,24 @@ public class BaseTower : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public TowerType towerType;
+
+    public Sprite tierZeroTower;
+    public Sprite tierOneTower;
+    public Sprite tierTwoTower;
+    public Sprite tierThreeTower;
+
+    public Sprite greenLaser;
+    public Sprite blueLaser;
+    public Sprite purpleLaser;
+    public Sprite redLaser;
     
     public float attackSpeed;
     public float projectileSpeed;
-    public float projectileDamage;
     
     private float _passedTime = 0f;
     private Transform _firePoint ;
-
+    private float _damage;
+    
     [NonSerialized] public List<TowerEnemy> Targets = new List<TowerEnemy>();
 
     private int _upgradeTier = 0;
@@ -26,8 +37,8 @@ public class BaseTower : MonoBehaviour
         _eventManager = GameObject.Find("Tower Event Manager").GetComponent<EventManager>();
         _eventManager.TowerShop.SetActive(false);
 
-        _eventManager.TowerUpgradeShop.gameObject.SetActive(true);
         _eventManager.TowerUpgradeShop.SetTower(this);
+        _eventManager.TowerUpgradeShop.gameObject.SetActive(true);
         
         _eventManager.TowerRadiuses.Add(radiusRenderer);
         
@@ -90,7 +101,7 @@ public class BaseTower : MonoBehaviour
         Bullet projectile = newObj.GetComponent<Bullet>();
 
         projectile.bulletForce = projectileSpeed;
-        projectile.damage = projectileDamage;
+        projectile.damage = _damage;
         projectile.direction = direction;
     }
 
@@ -101,6 +112,63 @@ public class BaseTower : MonoBehaviour
     
     public void UpgradeTower()
     {
-        _upgradeTier++;
+        Debug.Log("This happened");
+        if (_upgradeTier < TowerCostData.MAXTier)
+        {
+            _upgradeTier++;
+            RefreshTierData();
+        }
+        else
+        {
+            Debug.Log("Already at max tier.");
+        }
     }
+
+    public void RefreshTierData()
+    {
+        if (_upgradeTier == 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = tierZeroTower;
+            projectilePrefab.GetComponent<SpriteRenderer>().sprite = greenLaser;
+        }
+        if (_upgradeTier == 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = tierOneTower;
+            projectilePrefab.GetComponent<SpriteRenderer>().sprite = blueLaser;
+        }
+        else if (_upgradeTier == 2)
+        {
+            GetComponent<SpriteRenderer>().sprite = tierTwoTower;
+            projectilePrefab.GetComponent<SpriteRenderer>().sprite = purpleLaser;
+        }
+        else if (_upgradeTier == 3)
+        {
+            GetComponent<SpriteRenderer>().sprite = tierThreeTower;
+            projectilePrefab.GetComponent<SpriteRenderer>().sprite = redLaser;
+        }
+
+        if (towerType == TowerType.Heavy)
+        {
+            _damage = TowerTierDamageData.HeavyTower[_upgradeTier];
+        }
+        else if (towerType == TowerType.Normal)
+        {
+            _damage = TowerTierDamageData.MediumTower[_upgradeTier];
+        }
+        else if (towerType == TowerType.Sniper)
+        {
+            _damage = TowerTierDamageData.LightTower[_upgradeTier];
+        }
+    }
+
+    // SHOULD ONLY BE USABLE BY EVENTMANAGER WHEN SPAWNING SAVED TOWERS
+    public void SetTier(int tier)
+    {
+        if (tier <= TowerCostData.MAXTier)
+        {
+            _upgradeTier = tier;
+            RefreshTierData();
+        }
+    }
+    
 }

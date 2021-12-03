@@ -115,6 +115,12 @@ public class EventManager : MonoBehaviour
         
         for (int i = 0; i < hits.Length; i++)
         {
+            if (hits[i].transform.CompareTag("TowerUpgradeShop"))
+            {
+                CancelPopups();
+                TowerUpgradeShop.gameObject.SetActive(true);
+                shouldCancelPopups = false;
+            }
             if (hits[i].transform.CompareTag("TowerShop"))
             {
                 CancelPopups();
@@ -161,16 +167,23 @@ public class EventManager : MonoBehaviour
                 foreach (var towerData in tList.towerList)
                 {
                     Vector3 loc = new Vector3(towerData.location[0], towerData.location[1], towerData.location[2]);
+                    BaseTower t;
                     switch (towerData.type)
                     {
                         case (int)TowerType.Heavy:
-                            towerList.AddTower(Instantiate(HeavyTower, loc, Quaternion.identity));
+                            t = Instantiate(HeavyTower, loc, Quaternion.identity);
+                            t.SetTier(towerData.tier);
+                            towerList.AddTower(t);
                             break;
                         case (int)TowerType.Normal:
-                            towerList.AddTower(Instantiate(NormalTower, loc, Quaternion.identity));
+                            t = Instantiate(NormalTower, loc, Quaternion.identity);
+                            t.SetTier(towerData.tier);
+                            towerList.AddTower(t);
                             break;
                         case (int)TowerType.Sniper:
-                            towerList.AddTower(Instantiate(SniperTower, loc, Quaternion.identity));
+                            t = Instantiate(SniperTower, loc, Quaternion.identity);
+                            t.SetTier(towerData.tier);
+                            towerList.AddTower(t);                            
                             break;
                     }
                 }
