@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TowerDefense;
 
 public class TowerShop : MonoBehaviour
 {
@@ -18,8 +19,14 @@ public class TowerShop : MonoBehaviour
         {
             playerInventory = GameObject.Find("Player Inventory").GetComponent<InventoryManager>();
         }
+
+        SetTowerCosts();
     }
 
+    private void SetTowerCosts()
+    {
+        
+    }
     public bool PurchaseTower(InventoryTracker itemCost)
     {
         int playerGreenCount = playerInventory.greenGem;

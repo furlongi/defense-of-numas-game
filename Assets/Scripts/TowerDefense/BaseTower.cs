@@ -10,7 +10,8 @@ public class BaseTower : MonoBehaviour
     
     public float attackSpeed;
     public float projectileSpeed;
-
+    public float projectileDamage;
+    
     private float _passedTime = 0f;
     private Transform _firePoint ;
 
@@ -73,7 +74,7 @@ public class BaseTower : MonoBehaviour
         Bullet projectile = newObj.GetComponent<Bullet>();
         
         projectile.bulletForce = projectileSpeed;
-        //projectile.damage = projectileDamage;
+        projectile.damage = projectileDamage;
         projectile.direction = direction;
     }
 }
