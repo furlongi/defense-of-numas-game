@@ -5969,6 +5969,7 @@ MonoBehaviour:
   shooting: {fileID: 165914879}
   inventory: {fileID: 1478998691}
   positionLoad: {fileID: 669322348}
+  towerManager: {fileID: 0}
 --- !u!4 &827625983
 Transform:
   m_ObjectHideFlags: 0
@@ -7212,7 +7213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: redGem
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: BlueGem
@@ -7224,7 +7225,7 @@ PrefabInstance:
       objectReference: {fileID: 718974568}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: blueGem
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: tracker
@@ -7236,7 +7237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: greenGem
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: PurpleGem
@@ -7244,7 +7245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: purpleGem
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 143677212510544090, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: healthBar

@@ -17,12 +17,18 @@ public class BaseTower : MonoBehaviour
 
     [NonSerialized] public List<TowerEnemy> Targets = new List<TowerEnemy>();
 
+    private int _upgradeTier = 0;
     private EventManager _eventManager;
 
     void Start()
     {
         Renderer radiusRenderer = transform.GetChild(0).GetComponent<Renderer>();
         _eventManager = GameObject.Find("Tower Event Manager").GetComponent<EventManager>();
+        _eventManager.TowerShop.SetActive(false);
+
+        _eventManager.TowerUpgradeShop.gameObject.SetActive(true);
+        _eventManager.TowerUpgradeShop.SetTower(this);
+        
         _eventManager.TowerRadiuses.Add(radiusRenderer);
         
         _firePoint = transform;
@@ -66,15 +72,35 @@ public class BaseTower : MonoBehaviour
     private void Fire(Vector3 targetPos)
     {
         Vector3 projectileFirePoint = _firePoint.position;
+        projectileFirePoint.z -= 1;
         Vector3 direction = targetPos - projectileFirePoint;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotationAngle = Quaternion.AngleAxis (angle, Vector3.forward);
         GameObject newObj = Instantiate(projectilePrefab, projectileFirePoint, rotationAngle);
+
+        if (towerType == TowerType.Normal)
+        {
+            newObj.transform.localScale *= 2f;
+        }
+        else if (towerType == TowerType.Sniper)
+        {
+            newObj.transform.localScale *= 4f;
+        }
         direction.Normalize();
         Bullet projectile = newObj.GetComponent<Bullet>();
-        
+
         projectile.bulletForce = projectileSpeed;
         projectile.damage = projectileDamage;
         projectile.direction = direction;
+    }
+
+    public int GetTier()
+    {
+        return _upgradeTier;
+    }
+    
+    public void UpgradeTower()
+    {
+        _upgradeTier++;
     }
 }

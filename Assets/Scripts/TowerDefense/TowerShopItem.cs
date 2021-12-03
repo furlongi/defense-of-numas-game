@@ -37,17 +37,17 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IDr
     private void SetItemCost()
     {
         int[] purchaseCost;
-        if (towerPrefab.name.Contains("Heavy"))
+        if (towerPrefab.towerType == TowerType.Heavy)
         {
-            purchaseCost = TowerCosts.HeavyTower[0];
+            purchaseCost = TowerCostData.HeavyTower[0];
         }
-        else if (towerPrefab.name.Contains("Medium"))
+        else if (towerPrefab.towerType == TowerType.Normal)
         {
-            purchaseCost = TowerCosts.MediumTower[0];
+            purchaseCost = TowerCostData.MediumTower[0];
         }
-        else if (towerPrefab.name.Contains("Light"))
+        else if (towerPrefab.towerType == TowerType.Sniper)
         {
-            purchaseCost = TowerCosts.LightTower[0];
+            purchaseCost = TowerCostData.LightTower[0];
         }
         else
         {

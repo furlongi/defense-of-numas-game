@@ -21,6 +21,7 @@ public class EventManager : MonoBehaviour
     [NonSerialized] public Text LivesCounter;
     [NonSerialized] public GameObject TowerDefenseUI;
     [NonSerialized] public GameObject TowerShop;
+    [NonSerialized] public UpgradeTower TowerUpgradeShop;
     [NonSerialized] public Camera Camera;
     [NonSerialized] public GameObject sceneExiter;
     [NonSerialized] public bool IsOver;
@@ -46,6 +47,8 @@ public class EventManager : MonoBehaviour
         RoundCounter = TowerDefenseUI.transform.Find("Round Counter").GetComponent<Text>();
         LivesCounter = TowerDefenseUI.transform.Find("Lives Counter").GetComponent<Text>();
         TowerShop = TowerDefenseUI.transform.Find("Tower Shop").gameObject;
+        TowerUpgradeShop = TowerDefenseUI.transform.Find("Tower Upgrade Shop").GetComponent<UpgradeTower>();
+        
         sceneExiter = GameObject.Find("Scene Exiter");
         IsOver = false;
         _wave = gameObject.AddComponent<Wave>();
@@ -53,6 +56,7 @@ public class EventManager : MonoBehaviour
         _wave.WaveNumber = waveNumber;
 
         LivesCounter.text = "Lives: " + currentPopulation + " / " + totalPopulation;
+        
     }
 
     private void Start()
@@ -69,14 +73,9 @@ public class EventManager : MonoBehaviour
             if (currentPopulation <= 0 && !IsOver)
             {
                 IsOver = true;
+                RoundCounter.text = "Game Over...";
+                EndWave();
             }
-        }
-
-        if (IsOver && currentPopulation <= 0 && !RoundCounter.text.Contains("Game Over"))
-        {
-            RoundCounter.text = "Game Over...";
-            
-            EndWave();
         }
 
         if (!IsOver && sceneExiter.activeSelf)
@@ -116,18 +115,22 @@ public class EventManager : MonoBehaviour
         
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].transform.CompareTag("TowerHitbox"))
+            if (hits[i].transform.CompareTag("TowerShop"))
             {
                 CancelPopups();
-                hits[i].transform.parent.Find("Radius").GetComponent<Renderer>().enabled = true;
+                TowerShop.SetActive(true);
                 shouldCancelPopups = false;
             }
-            else if (hits[i].transform.CompareTag("TowerShop"))
+            else if (hits[i].transform.CompareTag("TowerHitbox"))
             {
+                Transform parentTransform = hits[i].transform.parent;
+                CancelPopups();
+                parentTransform.Find("Radius").GetComponent<Renderer>().enabled = true;
+                TowerUpgradeShop.SetTower(parentTransform.gameObject.GetComponent<BaseTower>());
+                TowerUpgradeShop.gameObject.SetActive(true);
                 shouldCancelPopups = false;
             }
         }
-
         if (shouldCancelPopups)
         {
             CancelPopups();
@@ -137,6 +140,7 @@ public class EventManager : MonoBehaviour
     public void CancelPopups()
     {
         TowerShop.SetActive(false);
+        TowerUpgradeShop.gameObject.SetActive(false);
         for (int i = 0; i < TowerRadiuses.Count; i++)
         {
             TowerRadiuses[i].enabled = false;

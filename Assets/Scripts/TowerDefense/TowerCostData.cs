@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TowerCostData : MonoBehaviour
+﻿namespace TowerDefense
 {
-    // Start is called before the first frame update
-    void Start()
+    public static class TowerCostData
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        public static int MAXTier = 3;
         
+        public static int[][] LightTower =
+        {
+            new int[] {0, 0, 0, 0},    // Initial purchase
+            new int[] {30, 15, 5, 0},   // Tier 1
+            new int[] {40, 25, 10, 5},  // Tier 2
+            new int[] {50, 30, 15, 7},  // Tier 3
+        };
+
+        public static int[][] MediumTower =
+        {
+            new int[] {0, 0, 0, 0},    // Initial purchase
+            new int[] {30, 15, 5, 0},   // Tier 1
+            new int[] {40, 25, 10, 5},  // Tier 2
+            new int[] {50, 30, 15, 7},  // Tier 3
+        };
+        
+        public static int[][] HeavyTower =
+        {
+            new int[] {0, 0, 0, 0},    // Initial purchase
+            new int[] {30, 15, 5, 0},   // Tier 1
+            new int[] {40, 25, 10, 5},  // Tier 2
+            new int[] {50, 30, 15, 7},  // Tier 3
+        };
+
     }
 }

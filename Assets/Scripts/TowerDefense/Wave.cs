@@ -80,6 +80,7 @@ public class Wave : MonoBehaviour
         else
         {
             _eventManager.RoundCounter.text = "Wave Complete!";
+            _eventManager.IsOver = true;
             _eventManager.waveNumber++;
         }
 

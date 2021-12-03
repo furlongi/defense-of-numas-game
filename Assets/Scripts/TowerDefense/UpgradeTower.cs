@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +9,8 @@ using UnityEngine.UI;
 public class UpgradeTower : MonoBehaviour
 {
     public InventoryManager playerInventory;
-    //public TowerCostData towerCostData;
     
-    [NonSerialized] public BaseTower Tower;
+    private BaseTower _tower;
 
     private Button _upgradeButton;
     private InventoryTracker _tracker; 
@@ -22,6 +22,7 @@ public class UpgradeTower : MonoBehaviour
         _upgradeButton.onClick.AddListener(PurchaseUpgrade);
         
         _tracker = GetComponentInChildren<InventoryTracker>();
+        gameObject.SetActive(false);
     }
 
     private void PurchaseUpgrade()
@@ -42,6 +43,51 @@ public class UpgradeTower : MonoBehaviour
         if (canPurchase)
         {
             playerInventory.GemTransaction(new int[] {costGreenCount, costBlueCount, costPurpleCount, costRedCount});
+            _tower.UpgradeTower();
+        }
+    }
+
+    public void SetTower(BaseTower tower)
+    {
+        _tower = tower;
+        if (_tower.GetTier() >= TowerCostData.MAXTier)
+        {
+            _upgradeButton.enabled = false;
+            _upgradeButton.GetComponentInChildren<Text>().text = "Maxed!";
+            _tracker.GreenCount.text = "0";
+            _tracker.BlueCount.text = "0";
+            _tracker.PurpleCount.text = "0";
+            _tracker.RedCount.text = "0";
+        }
+        else
+        {
+            SetUpgradeCost();
+        }
+    }
+
+    private void SetUpgradeCost()
+    {
+
+        if (_tower.towerType == TowerType.Heavy)
+        {
+            _tracker.GreenCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][0].ToString();
+            _tracker.BlueCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][1].ToString();
+            _tracker.PurpleCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][2].ToString();
+            _tracker.RedCount.text = TowerCostData.HeavyTower[_tower.GetTier() + 1][3].ToString();
+        }
+        else if (_tower.towerType == TowerType.Normal)
+        {
+            _tracker.GreenCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][0].ToString();
+            _tracker.BlueCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][1].ToString();
+            _tracker.PurpleCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][2].ToString();
+            _tracker.RedCount.text = TowerCostData.MediumTower[_tower.GetTier() + 1][3].ToString();
+        }
+        else if (_tower.towerType == TowerType.Sniper)
+        {
+            _tracker.GreenCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][0].ToString();
+            _tracker.BlueCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][1].ToString();
+            _tracker.PurpleCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][2].ToString();
+            _tracker.RedCount.text = TowerCostData.LightTower[_tower.GetTier() + 1][3].ToString();
         }
     }
 }
