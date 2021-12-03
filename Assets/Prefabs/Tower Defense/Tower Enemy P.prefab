@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   defense: 0
-  speed: 2
+  speed: 4
   attack: 1
   stopRange: 1.2
   vision: -1

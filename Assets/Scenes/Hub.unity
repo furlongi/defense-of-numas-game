@@ -5969,6 +5969,7 @@ MonoBehaviour:
   shooting: {fileID: 165914879}
   inventory: {fileID: 1478998691}
   positionLoad: {fileID: 669322348}
+  towerManager: {fileID: 0}
 --- !u!4 &827625983
 Transform:
   m_ObjectHideFlags: 0

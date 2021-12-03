@@ -21,7 +21,7 @@ public class TowerDataList
             return;
         }
         
-        TowerData data = new TowerData(tower.transform.position, 0, tower.towerType);
+        TowerData data = new TowerData(tower.transform.position, tower.GetTier(), tower.towerType);
         towerList[cur++] = data;
     }
     

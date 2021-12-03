@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TowerDefense;
+using UnityEditor;
+
 
 public class TowerShopItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IDropHandler
 {
@@ -24,10 +28,37 @@ public class TowerShopItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IDr
         _rectTransform = GetComponent<RectTransform>();
         _towerShop = GetComponentInParent<TowerShop>();
         ItemCost = GetComponentInChildren<InventoryTracker>();
+        SetItemCost();
+        
         _spriteOriginalColor = towerPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
     }
 
 
+    private void SetItemCost()
+    {
+        int[] purchaseCost;
+        if (towerPrefab.towerType == TowerType.Heavy)
+        {
+            purchaseCost = TowerCostData.HeavyTower[0];
+        }
+        else if (towerPrefab.towerType == TowerType.Normal)
+        {
+            purchaseCost = TowerCostData.MediumTower[0];
+        }
+        else if (towerPrefab.towerType == TowerType.Sniper)
+        {
+            purchaseCost = TowerCostData.LightTower[0];
+        }
+        else
+        {
+            purchaseCost = new int[] {0, 0, 0, 0};
+        }
+        ItemCost.GreenCount.text = purchaseCost[0].ToString();
+        ItemCost.BlueCount.text = purchaseCost[1].ToString();
+        ItemCost.PurpleCount.text = purchaseCost[2].ToString();
+        ItemCost.RedCount.text = purchaseCost[3].ToString();
+    }
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         GameObject newShopItem = Instantiate(gameObject);
