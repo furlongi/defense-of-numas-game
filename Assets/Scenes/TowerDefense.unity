@@ -924,11 +924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave1:
   - roundData:
-    - enemyType: 2
-      number: 2
-    - enemyType: 1
-      number: 15
-  - roundData:
     - enemyType: 1
       number: 2
     - enemyType: 0
@@ -973,6 +968,11 @@ MonoBehaviour:
     - enemyType: 0
       number: 6
   - roundData:
+    - enemyType: 2
+      number: 2
+    - enemyType: 1
+      number: 15
+  - roundData:
     - enemyType: 3
       number: 2
     - enemyType: 2
@@ -980,20 +980,14 @@ MonoBehaviour:
   wave2:
   - roundData:
     - enemyType: 1
-      number: 3
-  - roundData:
-    - enemyType: 3
       number: 2
-    - enemyType: 2
-      number: 3
     - enemyType: 0
-      number: 20
-    - enemyType: 3
-      number: 30
-    - enemyType: 2
-      number: 20
+      number: 6
+  - roundData:
     - enemyType: 1
-      number: 20
+      number: 5
+    - enemyType: 0
+      number: 6
   wave3: []
 --- !u!1001 &567502508
 PrefabInstance:
