@@ -924,8 +924,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave1:
   - roundData:
-    - enemyType: 0
-      number: 6
+    - enemyType: 2
+      number: 2
+    - enemyType: 1
+      number: 15
   - roundData:
     - enemyType: 1
       number: 2
@@ -943,35 +945,38 @@ MonoBehaviour:
       number: 10
   - roundData:
     - enemyType: 1
-      number: 8
+      number: 7
     - enemyType: 0
-      number: 10
+      number: 9
     - enemyType: 1
-      number: 10
+      number: 8
   - roundData:
     - enemyType: 1
       number: 8
     - enemyType: 0
       number: 10
-    - enemyType: 1
-      number: 15
-    - enemyType: 0
-      number: 5
-  - roundData:
     - enemyType: 1
       number: 12
     - enemyType: 0
-      number: 25
+      number: 5
   - roundData:
-    - enemyType: 2
-      number: 2
     - enemyType: 1
+      number: 10
+    - enemyType: 0
       number: 20
   - roundData:
     - enemyType: 2
-      number: 5
+      number: 1
     - enemyType: 1
-      number: 25
+      number: 15
+  - roundData:
+    - enemyType: 0
+      number: 6
+  - roundData:
+    - enemyType: 3
+      number: 2
+    - enemyType: 2
+      number: 3
   wave2:
   - roundData:
     - enemyType: 1
