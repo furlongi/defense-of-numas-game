@@ -85,10 +85,6 @@ public class SceneLoader : MonoBehaviour
             player.upgradeTier = data.healthTier;
             player.UpdateHealth();
             
-            // player.transform.position = new Vector3(
-            //     data.playerPos[0],
-            //     data.playerPos[1],
-            //     data.playerPos[2]);
             inventory.LoadFromSave(data);
             
             Shooting shooter = player.GetComponentInChildren<Shooting>();

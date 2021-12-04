@@ -21,14 +21,19 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
     public Transform PromptMenuExitMine;
     public Transform ReturnPoint;
     public MineFloorUI floorUI;
-    
+
     private int _difficulty; // 0: Easy, 1: Medium, 2: Hard
+    public int _timer;
+    private IEnumerator _countdown;
     
 
     void Start()
     {
         traveresedFloors = 0;
         currentFloor = null;
+        _timer = PlayerPrefs.GetInt("Timer", 600);
+        if (_timer < 0) { _timer = 0; }
+        floorUI.UpdateTimer(_timer);
     }
 
     public void ChooseNextFloor()
@@ -39,6 +44,7 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         }
         int next = Random.Range(0, floors.Count);
         floors[next].Load(this);
+        StartTimer();
         currentFloor = floors[next];
         traveresedFloors++;
         floorUI.UpdateFloor(traveresedFloors);
@@ -57,7 +63,7 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
 
     public void UpdateDeath(BaseEnemy enemy)
     {
-        Debug.Log(enemy);
+        // Debug.Log(enemy);
         currentFloor.DecrementEnemies();
     }
 
@@ -80,6 +86,7 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         Vector3 vec;
         if (answer)
         {
+            StopTimer();
             vec = ReturnPoint.position;
             traveresedFloors = 0;
             currentFloor.ClearFloor();
@@ -93,5 +100,65 @@ public class MineManager : MonoBehaviour, IEnemyDeathUpdate
         vec.z = pmove.transform.position.z;
         pmove.transform.position = vec;
         pmove.FreePlayer();
+    }
+
+    private void StartTimer()
+    {
+        if (_countdown == null)
+        {
+            _countdown = TimerHandler(_timer);
+            StartCoroutine(_countdown);
+        }
+    }
+
+    public void StopTimer()
+    {
+        if (_countdown != null)
+        {
+            StopCoroutine(_countdown);
+            _countdown = null;
+        }
+    }
+
+    public void StoreTimer()
+    {
+        PlayerPrefs.SetInt("Timer", _timer);
+        PlayerPrefs.Save();
+    }
+
+    IEnumerator TimerHandler(int time)
+    {
+        yield return new WaitForSeconds(0.3f);
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            _timer--;
+            floorUI.UpdateTimer(_timer);
+            if (_timer <= 0)
+            {
+                floorUI.UpdateTimer(0);
+                break;
+            }
+        }
+
+        _countdown = null;
+        OutOfTime();
+    }
+
+    private void OutOfTime()
+    {
+        PlayerMovement pmove = player.GetComponent<PlayerMovement>();
+        pmove.OccupyPlayer();
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        StoreTimer();
+        floorUI.ShowOutOfTimeText();
+        StartCoroutine(TimeOutTransition());
+    }
+
+    IEnumerator TimeOutTransition()
+    {
+        yield return new WaitForSeconds(4.5f);
+        SceneLoader loader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
+        loader.LoadScene("Hub", "Mines");
     }
 }

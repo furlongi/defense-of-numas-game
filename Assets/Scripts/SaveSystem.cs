@@ -32,6 +32,7 @@ public static class SaveSystem
             FileStream stream = new FileStream(SavePath, FileMode.Open);
             PlayerData player = (PlayerData)formatter.Deserialize(stream);
             PlayerPrefs.SetInt("Wave", player.waveNumber);
+            PlayerPrefs.SetInt("Timer", player.timer);
             PlayerPrefs.Save();
             SavePersistentTower(player.towerList);
             stream.Close();

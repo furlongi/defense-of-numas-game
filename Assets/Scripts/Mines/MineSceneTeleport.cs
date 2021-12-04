@@ -1,18 +1,17 @@
 using UnityEngine;
 
-public class SceneExit : MonoBehaviour
+public class MineSceneTeleport : MonoBehaviour
 {
     public string sceneName;
     public string sceneOrigin;
-    public TowerList towerList;
+    public MineManager manager;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("PlayerPart"))
         {
-            SaveSystem.SavePersistentTower(towerList);
-            PlayerPrefs.SetInt("Timer", 600);
-            PlayerPrefs.Save();
+            manager.StopTimer();
+            manager.StoreTimer();
             SceneLoader sceneLoader = FindObjectOfType<SceneLoader>().GetComponent<SceneLoader>();
             sceneLoader.LoadScene(sceneName, sceneOrigin);
         }

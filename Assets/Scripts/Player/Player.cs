@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public InventoryManager inventory;
 
     private Animator _animator;
+    private PlayerMovement _movement;
 
     void Start()
     {
@@ -29,10 +30,14 @@ public class Player : MonoBehaviour
         }
 
         _animator = GetComponent<Animator>();
+        _movement = GetComponent<PlayerMovement>();
     }
 
     public void Damage(float damage)
     {
+        if (_movement.IsOccupied()) // Player immune while occupied
+        { return; }
+        
         float newHealth = health - damage;
         SetNewHealth( newHealth >= 0? newHealth : 0 );
         if (health <= 0)

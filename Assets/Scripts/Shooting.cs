@@ -17,6 +17,7 @@ public class Shooting : MonoBehaviour
     public int upgradeTier = 0;
 
     private SpriteRenderer _sprite;
+    private bool _occupied = false;
 
     // Assign with inspector
     public Sprite GreenLaser;
@@ -35,7 +36,7 @@ public class Shooting : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !_occupied)
         {
             Shoot();
         }
@@ -91,6 +92,18 @@ public class Shooting : MonoBehaviour
         direction.Normalize();
         
         bullet.direction = direction;
+    }
+
+    public void OccupyGun()
+    {
+        _occupied = true;
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void FreeGun()
+    {
+        _occupied = false;
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 }
 

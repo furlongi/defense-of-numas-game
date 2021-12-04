@@ -53,7 +53,7 @@ public class EnemyChasev2 : MonoBehaviour
             }
             
             Vector2 direction = ((Vector2)_path.vectorPath[_curWaypoint] - _rb.position).normalized;
-            _rb.velocity = direction * 42f * _self.speed * Time.deltaTime;
+            _rb.velocity = direction * 57f * _self.speed * Time.deltaTime;
             SpriteFlip(_rb.velocity.x);
         }
         else

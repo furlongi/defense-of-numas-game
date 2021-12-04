@@ -48,14 +48,20 @@ public class PlayerMovement : MonoBehaviour
         // Use if the player will start an interaction to prevent them from moving
     {
         _isInteracting = true;
+        transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().OccupyGun();
     }
     
     public void FreePlayer()
         // Frees player from an interaction, letting them move again
     {
         _isInteracting = false;
+        transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().FreeGun();
     }
 
+    public bool IsOccupied()
+    {
+        return _isInteracting;
+    }
 
     private void _spriteFlip(float x)
     {

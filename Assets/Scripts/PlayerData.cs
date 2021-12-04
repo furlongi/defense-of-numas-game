@@ -18,6 +18,8 @@ public class PlayerData
     public int weaponTier;
     public int waveNumber;
 
+    public int timer;
+
     public TowerData[] towerList;
     
 
@@ -35,6 +37,7 @@ public class PlayerData
         purpleGem = inv.purpleGem;
 
         waveNumber = PlayerPrefs.GetInt("Wave", 1);
+        timer = PlayerPrefs.GetInt("Timer", 600);
 
         if (tList != null)
         {
