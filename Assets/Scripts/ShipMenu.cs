@@ -19,6 +19,8 @@ public class ShipMenu : MonoBehaviour
         SaveSystem.SavePlayer(_player);
         saveNotice1.gameObject.SetActive(false);
         fader.CreatePopup(saveNotice2);
+        PlayerPrefs.SetInt("IsNewGame", 0);
+        PlayerPrefs.Save();
     }
 
     public void QuitGame()

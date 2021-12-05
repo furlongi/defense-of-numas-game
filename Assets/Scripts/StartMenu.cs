@@ -20,6 +20,7 @@ public class StartMenu : MonoBehaviour
         PlayerPrefs.SetInt("LoadFromScene", -1);
         PlayerPrefs.SetInt("Wave", 1);
         PlayerPrefs.SetInt("Timer", 600);
+        PlayerPrefs.SetInt("IsNewGame", 1);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Hub", LoadSceneMode.Single);
     }
@@ -29,6 +30,7 @@ public class StartMenu : MonoBehaviour
         if (SaveSystem.CheckIfSaveExists())
         {
             PlayerPrefs.SetInt("LoadFromScene", 0);
+            PlayerPrefs.SetInt("IsNewGame", 0);
             PlayerPrefs.Save();
             SceneManager.LoadScene("Hub", LoadSceneMode.Single);
         }

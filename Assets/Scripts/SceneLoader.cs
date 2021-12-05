@@ -99,6 +99,20 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Hub", LoadSceneMode.Single);
     }
 
+    public void LoadGameOver()
+    {
+        int isNewGame = PlayerPrefs.GetInt("IsNewGame", 1);
+        if (isNewGame == 1)
+        {
+            SceneManager.LoadScene("Start", LoadSceneMode.Single);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("LoadFromScene", 0);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Hub", LoadSceneMode.Single);
+        }
+    }
 
     public void LoadInventory()
     {
@@ -146,5 +160,7 @@ public class SceneLoader : MonoBehaviour
         PlayerPrefs.SetInt("PurpleGem", player.inventory.purpleGem);
         PlayerPrefs.SetInt("RedGem", player.inventory.redGem);
     }
+
+
     
 }

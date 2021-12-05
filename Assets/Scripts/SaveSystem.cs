@@ -69,14 +69,17 @@ public static class SaveSystem
     
     public static void SavePersistentTower(TowerData[] towerList)
     {
-        TowerDataList tlist = new TowerDataList(towerList.Length);
-        
-        foreach (var t in towerList)
+        if (towerList != null)
         {
-            tlist.AddTower(t);
-        }
+            TowerDataList tlist = new TowerDataList(towerList.Length);
         
-        File.WriteAllText(PersistentData, tlist.SaveToString());
+            foreach (var t in towerList)
+            {
+                tlist.AddTower(t);
+            }
+        
+            File.WriteAllText(PersistentData, tlist.SaveToString());
+        }
     }
 
     

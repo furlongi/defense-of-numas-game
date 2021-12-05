@@ -5824,6 +5824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 827625979}
   mineTeleporter: {fileID: 820313251}
+  tdTeleporter: {fileID: 1697396774}
   mineCollider: {fileID: 1578064200}
   player: {fileID: 1478998696}
   promptExitToTD: {fileID: 520654433}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ public class EventManager : MonoBehaviour
     public GameObject purpleTowerEnemy;
     public GameObject redTowerEnemy;
     public GameObject enemySpawner;
+    public GameOverHandler gameOverHandler;
 
     public BaseTower NormalTower;
     public BaseTower HeavyTower;
@@ -103,8 +105,10 @@ public class EventManager : MonoBehaviour
         {
             Destroy(roundsToRemove[i]);
         }
-        
+
+        gameOverHandler.HandleGameOver();
     }
+    
 
     public void HandleUserClick()
     {

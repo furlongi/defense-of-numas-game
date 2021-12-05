@@ -3,7 +3,7 @@
     <world category="hub">
         <event category="1">
             <text>
-                Our ancestors discovered these saves North of us thousands of years ago. However, rock monsters started appearing and took over our resource supply.
+                Our ancestors discovered these caves North of us thousands of years ago. However, rock monsters started appearing and took over our resource supply.
             </text>
             <text>
                 We used the caves to mine crystals filled with energy to supplement our daily lives, but living has become harder with such a short supply of the crystals.
@@ -19,7 +19,7 @@
         </event>
         <event category="3">
             <text>
-                You have kept us safe from the monster attacks so far. We are all grateful for you.
+                You kept us safe from the monster attacks so far. We are all grateful for you.
             </text>
             <text>
                 We no longer have a crystal shortage thanks to the crystals you recovered from the mines. Maybe this long battle will finally come to an end.
