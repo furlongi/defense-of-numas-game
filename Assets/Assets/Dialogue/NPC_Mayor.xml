@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
     <world category="hub">
-        <event category="default">
+        <event category="1">
             <text>
-                The monsters will be attacking soon. It is best for you to head to the caves up North and gather some materials to prepare for battle.
+                Maybe it was blind fate that brought you to our planet, but you’ve arrived in our most dire hour.
+            </text>
+            <text>
+                We have battled the rock monsters for centuries. They attack in a clockwork fashion and it is only a matter of time before they launch their next assault.
+            </text>
+            <text>
+                What's worse is that they have taken over the caves up North where we mined our crystals to fuel our weapons.
+            </text>
+            <text>
+                Worry not! It seems that they plan to launch a final attack with their remaining forces. If you can go into the caves for us and gather crystals, we can use it to upgrade your weapon and created towers to defend the village.
+            </text>
+            <text>
+                Once you do, we can refuel your ship and continue your travels! Be sure to save your progress at your ship whenever you want to take a break.
+            </text>
+        </event>
+        <event category="2">
+            <text>
+                Your help has been invaluable! Without you, we would have succumbed to that attack.
+            </text>
+            <text>
+                Unfortunately, there is news that another attack will be launched soon.
             </text>
             <text>
                 Be careful though! You may encounter some monsters while exploring those caves.
             </text>
             <text>
-                Make sure to pick up as many gems as possible. They can be used as fuel for both your ship and our Combat Towers to defend the village.
+                Continue exploring the caves and gathering crystals. The next wave of enemies may be a tough one.
+            </text>
+        </event>
+        <event category="3">
+            <text>
+                Congratulations on that glorious victory! Your skills are unparalleled.
+            </text>
+            <text>
+                However, there has been a spotting of another attack. This time it is the last of their force.
+            </text>
+            <text>
+                Prepare yourself well. This next wave of enemies will not be easy.
+            </text>
+        </event>
+        <event category="4">
+            <text>
+                I cannot begin to thank you for saving us. Without you, we would have all been wiped out by those rock monsters.
+            </text>
+            <text>
+                We can now continue rebuilding the Numa civilization to its former glory.
+            </text>
+            <text>
+                As promised, we will refuel your ship right away. It will take a bit of time to refine the crystals you collected into fuel.
+            </text>
+            <text>
+                But whenever you are ready to leave, just head to your ship.
             </text>
         </event>
     </world>

@@ -15,7 +15,7 @@ public class NpcTemplate
 public class WorldTemplate
 {
     [XmlElement (ElementName = "event")]
-    public EventTemplate EventType;
+    public List<EventTemplate> EventType;
 
     [XmlAttribute("category")]
     public string WorldName;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="hub">
+        <event category="1">
+            <text>
+                Did you know that rock monsters vary depending on their color and environment?
+            </text>
+            <text>
+                Blue and purple rock monsters are crazy fast underground. But are mysteriously slow when outside. Yet the reverse is true for green monsters.
+            </text>
+            <text>
+                Also those red rock monsters are massive! I never want to meet one.
+            </text>
+        </event>
+        <event category="4">
+            <text>
+                Thank you for protecting us. I am glad I never got to fight one of those rock monsters. It must of been touch fighting against all of them yourself huh?
+            </text>
+        </event>
+    </world>
+</root>

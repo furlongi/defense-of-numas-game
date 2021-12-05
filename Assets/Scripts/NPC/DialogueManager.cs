@@ -36,8 +36,8 @@ public class DialogueManager : MonoBehaviour
         _sentences.Clear();
         nameText.text = npcName;
         _pm = pm;
-        
-        foreach (var sent in dialg.World.EventType.Text)
+
+        foreach (var sent in EventFlagCheck(dialg.World.EventType).Text)
         {
             _sentences.Enqueue(sent.Trim());
         }
@@ -104,4 +104,20 @@ public class DialogueManager : MonoBehaviour
             AccelerateSentence();
         }
     }
+
+    private EventTemplate EventFlagCheck(List<EventTemplate> events)
+    {
+        string waveNum = PlayerPrefs.GetInt("Wave", 0).ToString();
+        
+        foreach (var e in events)
+        {
+            if (e.EventFlag.Equals(waveNum))
+            {
+                return e;
+            }
+        }
+
+        return events[0];
+    }
+
 }

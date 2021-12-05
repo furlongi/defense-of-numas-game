@@ -6768,24 +6768,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: m_Color.b
-      value: 0.7176471
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: m_Color.g
-      value: 0.36320752
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: m_Color.r
-      value: 0.6077254
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcName
-      value: Lucca
+      value: Numa
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcText
       value: 
-      objectReference: {fileID: 4900000, guid: 7d2bde7ca92adfe4e82302db3750bf33, type: 3}
+      objectReference: {fileID: 4900000, guid: a61de2e206531564aa28aba5618f740d, type: 3}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: talkDistance
       value: 2
@@ -7278,12 +7278,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcName
-      value: Lucca
+      value: Numa
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcText
       value: 
-      objectReference: {fileID: 4900000, guid: 7d2bde7ca92adfe4e82302db3750bf33, type: 3}
+      objectReference: {fileID: 4900000, guid: abcf2c7319e69ac438a55c3b34fe9858, type: 3}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: talkDistance
       value: 2
@@ -7760,6 +7760,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 1478998697}
+    - target: {fileID: -7456638387321815049, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
+      propertyPath: isInHub
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: RedGem
       value: 3
@@ -9339,12 +9343,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcName
-      value: Lucca
+      value: Numa
       objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcText
       value: 
-      objectReference: {fileID: 4900000, guid: 7d2bde7ca92adfe4e82302db3750bf33, type: 3}
+      objectReference: {fileID: 4900000, guid: 8b8e7ee8b2bfc694081fa04c85510519, type: 3}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: talkDistance
       value: 2
@@ -9407,7 +9411,7 @@ PrefabInstance:
       objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4423996717677665771, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: m_Name
-      value: NPC_HealthShop
+      value: NPC_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
@@ -9418,6 +9422,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7684552
+      objectReference: {fileID: 0}
+    - target: {fileID: -5061901108929275801, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6273585
+      objectReference: {fileID: 0}
     - target: {fileID: -4229686898857348080, guid: a79da854030a46e4498e3406e058d8c1, type: 3}
       propertyPath: npcName
       value: Mayor

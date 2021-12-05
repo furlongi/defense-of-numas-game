@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="hub">
+        <event category="1">
+            <text>
+                Our ancestors discovered these saves North of us thousands of years ago. However, rock monsters started appearing and took over our resource supply.
+            </text>
+            <text>
+                We used the caves to mine crystals filled with energy to supplement our daily lives, but living has become harder with such a short supply of the crystals.
+            </text>
+        </event>
+        <event category="2">
+            <text>
+                We used the crystals for many centuries to create technology. The towers you used in the tower defenses are an example of that.
+            </text>
+            <text>
+                Our race of Numas have thrived with these technologies until the rock monsters appeared. Even with our advancements, their monstrous strength overpowered us.
+            </text>
+        </event>
+        <event category="3">
+            <text>
+                You have kept us safe from the monster attacks so far. We are all grateful for you.
+            </text>
+            <text>
+                We no longer have a crystal shortage thanks to the crystals you recovered from the mines. Maybe this long battle will finally come to an end.
+            </text>
+            <text>
+                Prepare yourself well. This next wave of enemies will not be easy.
+            </text>
+        </event>
+        <event category="4">
+            <text>
+                Thank you so much for saving us! With the rock monsters gone, we can finally go back to how we used to live.
+            </text>
+            <text>
+                ...
+            </text>
+            <text>
+                I just remembered that my job is to go mining in those caves. *sigh*
+            </text>
+
+        </event>
+    </world>
+</root>

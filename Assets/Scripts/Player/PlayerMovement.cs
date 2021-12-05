@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 12f;
     public float modifier = 30f;
+
+    public bool isInHub = false;
     
     // Assign the appropriate game objects in inspector
     public Animator animator;
@@ -48,14 +50,20 @@ public class PlayerMovement : MonoBehaviour
         // Use if the player will start an interaction to prevent them from moving
     {
         _isInteracting = true;
-        transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().OccupyGun();
+        if (!isInHub)
+        {
+            transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().OccupyGun();
+        }
     }
     
     public void FreePlayer()
         // Frees player from an interaction, letting them move again
     {
         _isInteracting = false;
-        transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().FreeGun();
+        if (!isInHub)
+        {
+            transform.GetChild(3).transform.GetChild(0).GetComponent<Shooting>().FreeGun();
+        }
     }
 
     public bool IsOccupied()

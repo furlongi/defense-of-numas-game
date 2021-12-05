@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="hub">
+        <event category="1">
+            <text>
+                Hi hi, I am a researcher trying to study the rock monsters.
+            </text>
+            <text>
+                It is important for us to learn about our enemies to better combat them. However, I have been struggling to find a good rock monster sample.
+            </text>
+            <text>
+                Perhaps I can find a good specimes when the next wave of Rock monsters attack us... Hopefully I can find one still intact. Please be gentle with them.
+            </text>
+        </event>
+        <event category="2">
+            <text>
+                Hello there again. Thanks to you, I managed to scavenge a (mostly) intact body of a rock monster in the debris of the battlefield!
+            </text>
+            <text>
+                This is exciting stuff! From what I observed so far, it seems these rock monsters may actually not be “rocks” as we thought. I discovered traces of biological matter embedded within its rocky exterior.
+            </text>
+            <text>
+                Give me some more time, I must do more research. I look forward to scavenging for more samples in the next wave!
+            </text>
+        </event>
+        <event category="3">
+            <text>
+                Ah, you are back.
+            </text>
+            <text>
+                I have completed my study on the rock monsters. It is a bit... complicated.
+            </text>
+            <text>
+                These beings seem to be composed of a colony of microorganisms fused with inorganic crystalline matter. That is what gives life to the rocky material they are composed of. However, the complications arise concerning the crystalline matter they are made from. It is the same crystals that we have been mining from the caves to fuel our technology.
+            </text>
+            <text>
+                I theorize that this is why the rock monsters are hostile against us. Since they are born from the crystals we use as fuel, they seek revenge against us for killing their own brethren.
+            </text>
+            <text>
+                This also explains why they drop crystals when they die. We simply believed that they consumed crystals for sustenance. Perhaps, the crystals contain their very essence. And may be why it is filled with latent energy.
+            </text>
+            <text>
+                We cannot afford any more conflict with them. I must find a way to create an alternative fuel source.
+            </text>
+        </event>
+        <event category="4">
+            <text>
+                Hmm... the rock mons-- no, the rocky beings are born from the crystals we use as fuel...
+            </text>
+            <text>
+                ... need a new fuel source ...
+            </text>
+            <text>
+                Oh hey there! Thank you for all you have done. My discovery implies that more rock monsters will be born again and attack us out of revenge if we do not change our source of fuel.
+            </text>
+            <text>
+                I haven't told anyone else about these findings because it will create panic... and they may force you to remain on this planet to continue protecting us. Worry not! I already have leads on our new energy source.
+            </text>
+            <text>
+                But before you leave, help me out with what to name those rocky folk: The Rockies? Crystalloids? Sarkic? Or maybe Geo-dudes?
+            </text>
+        </event>
+    </world>
+</root>
