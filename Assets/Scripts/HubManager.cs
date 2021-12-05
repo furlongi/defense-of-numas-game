@@ -7,6 +7,7 @@ public class HubManager : MonoBehaviour
 {
     public SceneLoader sceneLoader;
     public GameObject mineTeleporter;
+    public GameObject tdTeleporter;
     public GameObject mineCollider;
     public Player player;
     public Transform promptExitToTD;
@@ -16,10 +17,16 @@ public class HubManager : MonoBehaviour
     private void Start()
     {
         int timer = PlayerPrefs.GetInt("Timer", 600);
+        int waveNum = PlayerPrefs.GetInt("Wave", 1);
         if (timer <= 0)
         {
             mineTeleporter.SetActive(false);
             mineCollider.SetActive(true);
+        }
+
+        if (waveNum > 3)
+        {
+            tdTeleporter.SetActive(false);
         }
     }
 

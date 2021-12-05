@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <world category="mine">
+        <event category="1">
+            <text>
+                Welcome to the mines! Let me give you a quick rundown. Enemies will vary depending on which cave entrance you enter.
+            </text>
+            <text>
+                 On the left, you will find very weak rock monsters. You should probably go there if your gun is not upgraded. Up above, moderately strong rock monsters are found. To the right, you will fight extremely powerful rock monsters. Take extreme caution going there.
+            </text>
+            <text>
+                Also if you somehow get injured, I will try my best to rescue you.
+            </text>
+        </event>
+    </world>
+</root>

@@ -18,6 +18,7 @@ public class StartMenu : MonoBehaviour
     public void LoadNew()
     {
         PlayerPrefs.SetInt("LoadFromScene", -1);
+        PlayerPrefs.SetInt("Wave", 1);
         PlayerPrefs.SetInt("Timer", 600);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Hub", LoadSceneMode.Single);
