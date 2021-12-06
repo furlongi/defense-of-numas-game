@@ -34,7 +34,7 @@ public class TowerDataList
         
         TowerData data = new TowerData(
             new Vector3(tower.location[0], tower.location[1], tower.location[2]),
-            0, tower.type);
+            tower.tier, tower.type);
         towerList[cur++] = data;
     }
     
