@@ -2885,7 +2885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82990ff4e5137e1478fce366993e6a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveNumber: 1
+  waveNumber: 3
   totalPopulation: 50
   currentPopulation: 50
   greenTowerEnemy: {fileID: 1601569827149726842, guid: 8c96afa8cba81484890e87ae1c69c194, type: 3}

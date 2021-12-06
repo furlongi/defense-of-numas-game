@@ -96,6 +96,10 @@ public class EventManager : MonoBehaviour
                 winText.timeToFade = 10f;
                 winText.CreatePopup(GameWonText);
             }
+            else
+            {
+                RoundCounter.text = "Wave Complete!";
+            }
             sceneExiter.SetActive(true);
         }
     }
