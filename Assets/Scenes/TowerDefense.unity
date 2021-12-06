@@ -1007,6 +1007,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave1:
   - roundData:
+    - enemyType: 0
+      number: 6
+  - roundData:
     - enemyType: 1
       number: 2
     - enemyType: 0
@@ -1048,9 +1051,6 @@ MonoBehaviour:
     - enemyType: 1
       number: 15
   - roundData:
-    - enemyType: 0
-      number: 6
-  - roundData:
     - enemyType: 2
       number: 2
     - enemyType: 1
@@ -1062,15 +1062,49 @@ MonoBehaviour:
       number: 3
   wave2:
   - roundData:
-    - enemyType: 1
-      number: 2
     - enemyType: 0
-      number: 6
+      number: 10
+    - enemyType: 1
+      number: 10
   - roundData:
     - enemyType: 1
+      number: 30
+  - roundData:
+    - enemyType: 0
+      number: 60
+  - roundData:
+    - enemyType: 2
+      number: 3
+    - enemyType: 1
+      number: 15
+  - roundData:
+    - enemyType: 2
       number: 5
     - enemyType: 0
+      number: 30
+  - roundData:
+    - enemyType: 2
+      number: 8
+  - roundData:
+    - enemyType: 1
+      number: 40
+  - roundData:
+    - enemyType: 3
+      number: 2
+    - enemyType: 2
+      number: 2
+    - enemyType: 0
+      number: 20
+  - roundData:
+    - enemyType: 2
       number: 6
+    - enemyType: 1
+      number: 10
+    - enemyType: 0
+      number: 10
+  - roundData:
+    - enemyType: 3
+      number: 5
   wave3:
   - roundData:
     - enemyType: 3
@@ -1373,11 +1407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: redGem
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: blueGem
-      value: 2
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: tracker
@@ -1385,11 +1419,11 @@ PrefabInstance:
       objectReference: {fileID: 1254257119}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: greenGem
-      value: 4
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: -409597967763873248, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: purpleGem
-      value: 3
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5263697593488796878, guid: 3e4c63be5b488cd4b8789a6bc1912d11, type: 3}
       propertyPath: cam
