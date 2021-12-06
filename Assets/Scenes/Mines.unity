@@ -28653,7 +28653,7 @@ MonoBehaviour:
   - {fileID: 1712667592}
   traveresedFloors: 0
   currentFloor: {fileID: 0}
-  HealPlayerPerFloor: 1
+  HealPlayerPerFloor: 2
   player: {fileID: 709060419}
   GreenEnemy: {fileID: 3558283203414952205, guid: 5788d597a394024428eec115bc3965b7, type: 3}
   BlueEnemy: {fileID: 8187108217702537895, guid: d9c13a8b413595049b9542c264bc22f8, type: 3}

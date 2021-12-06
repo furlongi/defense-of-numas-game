@@ -12,6 +12,7 @@ public class SceneExit : MonoBehaviour
         {
             SaveSystem.SavePersistentTower(towerList);
             PlayerPrefs.SetInt("Timer", 600);
+            PlayerPrefs.SetFloat("Health", PlayerPrefs.GetFloat("HealthCap", 20));
             PlayerPrefs.Save();
             SceneLoader sceneLoader = FindObjectOfType<SceneLoader>().GetComponent<SceneLoader>();
             sceneLoader.LoadScene(sceneName, sceneOrigin);
