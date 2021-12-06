@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TMPro;
 using UnityEditor;
 
 
@@ -26,7 +27,8 @@ public class EventManager : MonoBehaviour
     [NonSerialized] public Camera Camera;
     [NonSerialized] public GameObject sceneExiter;
     [NonSerialized] public bool IsOver;
-
+    [NonSerialized] public TMP_Text GameWonText;
+    
     public GameObject greenTowerEnemy;
     public GameObject blueTowerEnemy;
     public GameObject purpleTowerEnemy;
@@ -50,12 +52,11 @@ public class EventManager : MonoBehaviour
         LivesCounter = TowerDefenseUI.transform.Find("Lives Counter").GetComponent<Text>();
         TowerShop = TowerDefenseUI.transform.Find("Tower Shop").gameObject;
         TowerUpgradeShop = TowerDefenseUI.transform.Find("Tower Upgrade Shop").GetComponent<UpgradeTower>();
-        
+        GameWonText = TowerDefenseUI.transform.Find("GameWonUI").transform.GetChild(0).GetComponent<TMP_Text>();
         sceneExiter = GameObject.Find("Scene Exiter");
         IsOver = false;
         _wave = gameObject.AddComponent<Wave>();
         waveNumber = PlayerPrefs.GetInt("Wave", 1);
-        _wave.WaveNumber = waveNumber;
 
         LivesCounter.text = "Lives: " + currentPopulation + " / " + totalPopulation;
         
@@ -86,6 +87,15 @@ public class EventManager : MonoBehaviour
         }
         else if (IsOver && !sceneExiter.activeSelf)
         {
+            if (waveNumber == 4)
+            {
+                RoundCounter.text = "";
+                LivesCounter.text = "";
+                TextPopupFade winText = gameObject.AddComponent<TextPopupFade>();
+                CancelPopups();
+                winText.timeToFade = 10f;
+                winText.CreatePopup(GameWonText);
+            }
             sceneExiter.SetActive(true);
         }
     }

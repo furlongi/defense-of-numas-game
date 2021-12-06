@@ -9,7 +9,6 @@ public class Wave : MonoBehaviour
 {
     private List<Round> rounds = new List<Round>();
     private Vector2 _spawnLocation;
-    [NonSerialized] public int WaveNumber;
     private int _currentRound = 0;
     private EventManager _eventManager;
     private WaveData _waveData;
@@ -18,7 +17,6 @@ public class Wave : MonoBehaviour
     {
         _eventManager = gameObject.GetComponent<EventManager>();
         _waveData = _eventManager.transform.GetChild(0).GetComponent<WaveData>();
-        WaveNumber = _eventManager.waveNumber;
         SetWaveRounds();
         _spawnLocation = _eventManager.enemySpawner.transform.position;
         _eventManager.RoundCounter.text = "Round 1 / " + rounds.Count;
@@ -79,7 +77,6 @@ public class Wave : MonoBehaviour
         }
         else
         {
-            _eventManager.RoundCounter.text = "Wave Complete!";
             _eventManager.IsOver = true;
             _eventManager.waveNumber++;
         }
@@ -88,15 +85,15 @@ public class Wave : MonoBehaviour
     private void SetWaveRounds()
     {
         List<WaveData.RoundData> enemies = new List<WaveData.RoundData>();
-        if (WaveNumber == 1)
+        if (_eventManager.waveNumber == 1)
         {
             enemies = _waveData.wave1;
         }
-        else if (WaveNumber == 2)
+        else if (_eventManager.waveNumber == 2)
         {
             enemies = _waveData.wave2;
         }
-        else if (WaveNumber == 3)
+        else if (_eventManager.waveNumber == 3)
         {
             enemies = _waveData.wave3;
         }

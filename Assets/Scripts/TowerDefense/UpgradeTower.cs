@@ -41,7 +41,6 @@ public class UpgradeTower : MonoBehaviour
 
     public void SetTower(BaseTower tower)
     {
-        Debug.Log("Updating");
         _tower = tower;
         RefreshComponent();
     }
