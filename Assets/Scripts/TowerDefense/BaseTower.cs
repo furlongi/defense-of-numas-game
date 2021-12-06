@@ -163,7 +163,6 @@ public class BaseTower : MonoBehaviour
         if (towerType == TowerType.Heavy)
         {
             _damage = TowerTierDamageData.HeavyTower[_upgradeTier];
-            Debug.Log(_damage);
         }
         else if (towerType == TowerType.Normal)
         {
