@@ -17,6 +17,7 @@ public class PlayerData
 
     public int weaponTier;
     public int waveNumber;
+    public int lives;
 
     public int timer;
 
@@ -38,6 +39,7 @@ public class PlayerData
 
         waveNumber = PlayerPrefs.GetInt("Wave", 1);
         timer = PlayerPrefs.GetInt("Timer", 600);
+        lives = PlayerPrefs.GetInt("Lives", 50);
 
         if (tList != null)
         {

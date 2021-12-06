@@ -33,6 +33,7 @@ public static class SaveSystem
             PlayerData player = (PlayerData)formatter.Deserialize(stream);
             PlayerPrefs.SetInt("Wave", player.waveNumber);
             PlayerPrefs.SetInt("Timer", player.timer);
+            PlayerPrefs.SetInt("Lives", player.lives);
             PlayerPrefs.Save();
             SavePersistentTower(player.towerList);
             stream.Close();

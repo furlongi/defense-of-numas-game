@@ -58,6 +58,7 @@ public class EventManager : MonoBehaviour
         _wave = gameObject.AddComponent<Wave>();
         waveNumber = PlayerPrefs.GetInt("Wave", 1);
 
+        currentPopulation = PlayerPrefs.GetInt("Lives", 50);
         LivesCounter.text = "Lives: " + currentPopulation + " / " + totalPopulation;
         
     }
